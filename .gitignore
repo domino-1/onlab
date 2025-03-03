@@ -1,6 +1,3 @@
 vscode-k-workspace.ico
 .vscode
 *.code-workspace
-project/xsts.k
-project/example.test
-project/xsts-kompiled
