@@ -1,0 +1,10 @@
+default: null
+specializations:
+- - LblPants'LParUndsRParUnds'LESSON-02-PRACTICE'Unds'Pants'Unds'Color{}
+  - action:
+    - 131
+    - - - ['0', '1']
+        - STRING.String
+  - [STRING.String]
+sort: STRING.String
+occurrence: ['1']

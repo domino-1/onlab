@@ -1,0 +1,14 @@
+default: null
+specializations:
+- - LblBanana'LParRParUnds'LESSON-02-B'Unds'Fruit{}
+  - action:
+    - 101
+    - []
+  - []
+- - LblBlueberry'LParRParUnds'LESSON-02-B'Unds'Fruit{}
+  - action:
+    - 102
+    - []
+  - []
+sort: STRING.String
+occurrence: ['1']

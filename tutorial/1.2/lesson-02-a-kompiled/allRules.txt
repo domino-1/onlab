@@ -1,0 +1,6 @@
+de5a367555cc64f3cdf1efc2b985a60348c8a2792bf7496c425ad0e97e9fed3a /mnt/e/bme/dev/onlab/k/lesson-02-a.k:7:8
+c384edb8f3875244a593dda6163c3dee1bce5485e4e1848892aebc2bab67d2e9 /nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md:749:8
+f6967050cc4ec32c2d34d52f5577e09120f730420d2c5dc838cba81d04c57adf /nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md:954:8
+6d4ab343831eeff1c9d7bb1f6afaa83d5f646508128d223a61f9308b14b28c0e /mnt/e/bme/dev/onlab/k/lesson-02-a.k:9:8
+13755dad5781526a47425a8372ac12d440152c7788886c5bafd4b891e740eb38 /mnt/e/bme/dev/onlab/k/lesson-02-a.k:10:8
+e04ca0a01ed59af6dc11522f0c0904846e142bcf6f2748cf9843f9cd7b983b4f /mnt/e/bme/dev/onlab/k/lesson-02-a.k:8:8
