@@ -6,10 +6,16 @@ specializations:
     - - dotk{}
       - default: fail
         specializations:
+        - - inj{SortLiteral{}, SortKItem{}}
+          - action:
+            - 329
+            - - - ['0', '0', '1']
+                - STRING.String
+          - [STRING.String]
         - - inj{SortBool{}, SortKItem{}}
           - &id001
             action:
-            - 268
+            - 329
             - - - &id002 ['0', '1']
                 - STRING.String
           - [BOOL.Bool]

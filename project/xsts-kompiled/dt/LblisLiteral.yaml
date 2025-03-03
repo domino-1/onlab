@@ -1,6 +1,6 @@
 default: &id001
   action:
-  - 227
+  - 274
   - - - &id004 ['1']
       - STRING.String
 specializations:
@@ -10,10 +10,16 @@ specializations:
     - - dotk{}
       - default: *id001
         specializations:
+        - - inj{SortLiteral{}, SortKItem{}}
+          - action:
+            - 275
+            - - - ['0', '0', '1']
+                - STRING.String
+          - [STRING.String]
         - - inj{SortBool{}, SortKItem{}}
           - &id002
             action:
-            - 228
+            - 275
             - - - &id003 ['0', '1']
                 - STRING.String
           - [BOOL.Bool]

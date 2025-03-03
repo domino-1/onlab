@@ -71,46 +71,57 @@ module XSTS
   sort SortTCellFragment{} []
   sort SortTransition{} []
   sort SortKCellOpt{} []
+  sort SortStateCellFragment{} []
   sort SortChoiceOrBlocks{} []
   sort SortProgram{} []
   sort SortKCell{} []
   sort SortHavoc{} []
   sort SortKConfigVar{} [hasDomainValues{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(40,3,40,28)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/kast.md)"), token{}()]
-  sort SortChoice{} []
   hooked-sort SortSet{} [concat{}(Lbl'Unds'Set'Unds'{}()), element{}(LblSetItem{}()), hook{}("SET.Set"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(700,3,700,29)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), unit{}(Lbl'Stop'Set{}())]
   sort SortAssumption{} []
   sort SortOperation{} []
+  sort SortTransitionsCell{} []
+  sort SortTransitionsCellOpt{} []
   sort SortVariableDeclaration{} []
   sort SortChoiceOrBlock{} []
   sort SortGeneratedTopCellFragment{} []
   hooked-sort SortList{} [concat{}(Lbl'Unds'List'Unds'{}()), element{}(LblListItem{}()), hook{}("LIST.List"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(913,3,913,32)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), unit{}(Lbl'Stop'List{}()), update{}(LblList'Coln'set{}())]
+  sort SortVariablesCell{} []
   sort SortGeneratedTopCell{} []
+  sort SortStateCell{} []
   sort SortGeneratedCounterCell{} []
   sort SortTCellOpt{} []
   sort SortSequence{} []
   hooked-sort SortMap{} [concat{}(Lbl'Unds'Map'Unds'{}()), element{}(Lbl'UndsPipe'-'-GT-Unds'{}()), hook{}("MAP.Map"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(218,3,218,29)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), unit{}(Lbl'Stop'Map{}())]
   sort SortId{} [hasDomainValues{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(2255,3,2255,20)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), token{}()]
   sort SortGeneratedCounterCellOpt{} []
+  sort SortVariablesCellOpt{} []
+  sort SortChoice{} []
   sort SortAssignment{} []
   sort SortLiteral{} []
   hooked-sort SortInt{} [hasDomainValues{}(), hook{}("INT.Int"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(1198,3,1198,29)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
+  sort SortStateCellOpt{} []
   sort SortLine{} []
   sort SortTCell{} []
   hooked-sort SortBool{} [hasDomainValues{}(), hook{}("BOOL.Bool"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(1077,3,1077,32)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
 
 // symbols
   hooked-symbol Lbl'Stop'List{}() : SortList{} [function{}(), functional{}(), hook{}("LIST.unit"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(937,19,937,113)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), smtlib{}("smt_seq_nil"), symbol'Kywd'{}(".List"), total{}()]
-  symbol Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'ChoiceOrBlocks'Unds'ChoiceOrBlock'Unds'ChoiceOrBlocks'QuotRBraUnds'ChoiceOrBlocks{}() : SortChoiceOrBlocks{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(22,31,22,54)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)"), symbol'Kywd'{}(".List{\"___XSTS-SYNTAX\"}")]
-  symbol Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program'QuotRBraUnds'Program{}() : SortProgram{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(29,24,29,38)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)"), symbol'Kywd'{}(".List{\"___XSTS-SYNTAX\"}")]
-  symbol Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence'QuotRBraUnds'Sequence{}() : SortSequence{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(26,25,26,44)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)"), symbol'Kywd'{}(".List{\"___XSTS-SYNTAX\"}")]
+  symbol Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'ChoiceOrBlocks'Unds'ChoiceOrBlock'Unds'ChoiceOrBlocks'QuotRBraUnds'ChoiceOrBlocks{}() : SortChoiceOrBlocks{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(21,31,21,54)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)"), symbol'Kywd'{}(".List{\"___XSTS-SYNTAX\"}")]
+  symbol Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program'QuotRBraUnds'Program{}() : SortProgram{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(28,24,28,38)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)"), symbol'Kywd'{}(".List{\"___XSTS-SYNTAX\"}")]
+  symbol Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence'QuotRBraUnds'Sequence{}() : SortSequence{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(25,25,25,44)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)"), symbol'Kywd'{}(".List{\"___XSTS-SYNTAX\"}")]
   hooked-symbol Lbl'Stop'Map{}() : SortMap{} [function{}(), functional{}(), hook{}("MAP.unit"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(248,18,248,96)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}(".Map"), total{}()]
   hooked-symbol Lbl'Stop'Set{}() : SortSet{} [function{}(), functional{}(), hook{}("SET.unit"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(729,18,729,90)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}(".Set"), total{}()]
-  symbol Lbl'-LT-'T'-GT-'{}(SortKCell{}) : SortTCell{} [cell{}(), constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(44,19,46,23)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
-  symbol Lbl'-LT-'T'-GT-'-fragment{}(SortKCellOpt{}) : SortTCellFragment{} [constructor{}(), functional{}(), injective{}()]
+  symbol Lbl'-LT-'T'-GT-'{}(SortKCell{}, SortStateCell{}) : SortTCell{} [cell{}(), constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(35,19,41,23)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'-LT-'T'-GT-'-fragment{}(SortKCellOpt{}, SortStateCellOpt{}) : SortTCellFragment{} [constructor{}(), functional{}(), injective{}()]
   symbol Lbl'-LT-'generatedCounter'-GT-'{}(SortInt{}) : SortGeneratedCounterCell{} [cell{}(), constructor{}(), functional{}(), injective{}()]
   symbol Lbl'-LT-'generatedTop'-GT-'{}(SortTCell{}, SortGeneratedCounterCell{}) : SortGeneratedTopCell{} [cell{}(), constructor{}(), functional{}(), injective{}()]
   symbol Lbl'-LT-'generatedTop'-GT-'-fragment{}(SortTCellOpt{}, SortGeneratedCounterCellOpt{}) : SortGeneratedTopCellFragment{} [constructor{}(), functional{}(), injective{}()]
-  symbol Lbl'-LT-'k'-GT-'{}(SortK{}) : SortKCell{} [cell{}(), constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(45,21,45,42)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'-LT-'k'-GT-'{}(SortK{}) : SortKCell{} [cell{}(), constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(36,21,36,42)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'-LT-'state'-GT-'{}(SortVariablesCell{}, SortTransitionsCell{}) : SortStateCell{} [cell{}(), constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(37,21,40,29)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'-LT-'state'-GT-'-fragment{}(SortVariablesCellOpt{}, SortTransitionsCellOpt{}) : SortStateCellFragment{} [constructor{}(), functional{}(), injective{}()]
+  symbol Lbl'-LT-'transitions'-GT-'{}(SortList{}) : SortTransitionsCell{} [cell{}(), constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(39,23,39,57)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'-LT-'variables'-GT-'{}(SortMap{}) : SortVariablesCell{} [cell{}(), constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(38,23,38,52)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
   hooked-symbol LblList'Coln'get{}(SortList{}, SortInt{}) : SortKItem{} [function{}(), hook{}("LIST.get"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(965,20,965,91)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("List:get")]
   hooked-symbol LblList'Coln'range{}(SortList{}, SortInt{}, SortInt{}) : SortList{} [function{}(), hook{}("LIST.range"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(1012,19,1012,112)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("List:range")]
   hooked-symbol LblList'Coln'set{}(SortList{}, SortInt{}, SortKItem{}) : SortList{} [function{}(), hook{}("LIST.update"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(974,19,974,108)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("List:set")]
@@ -124,29 +135,33 @@ module XSTS
   hooked-symbol LblSet'Coln'in{}(SortKItem{}, SortSet{}) : SortBool{} [function{}(), functional{}(), hook{}("SET.in"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(777,19,777,94)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("Set:in"), total{}()]
   hooked-symbol LblSetItem{}(SortKItem{}) : SortSet{} [function{}(), functional{}(), hook{}("SET.element"), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(737,18,737,111)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("SetItem"), total{}()]
   hooked-symbol Lbl'Unds'-Map'UndsUnds'MAP'Unds'Map'Unds'Map'Unds'Map{}(SortMap{}, SortMap{}) : SortMap{} [function{}(), functional{}(), hook{}("MAP.difference"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(311,18,311,88)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
-  symbol Lbl'UndsColnEqlsUndsUnds'XSTS-SYNTAX'Unds'Assignment'Unds'Id'Unds'Literal{}(SortId{}, SortLiteral{}) : SortAssignment{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(11,27,11,42)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'UndsColnEqlsUndsUnds'XSTS-SYNTAX'Unds'Assignment'Unds'Id'Unds'Literal{}(SortId{}, SortLiteral{}) : SortAssignment{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(10,27,10,42)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
   hooked-symbol Lbl'Unds-LT-Eqls'Map'UndsUnds'MAP'Unds'Bool'Unds'Map'Unds'Map{}(SortMap{}, SortMap{}) : SortBool{} [function{}(), functional{}(), hook{}("MAP.inclusion"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(383,19,383,87)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   hooked-symbol Lbl'Unds-LT-Eqls'Set'UndsUnds'SET'Unds'Bool'Unds'Set'Unds'Set{}(SortSet{}, SortSet{}) : SortBool{} [function{}(), functional{}(), hook{}("SET.inclusion"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(786,19,786,81)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   hooked-symbol Lbl'Unds'List'Unds'{}(SortList{}, SortList{}) : SortList{} [element{}(LblListItem{}()), function{}(), functional{}(), hook{}("LIST.concat"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(929,19,929,198)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), smtlib{}("smt_seq_concat"), symbol'Kywd'{}("_List_"), total{}(), unit{}(Lbl'Stop'List{}()), update{}(LblList'Coln'set{}())]
   hooked-symbol Lbl'Unds'Map'Unds'{}(SortMap{}, SortMap{}) : SortMap{} [element{}(Lbl'UndsPipe'-'-GT-Unds'{}()), function{}(), hook{}("MAP.concat"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(240,18,240,165)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("_Map_"), unit{}(Lbl'Stop'Map{}())]
   hooked-symbol Lbl'Unds'Set'Unds'{}(SortSet{}, SortSet{}) : SortSet{} [element{}(LblSetItem{}()), function{}(), hook{}("SET.concat"), idem{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(721,18,721,157)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("_Set_"), unit{}(Lbl'Stop'Set{}())]
   hooked-symbol Lbl'UndsLSqBUnds-LT-'-undef'RSqB'{}(SortMap{}, SortKItem{}) : SortMap{} [function{}(), functional{}(), hook{}("MAP.remove"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(299,18,299,109)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("_[_<-undef]"), total{}()]
-  symbol Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'ChoiceOrBlocks'Unds'ChoiceOrBlock'Unds'ChoiceOrBlocks{}(SortChoiceOrBlock{}, SortChoiceOrBlocks{}) : SortChoiceOrBlocks{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(22,31,22,54)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
-  symbol Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program{}(SortLine{}, SortProgram{}) : SortProgram{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(29,24,29,38)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
-  symbol Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence{}(SortOperation{}, SortSequence{}) : SortSequence{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(26,25,26,44)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'ChoiceOrBlocks'Unds'ChoiceOrBlock'Unds'ChoiceOrBlocks{}(SortChoiceOrBlock{}, SortChoiceOrBlocks{}) : SortChoiceOrBlocks{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(21,31,21,54)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program{}(SortLine{}, SortProgram{}) : SortProgram{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(28,24,28,38)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence{}(SortOperation{}, SortSequence{}) : SortSequence{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(25,25,25,44)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
   hooked-symbol Lbl'Unds'inList'Unds'{}(SortKItem{}, SortList{}) : SortBool{} [function{}(), functional{}(), hook{}("LIST.in"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(1021,19,1021,97)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("_inList_"), total{}()]
   hooked-symbol Lbl'Unds'in'Unds'keys'LParUndsRParUnds'MAP'Unds'Bool'Unds'KItem'Unds'Map{}(SortKItem{}, SortMap{}) : SortBool{} [function{}(), functional{}(), hook{}("MAP.in_keys"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(357,19,357,89)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   hooked-symbol Lbl'UndsPipe'-'-GT-Unds'{}(SortKItem{}, SortKItem{}) : SortMap{} [function{}(), functional{}(), hook{}("MAP.element"), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(257,18,257,119)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("_|->_"), total{}()]
   hooked-symbol Lbl'UndsPipe'Set'UndsUnds'SET'Unds'Set'Unds'Set'Unds'Set{}(SortSet{}, SortSet{}) : SortSet{} [function{}(), functional{}(), hook{}("SET.union"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(748,18,748,92)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
-  symbol Lblassume'LParUndsRParUnds'XSTS-SYNTAX'Unds'Assumption'Unds'Literal{}(SortLiteral{}) : SortAssumption{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(13,27,13,48)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
-  symbol Lblchoice'LBraUndsRBraUndsUnds'XSTS-SYNTAX'Unds'Choice'Unds'Sequence'Unds'ChoiceOrBlocks{}(SortSequence{}, SortChoiceOrBlocks{}) : SortChoice{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(20,23,20,61)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lblassume'LParUndsRParUnds'XSTS-SYNTAX'Unds'Assumption'Unds'Literal{}(SortLiteral{}) : SortAssumption{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(12,27,12,48)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lblchoice'LBraUndsRBraUndsUnds'XSTS-SYNTAX'Unds'Choice'Unds'Sequence'Unds'ChoiceOrBlocks{}(SortSequence{}, SortChoiceOrBlocks{}) : SortChoice{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(19,23,19,61)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lblempty'Unds'XSTS-SYNTAX'Unds'Literal{}() : SortLiteral{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(6,37,6,44)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
   hooked-symbol LblfillList'LParUndsCommUndsCommUndsCommUndsRParUnds'LIST'Unds'List'Unds'List'Unds'Int'Unds'Int'Unds'KItem{}(SortList{}, SortInt{}, SortInt{}, SortKItem{}) : SortList{} [function{}(), hook{}("LIST.fill"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(1002,19,1002,100)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
   symbol LblgetGeneratedCounterCell{}(SortGeneratedTopCell{}) : SortGeneratedCounterCell{} [function{}()]
-  symbol Lblhavoc'LParUndsRParUnds'XSTS-SYNTAX'Unds'Havoc'Unds'Id{}(SortId{}) : SortHavoc{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(12,22,12,37)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lblhavoc'LParUndsRParUnds'XSTS-SYNTAX'Unds'Havoc'Unds'Id{}(SortId{}) : SortHavoc{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(11,22,11,37)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
   symbol LblinitGeneratedCounterCell{}() : SortGeneratedCounterCell{} [function{}(), functional{}(), total{}()]
   symbol LblinitGeneratedTopCell{}(SortMap{}) : SortGeneratedTopCell{} [function{}()]
   symbol LblinitKCell{}(SortMap{}) : SortKCell{} [function{}()]
+  symbol LblinitStateCell{}() : SortStateCell{} [function{}(), functional{}(), total{}()]
   symbol LblinitTCell{}(SortMap{}) : SortTCell{} [function{}()]
+  symbol LblinitTransitionsCell{}() : SortTransitionsCell{} [function{}(), functional{}(), total{}()]
+  symbol LblinitVariablesCell{}() : SortVariablesCell{} [function{}(), functional{}(), total{}()]
   hooked-symbol LblintersectSet'LParUndsCommUndsRParUnds'SET'Unds'Set'Unds'Set'Unds'Set{}(SortSet{}, SortSet{}) : SortSet{} [function{}(), functional{}(), hook{}("SET.intersection"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(759,18,759,90)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   symbol LblisAssignment{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisAssumption{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
@@ -174,18 +189,28 @@ module XSTS
   symbol LblisProgram{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisSequence{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisSet{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
+  symbol LblisStateCell{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
+  symbol LblisStateCellFragment{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
+  symbol LblisStateCellOpt{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisTCell{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisTCellFragment{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisTCellOpt{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisTransition{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
+  symbol LblisTransitionsCell{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
+  symbol LblisTransitionsCellOpt{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   symbol LblisVariableDeclaration{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
+  symbol LblisVariablesCell{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
+  symbol LblisVariablesCellOpt{}(SortK{}) : SortBool{} [function{}(), functional{}(), total{}()]
   hooked-symbol Lblkeys'LParUndsRParUnds'MAP'Unds'Set'Unds'Map{}(SortMap{}) : SortSet{} [function{}(), functional{}(), hook{}("MAP.keys"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(341,18,341,82)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   hooked-symbol Lblkeys'Unds'list'LParUndsRParUnds'MAP'Unds'List'Unds'Map{}(SortMap{}) : SortList{} [function{}(), hook{}("MAP.keys_list"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(349,19,349,80)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
   hooked-symbol LblmakeList'LParUndsCommUndsRParUnds'LIST'Unds'List'Unds'Int'Unds'KItem{}(SortInt{}, SortKItem{}) : SortList{} [function{}(), hook{}("LIST.make"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(983,19,983,82)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
   symbol LblnoGeneratedCounterCell{}() : SortGeneratedCounterCellOpt{} [constructor{}(), functional{}(), injective{}()]
   symbol LblnoKCell{}() : SortKCellOpt{} [constructor{}(), functional{}(), injective{}()]
+  symbol LblnoStateCell{}() : SortStateCellOpt{} [constructor{}(), functional{}(), injective{}()]
   symbol LblnoTCell{}() : SortTCellOpt{} [constructor{}(), functional{}(), injective{}()]
-  symbol Lblor'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'ChoiceOrBlock'Unds'Sequence{}(SortSequence{}) : SortChoiceOrBlock{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(21,30,21,49)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol LblnoTransitionsCell{}() : SortTransitionsCellOpt{} [constructor{}(), functional{}(), injective{}()]
+  symbol LblnoVariablesCell{}() : SortVariablesCellOpt{} [constructor{}(), functional{}(), injective{}()]
+  symbol Lblor'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'ChoiceOrBlock'Unds'Sequence{}(SortSequence{}) : SortChoiceOrBlock{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(20,30,20,49)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
   symbol Lblproject'Coln'Assignment{}(SortK{}) : SortAssignment{} [function{}()]
   symbol Lblproject'Coln'Assumption{}(SortK{}) : SortAssumption{} [function{}()]
   symbol Lblproject'Coln'Bool{}(SortK{}) : SortBool{} [function{}()]
@@ -211,22 +236,29 @@ module XSTS
   symbol Lblproject'Coln'Program{}(SortK{}) : SortProgram{} [function{}()]
   symbol Lblproject'Coln'Sequence{}(SortK{}) : SortSequence{} [function{}()]
   symbol Lblproject'Coln'Set{}(SortK{}) : SortSet{} [function{}()]
+  symbol Lblproject'Coln'StateCell{}(SortK{}) : SortStateCell{} [function{}()]
+  symbol Lblproject'Coln'StateCellFragment{}(SortK{}) : SortStateCellFragment{} [function{}()]
+  symbol Lblproject'Coln'StateCellOpt{}(SortK{}) : SortStateCellOpt{} [function{}()]
   symbol Lblproject'Coln'TCell{}(SortK{}) : SortTCell{} [function{}()]
   symbol Lblproject'Coln'TCellFragment{}(SortK{}) : SortTCellFragment{} [function{}()]
   symbol Lblproject'Coln'TCellOpt{}(SortK{}) : SortTCellOpt{} [function{}()]
   symbol Lblproject'Coln'Transition{}(SortK{}) : SortTransition{} [function{}()]
+  symbol Lblproject'Coln'TransitionsCell{}(SortK{}) : SortTransitionsCell{} [function{}()]
+  symbol Lblproject'Coln'TransitionsCellOpt{}(SortK{}) : SortTransitionsCellOpt{} [function{}()]
   symbol Lblproject'Coln'VariableDeclaration{}(SortK{}) : SortVariableDeclaration{} [function{}()]
+  symbol Lblproject'Coln'VariablesCell{}(SortK{}) : SortVariablesCell{} [function{}()]
+  symbol Lblproject'Coln'VariablesCellOpt{}(SortK{}) : SortVariablesCellOpt{} [function{}()]
   hooked-symbol LblpushList{}(SortKItem{}, SortList{}) : SortList{} [function{}(), functional{}(), hook{}("LIST.push"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(953,19,953,99)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("pushList"), total{}()]
   hooked-symbol LblremoveAll'LParUndsCommUndsRParUnds'MAP'Unds'Map'Unds'Map'Unds'Set{}(SortMap{}, SortSet{}) : SortMap{} [function{}(), functional{}(), hook{}("MAP.removeAll"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(333,18,333,87)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   hooked-symbol Lblsize'LParUndsRParUnds'SET'Unds'Int'Unds'Set{}(SortSet{}) : SortInt{} [function{}(), functional{}(), hook{}("SET.size"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(794,18,794,76)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   hooked-symbol LblsizeList{}(SortList{}) : SortInt{} [function{}(), functional{}(), hook{}("LIST.size"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(1029,18,1029,116)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), smtlib{}("smt_seq_len"), symbol'Kywd'{}("sizeList"), total{}()]
   hooked-symbol LblsizeMap{}(SortMap{}) : SortInt{} [function{}(), functional{}(), hook{}("MAP.size"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(373,18,373,99)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), symbol'Kywd'{}("sizeMap"), total{}()]
-  symbol Lbltran'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'Transition'Unds'Sequence{}(SortSequence{}) : SortTransition{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(24,27,24,48)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lbltran'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'Transition'Unds'Sequence{}(SortSequence{}) : SortTransition{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(23,27,23,48)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
   hooked-symbol LblupdateList'LParUndsCommUndsCommUndsRParUnds'LIST'Unds'List'Unds'List'Unds'Int'Unds'List{}(SortList{}, SortInt{}, SortList{}) : SortList{} [function{}(), hook{}("LIST.updateAll"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(993,19,993,97)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
   hooked-symbol LblupdateMap'LParUndsCommUndsRParUnds'MAP'Unds'Map'Unds'Map'Unds'Map{}(SortMap{}, SortMap{}) : SortMap{} [function{}(), functional{}(), hook{}("MAP.updateAll"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(324,18,324,87)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)"), total{}()]
   hooked-symbol Lblvalues'LParUndsRParUnds'MAP'Unds'List'Unds'Map{}(SortMap{}) : SortList{} [function{}(), hook{}("MAP.values"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(365,19,365,77)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
-  symbol Lblvar'UndsColn'boolean'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(SortId{}) : SortVariableDeclaration{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(9,36,9,58)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
-  symbol Lblvar'UndsColn'integer'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(SortId{}) : SortVariableDeclaration{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(8,36,8,58)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lblvar'UndsColn'boolean'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(SortId{}) : SortVariableDeclaration{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(8,36,8,58)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+  symbol Lblvar'UndsColn'integer'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(SortId{}) : SortVariableDeclaration{} [constructor{}(), functional{}(), injective{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(7,36,7,58)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
 
 // generated axioms
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortOperation{}, SortKItem{}} (From:SortOperation{}))) [subsort{SortOperation{}, SortKItem{}}()] // subsort
@@ -234,6 +266,7 @@ module XSTS
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortKCellOpt{}, SortKItem{}} (From:SortKCellOpt{}))) [subsort{SortKCellOpt{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKCellOpt{}, \equals{SortKCellOpt{}, R} (Val:SortKCellOpt{}, inj{SortKCell{}, SortKCellOpt{}} (From:SortKCell{}))) [subsort{SortKCell{}, SortKCellOpt{}}()] // subsort
   axiom{R} \exists{R} (Val:SortTCellOpt{}, \equals{SortTCellOpt{}, R} (Val:SortTCellOpt{}, inj{SortTCell{}, SortTCellOpt{}} (From:SortTCell{}))) [subsort{SortTCell{}, SortTCellOpt{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortVariablesCellOpt{}, SortKItem{}} (From:SortVariablesCellOpt{}))) [subsort{SortVariablesCellOpt{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortMap{}, SortKItem{}} (From:SortMap{}))) [subsort{SortMap{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortAssumption{}, SortKItem{}} (From:SortAssumption{}))) [subsort{SortAssumption{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortKCell{}, SortKItem{}} (From:SortKCell{}))) [subsort{SortKCell{}, SortKItem{}}()] // subsort
@@ -241,11 +274,14 @@ module XSTS
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortId{}, SortKItem{}} (From:SortId{}))) [subsort{SortId{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortChoiceOrBlock{}, SortKItem{}} (From:SortChoiceOrBlock{}))) [subsort{SortChoiceOrBlock{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortTransition{}, SortKItem{}} (From:SortTransition{}))) [subsort{SortTransition{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortStateCellOpt{}, SortKItem{}} (From:SortStateCellOpt{}))) [subsort{SortStateCellOpt{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortVariablesCell{}, SortKItem{}} (From:SortVariablesCell{}))) [subsort{SortVariablesCell{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortList{}, SortKItem{}} (From:SortList{}))) [subsort{SortList{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortGeneratedCounterCellOpt{}, SortKItem{}} (From:SortGeneratedCounterCellOpt{}))) [subsort{SortGeneratedCounterCellOpt{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortGeneratedTopCell{}, SortKItem{}} (From:SortGeneratedTopCell{}))) [subsort{SortGeneratedTopCell{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortSequence{}, SortKItem{}} (From:SortSequence{}))) [subsort{SortSequence{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortGeneratedCounterCell{}, SortKItem{}} (From:SortGeneratedCounterCell{}))) [subsort{SortGeneratedCounterCell{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortStateCellOpt{}, \equals{SortStateCellOpt{}, R} (Val:SortStateCellOpt{}, inj{SortStateCell{}, SortStateCellOpt{}} (From:SortStateCell{}))) [subsort{SortStateCell{}, SortStateCellOpt{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortLine{}, SortKItem{}} (From:SortLine{}))) [subsort{SortLine{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortBool{}, SortKItem{}} (From:SortBool{}))) [subsort{SortBool{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortTCellFragment{}, SortKItem{}} (From:SortTCellFragment{}))) [subsort{SortTCellFragment{}, SortKItem{}}()] // subsort
@@ -258,8 +294,14 @@ module XSTS
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortTCell{}, SortKItem{}} (From:SortTCell{}))) [subsort{SortTCell{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortHavoc{}, SortKItem{}} (From:SortHavoc{}))) [subsort{SortHavoc{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortGeneratedTopCellFragment{}, SortKItem{}} (From:SortGeneratedTopCellFragment{}))) [subsort{SortGeneratedTopCellFragment{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortVariablesCellOpt{}, \equals{SortVariablesCellOpt{}, R} (Val:SortVariablesCellOpt{}, inj{SortVariablesCell{}, SortVariablesCellOpt{}} (From:SortVariablesCell{}))) [subsort{SortVariablesCell{}, SortVariablesCellOpt{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortInt{}, SortKItem{}} (From:SortInt{}))) [subsort{SortInt{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortStateCell{}, SortKItem{}} (From:SortStateCell{}))) [subsort{SortStateCell{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortTransitionsCellOpt{}, SortKItem{}} (From:SortTransitionsCellOpt{}))) [subsort{SortTransitionsCellOpt{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortTransitionsCellOpt{}, \equals{SortTransitionsCellOpt{}, R} (Val:SortTransitionsCellOpt{}, inj{SortTransitionsCell{}, SortTransitionsCellOpt{}} (From:SortTransitionsCell{}))) [subsort{SortTransitionsCell{}, SortTransitionsCellOpt{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortTransitionsCell{}, SortKItem{}} (From:SortTransitionsCell{}))) [subsort{SortTransitionsCell{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortChoiceOrBlocks{}, SortKItem{}} (From:SortChoiceOrBlocks{}))) [subsort{SortChoiceOrBlocks{}, SortKItem{}}()] // subsort
+  axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, inj{SortStateCellFragment{}, SortKItem{}} (From:SortStateCellFragment{}))) [subsort{SortStateCellFragment{}, SortKItem{}}()] // subsort
   axiom{R} \exists{R} (Val:SortOperation{}, \equals{SortOperation{}, R} (Val:SortOperation{}, inj{SortChoice{}, SortOperation{}} (From:SortChoice{}))) [subsort{SortChoice{}, SortOperation{}}()] // subsort
   axiom{R} \exists{R} (Val:SortOperation{}, \equals{SortOperation{}, R} (Val:SortOperation{}, inj{SortAssignment{}, SortOperation{}} (From:SortAssignment{}))) [subsort{SortAssignment{}, SortOperation{}}()] // subsort
   axiom{R} \exists{R} (Val:SortOperation{}, \equals{SortOperation{}, R} (Val:SortOperation{}, inj{SortHavoc{}, SortOperation{}} (From:SortHavoc{}))) [subsort{SortHavoc{}, SortOperation{}}()] // subsort
@@ -278,10 +320,10 @@ module XSTS
   axiom{}\not{SortSequence{}} (\and{SortSequence{}} (Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence'QuotRBraUnds'Sequence{}(), Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence{}(Y0:SortOperation{}, Y1:SortSequence{}))) [constructor{}()] // no confusion different constructors
   axiom{R} \exists{R} (Val:SortMap{}, \equals{SortMap{}, R} (Val:SortMap{}, Lbl'Stop'Map{}())) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortSet{}, \equals{SortSet{}, R} (Val:SortSet{}, Lbl'Stop'Set{}())) [functional{}()] // functional
-  axiom{R} \exists{R} (Val:SortTCell{}, \equals{SortTCell{}, R} (Val:SortTCell{}, Lbl'-LT-'T'-GT-'{}(K0:SortKCell{}))) [functional{}()] // functional
-  axiom{}\implies{SortTCell{}} (\and{SortTCell{}} (Lbl'-LT-'T'-GT-'{}(X0:SortKCell{}), Lbl'-LT-'T'-GT-'{}(Y0:SortKCell{})), Lbl'-LT-'T'-GT-'{}(\and{SortKCell{}} (X0:SortKCell{}, Y0:SortKCell{}))) [constructor{}()] // no confusion same constructor
-  axiom{R} \exists{R} (Val:SortTCellFragment{}, \equals{SortTCellFragment{}, R} (Val:SortTCellFragment{}, Lbl'-LT-'T'-GT-'-fragment{}(K0:SortKCellOpt{}))) [functional{}()] // functional
-  axiom{}\implies{SortTCellFragment{}} (\and{SortTCellFragment{}} (Lbl'-LT-'T'-GT-'-fragment{}(X0:SortKCellOpt{}), Lbl'-LT-'T'-GT-'-fragment{}(Y0:SortKCellOpt{})), Lbl'-LT-'T'-GT-'-fragment{}(\and{SortKCellOpt{}} (X0:SortKCellOpt{}, Y0:SortKCellOpt{}))) [constructor{}()] // no confusion same constructor
+  axiom{R} \exists{R} (Val:SortTCell{}, \equals{SortTCell{}, R} (Val:SortTCell{}, Lbl'-LT-'T'-GT-'{}(K0:SortKCell{}, K1:SortStateCell{}))) [functional{}()] // functional
+  axiom{}\implies{SortTCell{}} (\and{SortTCell{}} (Lbl'-LT-'T'-GT-'{}(X0:SortKCell{}, X1:SortStateCell{}), Lbl'-LT-'T'-GT-'{}(Y0:SortKCell{}, Y1:SortStateCell{})), Lbl'-LT-'T'-GT-'{}(\and{SortKCell{}} (X0:SortKCell{}, Y0:SortKCell{}), \and{SortStateCell{}} (X1:SortStateCell{}, Y1:SortStateCell{}))) [constructor{}()] // no confusion same constructor
+  axiom{R} \exists{R} (Val:SortTCellFragment{}, \equals{SortTCellFragment{}, R} (Val:SortTCellFragment{}, Lbl'-LT-'T'-GT-'-fragment{}(K0:SortKCellOpt{}, K1:SortStateCellOpt{}))) [functional{}()] // functional
+  axiom{}\implies{SortTCellFragment{}} (\and{SortTCellFragment{}} (Lbl'-LT-'T'-GT-'-fragment{}(X0:SortKCellOpt{}, X1:SortStateCellOpt{}), Lbl'-LT-'T'-GT-'-fragment{}(Y0:SortKCellOpt{}, Y1:SortStateCellOpt{})), Lbl'-LT-'T'-GT-'-fragment{}(\and{SortKCellOpt{}} (X0:SortKCellOpt{}, Y0:SortKCellOpt{}), \and{SortStateCellOpt{}} (X1:SortStateCellOpt{}, Y1:SortStateCellOpt{}))) [constructor{}()] // no confusion same constructor
   axiom{R} \exists{R} (Val:SortGeneratedCounterCell{}, \equals{SortGeneratedCounterCell{}, R} (Val:SortGeneratedCounterCell{}, Lbl'-LT-'generatedCounter'-GT-'{}(K0:SortInt{}))) [functional{}()] // functional
   axiom{}\implies{SortGeneratedCounterCell{}} (\and{SortGeneratedCounterCell{}} (Lbl'-LT-'generatedCounter'-GT-'{}(X0:SortInt{}), Lbl'-LT-'generatedCounter'-GT-'{}(Y0:SortInt{})), Lbl'-LT-'generatedCounter'-GT-'{}(\and{SortInt{}} (X0:SortInt{}, Y0:SortInt{}))) [constructor{}()] // no confusion same constructor
   axiom{R} \exists{R} (Val:SortGeneratedTopCell{}, \equals{SortGeneratedTopCell{}, R} (Val:SortGeneratedTopCell{}, Lbl'-LT-'generatedTop'-GT-'{}(K0:SortTCell{}, K1:SortGeneratedCounterCell{}))) [functional{}()] // functional
@@ -290,6 +332,14 @@ module XSTS
   axiom{}\implies{SortGeneratedTopCellFragment{}} (\and{SortGeneratedTopCellFragment{}} (Lbl'-LT-'generatedTop'-GT-'-fragment{}(X0:SortTCellOpt{}, X1:SortGeneratedCounterCellOpt{}), Lbl'-LT-'generatedTop'-GT-'-fragment{}(Y0:SortTCellOpt{}, Y1:SortGeneratedCounterCellOpt{})), Lbl'-LT-'generatedTop'-GT-'-fragment{}(\and{SortTCellOpt{}} (X0:SortTCellOpt{}, Y0:SortTCellOpt{}), \and{SortGeneratedCounterCellOpt{}} (X1:SortGeneratedCounterCellOpt{}, Y1:SortGeneratedCounterCellOpt{}))) [constructor{}()] // no confusion same constructor
   axiom{R} \exists{R} (Val:SortKCell{}, \equals{SortKCell{}, R} (Val:SortKCell{}, Lbl'-LT-'k'-GT-'{}(K0:SortK{}))) [functional{}()] // functional
   axiom{}\implies{SortKCell{}} (\and{SortKCell{}} (Lbl'-LT-'k'-GT-'{}(X0:SortK{}), Lbl'-LT-'k'-GT-'{}(Y0:SortK{})), Lbl'-LT-'k'-GT-'{}(\and{SortK{}} (X0:SortK{}, Y0:SortK{}))) [constructor{}()] // no confusion same constructor
+  axiom{R} \exists{R} (Val:SortStateCell{}, \equals{SortStateCell{}, R} (Val:SortStateCell{}, Lbl'-LT-'state'-GT-'{}(K0:SortVariablesCell{}, K1:SortTransitionsCell{}))) [functional{}()] // functional
+  axiom{}\implies{SortStateCell{}} (\and{SortStateCell{}} (Lbl'-LT-'state'-GT-'{}(X0:SortVariablesCell{}, X1:SortTransitionsCell{}), Lbl'-LT-'state'-GT-'{}(Y0:SortVariablesCell{}, Y1:SortTransitionsCell{})), Lbl'-LT-'state'-GT-'{}(\and{SortVariablesCell{}} (X0:SortVariablesCell{}, Y0:SortVariablesCell{}), \and{SortTransitionsCell{}} (X1:SortTransitionsCell{}, Y1:SortTransitionsCell{}))) [constructor{}()] // no confusion same constructor
+  axiom{R} \exists{R} (Val:SortStateCellFragment{}, \equals{SortStateCellFragment{}, R} (Val:SortStateCellFragment{}, Lbl'-LT-'state'-GT-'-fragment{}(K0:SortVariablesCellOpt{}, K1:SortTransitionsCellOpt{}))) [functional{}()] // functional
+  axiom{}\implies{SortStateCellFragment{}} (\and{SortStateCellFragment{}} (Lbl'-LT-'state'-GT-'-fragment{}(X0:SortVariablesCellOpt{}, X1:SortTransitionsCellOpt{}), Lbl'-LT-'state'-GT-'-fragment{}(Y0:SortVariablesCellOpt{}, Y1:SortTransitionsCellOpt{})), Lbl'-LT-'state'-GT-'-fragment{}(\and{SortVariablesCellOpt{}} (X0:SortVariablesCellOpt{}, Y0:SortVariablesCellOpt{}), \and{SortTransitionsCellOpt{}} (X1:SortTransitionsCellOpt{}, Y1:SortTransitionsCellOpt{}))) [constructor{}()] // no confusion same constructor
+  axiom{R} \exists{R} (Val:SortTransitionsCell{}, \equals{SortTransitionsCell{}, R} (Val:SortTransitionsCell{}, Lbl'-LT-'transitions'-GT-'{}(K0:SortList{}))) [functional{}()] // functional
+  axiom{}\implies{SortTransitionsCell{}} (\and{SortTransitionsCell{}} (Lbl'-LT-'transitions'-GT-'{}(X0:SortList{}), Lbl'-LT-'transitions'-GT-'{}(Y0:SortList{})), Lbl'-LT-'transitions'-GT-'{}(\and{SortList{}} (X0:SortList{}, Y0:SortList{}))) [constructor{}()] // no confusion same constructor
+  axiom{R} \exists{R} (Val:SortVariablesCell{}, \equals{SortVariablesCell{}, R} (Val:SortVariablesCell{}, Lbl'-LT-'variables'-GT-'{}(K0:SortMap{}))) [functional{}()] // functional
+  axiom{}\implies{SortVariablesCell{}} (\and{SortVariablesCell{}} (Lbl'-LT-'variables'-GT-'{}(X0:SortMap{}), Lbl'-LT-'variables'-GT-'{}(Y0:SortMap{})), Lbl'-LT-'variables'-GT-'{}(\and{SortMap{}} (X0:SortMap{}, Y0:SortMap{}))) [constructor{}()] // no confusion same constructor
   axiom{R} \exists{R} (Val:SortList{}, \equals{SortList{}, R} (Val:SortList{}, LblListItem{}(K0:SortKItem{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortKItem{}, \equals{SortKItem{}, R} (Val:SortKItem{}, LblMap'Coln'lookupOrDefault{}(K0:SortMap{}, K1:SortKItem{}, K2:SortKItem{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortMap{}, \equals{SortMap{}, R} (Val:SortMap{}, LblMap'Coln'update{}(K0:SortMap{}, K1:SortKItem{}, K2:SortKItem{}))) [functional{}()] // functional
@@ -327,9 +377,13 @@ module XSTS
   axiom{}\implies{SortAssumption{}} (\and{SortAssumption{}} (Lblassume'LParUndsRParUnds'XSTS-SYNTAX'Unds'Assumption'Unds'Literal{}(X0:SortLiteral{}), Lblassume'LParUndsRParUnds'XSTS-SYNTAX'Unds'Assumption'Unds'Literal{}(Y0:SortLiteral{})), Lblassume'LParUndsRParUnds'XSTS-SYNTAX'Unds'Assumption'Unds'Literal{}(\and{SortLiteral{}} (X0:SortLiteral{}, Y0:SortLiteral{}))) [constructor{}()] // no confusion same constructor
   axiom{R} \exists{R} (Val:SortChoice{}, \equals{SortChoice{}, R} (Val:SortChoice{}, Lblchoice'LBraUndsRBraUndsUnds'XSTS-SYNTAX'Unds'Choice'Unds'Sequence'Unds'ChoiceOrBlocks{}(K0:SortSequence{}, K1:SortChoiceOrBlocks{}))) [functional{}()] // functional
   axiom{}\implies{SortChoice{}} (\and{SortChoice{}} (Lblchoice'LBraUndsRBraUndsUnds'XSTS-SYNTAX'Unds'Choice'Unds'Sequence'Unds'ChoiceOrBlocks{}(X0:SortSequence{}, X1:SortChoiceOrBlocks{}), Lblchoice'LBraUndsRBraUndsUnds'XSTS-SYNTAX'Unds'Choice'Unds'Sequence'Unds'ChoiceOrBlocks{}(Y0:SortSequence{}, Y1:SortChoiceOrBlocks{})), Lblchoice'LBraUndsRBraUndsUnds'XSTS-SYNTAX'Unds'Choice'Unds'Sequence'Unds'ChoiceOrBlocks{}(\and{SortSequence{}} (X0:SortSequence{}, Y0:SortSequence{}), \and{SortChoiceOrBlocks{}} (X1:SortChoiceOrBlocks{}, Y1:SortChoiceOrBlocks{}))) [constructor{}()] // no confusion same constructor
+  axiom{R} \exists{R} (Val:SortLiteral{}, \equals{SortLiteral{}, R} (Val:SortLiteral{}, Lblempty'Unds'XSTS-SYNTAX'Unds'Literal{}())) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortHavoc{}, \equals{SortHavoc{}, R} (Val:SortHavoc{}, Lblhavoc'LParUndsRParUnds'XSTS-SYNTAX'Unds'Havoc'Unds'Id{}(K0:SortId{}))) [functional{}()] // functional
   axiom{}\implies{SortHavoc{}} (\and{SortHavoc{}} (Lblhavoc'LParUndsRParUnds'XSTS-SYNTAX'Unds'Havoc'Unds'Id{}(X0:SortId{}), Lblhavoc'LParUndsRParUnds'XSTS-SYNTAX'Unds'Havoc'Unds'Id{}(Y0:SortId{})), Lblhavoc'LParUndsRParUnds'XSTS-SYNTAX'Unds'Havoc'Unds'Id{}(\and{SortId{}} (X0:SortId{}, Y0:SortId{}))) [constructor{}()] // no confusion same constructor
   axiom{R} \exists{R} (Val:SortGeneratedCounterCell{}, \equals{SortGeneratedCounterCell{}, R} (Val:SortGeneratedCounterCell{}, LblinitGeneratedCounterCell{}())) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortStateCell{}, \equals{SortStateCell{}, R} (Val:SortStateCell{}, LblinitStateCell{}())) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortTransitionsCell{}, \equals{SortTransitionsCell{}, R} (Val:SortTransitionsCell{}, LblinitTransitionsCell{}())) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortVariablesCell{}, \equals{SortVariablesCell{}, R} (Val:SortVariablesCell{}, LblinitVariablesCell{}())) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortSet{}, \equals{SortSet{}, R} (Val:SortSet{}, LblintersectSet'LParUndsCommUndsRParUnds'SET'Unds'Set'Unds'Set'Unds'Set{}(K0:SortSet{}, K1:SortSet{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisAssignment{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisAssumption{}(K0:SortK{}))) [functional{}()] // functional
@@ -357,15 +411,25 @@ module XSTS
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisProgram{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisSequence{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisSet{}(K0:SortK{}))) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisStateCell{}(K0:SortK{}))) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisStateCellFragment{}(K0:SortK{}))) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisStateCellOpt{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisTCell{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisTCellFragment{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisTCellOpt{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisTransition{}(K0:SortK{}))) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisTransitionsCell{}(K0:SortK{}))) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisTransitionsCellOpt{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisVariableDeclaration{}(K0:SortK{}))) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisVariablesCell{}(K0:SortK{}))) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortBool{}, \equals{SortBool{}, R} (Val:SortBool{}, LblisVariablesCellOpt{}(K0:SortK{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortSet{}, \equals{SortSet{}, R} (Val:SortSet{}, Lblkeys'LParUndsRParUnds'MAP'Unds'Set'Unds'Map{}(K0:SortMap{}))) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortGeneratedCounterCellOpt{}, \equals{SortGeneratedCounterCellOpt{}, R} (Val:SortGeneratedCounterCellOpt{}, LblnoGeneratedCounterCell{}())) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortKCellOpt{}, \equals{SortKCellOpt{}, R} (Val:SortKCellOpt{}, LblnoKCell{}())) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortStateCellOpt{}, \equals{SortStateCellOpt{}, R} (Val:SortStateCellOpt{}, LblnoStateCell{}())) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortTCellOpt{}, \equals{SortTCellOpt{}, R} (Val:SortTCellOpt{}, LblnoTCell{}())) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortTransitionsCellOpt{}, \equals{SortTransitionsCellOpt{}, R} (Val:SortTransitionsCellOpt{}, LblnoTransitionsCell{}())) [functional{}()] // functional
+  axiom{R} \exists{R} (Val:SortVariablesCellOpt{}, \equals{SortVariablesCellOpt{}, R} (Val:SortVariablesCellOpt{}, LblnoVariablesCell{}())) [functional{}()] // functional
   axiom{R} \exists{R} (Val:SortChoiceOrBlock{}, \equals{SortChoiceOrBlock{}, R} (Val:SortChoiceOrBlock{}, Lblor'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'ChoiceOrBlock'Unds'Sequence{}(K0:SortSequence{}))) [functional{}()] // functional
   axiom{}\implies{SortChoiceOrBlock{}} (\and{SortChoiceOrBlock{}} (Lblor'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'ChoiceOrBlock'Unds'Sequence{}(X0:SortSequence{}), Lblor'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'ChoiceOrBlock'Unds'Sequence{}(Y0:SortSequence{})), Lblor'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'ChoiceOrBlock'Unds'Sequence{}(\and{SortSequence{}} (X0:SortSequence{}, Y0:SortSequence{}))) [constructor{}()] // no confusion same constructor
   axiom{R} \exists{R} (Val:SortList{}, \equals{SortList{}, R} (Val:SortList{}, LblpushList{}(K0:SortKItem{}, K1:SortList{}))) [functional{}()] // functional
@@ -397,19 +461,71 @@ module XSTS
   axiom{} \or{SortKCell{}} (\exists{SortKCell{}} (X0:SortK{}, Lbl'-LT-'k'-GT-'{}(X0:SortK{})), \bottom{SortKCell{}}()) [constructor{}()] // no junk
   axiom{} \or{SortKCellOpt{}} (LblnoKCell{}(), \exists{SortKCellOpt{}} (Val:SortKCell{}, inj{SortKCell{}, SortKCellOpt{}} (Val:SortKCell{})), \bottom{SortKCellOpt{}}()) [constructor{}()] // no junk
   axiom{} \or{SortKConfigVar{}} (\top{SortKConfigVar{}}(), \bottom{SortKConfigVar{}}()) [constructor{}()] // no junk (TODO: fix bug with \dv)
-  axiom{} \or{SortKItem{}} (\exists{SortKItem{}} (Val:SortAssignment{}, inj{SortAssignment{}, SortKItem{}} (Val:SortAssignment{})), \exists{SortKItem{}} (Val:SortAssumption{}, inj{SortAssumption{}, SortKItem{}} (Val:SortAssumption{})), \exists{SortKItem{}} (Val:SortBool{}, inj{SortBool{}, SortKItem{}} (Val:SortBool{})), \exists{SortKItem{}} (Val:SortChoice{}, inj{SortChoice{}, SortKItem{}} (Val:SortChoice{})), \exists{SortKItem{}} (Val:SortChoiceOrBlock{}, inj{SortChoiceOrBlock{}, SortKItem{}} (Val:SortChoiceOrBlock{})), \exists{SortKItem{}} (Val:SortChoiceOrBlocks{}, inj{SortChoiceOrBlocks{}, SortKItem{}} (Val:SortChoiceOrBlocks{})), \exists{SortKItem{}} (Val:SortGeneratedCounterCell{}, inj{SortGeneratedCounterCell{}, SortKItem{}} (Val:SortGeneratedCounterCell{})), \exists{SortKItem{}} (Val:SortGeneratedCounterCellOpt{}, inj{SortGeneratedCounterCellOpt{}, SortKItem{}} (Val:SortGeneratedCounterCellOpt{})), \exists{SortKItem{}} (Val:SortGeneratedTopCell{}, inj{SortGeneratedTopCell{}, SortKItem{}} (Val:SortGeneratedTopCell{})), \exists{SortKItem{}} (Val:SortGeneratedTopCellFragment{}, inj{SortGeneratedTopCellFragment{}, SortKItem{}} (Val:SortGeneratedTopCellFragment{})), \exists{SortKItem{}} (Val:SortHavoc{}, inj{SortHavoc{}, SortKItem{}} (Val:SortHavoc{})), \exists{SortKItem{}} (Val:SortId{}, inj{SortId{}, SortKItem{}} (Val:SortId{})), \exists{SortKItem{}} (Val:SortInt{}, inj{SortInt{}, SortKItem{}} (Val:SortInt{})), \exists{SortKItem{}} (Val:SortKCell{}, inj{SortKCell{}, SortKItem{}} (Val:SortKCell{})), \exists{SortKItem{}} (Val:SortKCellOpt{}, inj{SortKCellOpt{}, SortKItem{}} (Val:SortKCellOpt{})), \exists{SortKItem{}} (Val:SortKConfigVar{}, inj{SortKConfigVar{}, SortKItem{}} (Val:SortKConfigVar{})), \exists{SortKItem{}} (Val:SortLine{}, inj{SortLine{}, SortKItem{}} (Val:SortLine{})), \exists{SortKItem{}} (Val:SortList{}, inj{SortList{}, SortKItem{}} (Val:SortList{})), \exists{SortKItem{}} (Val:SortLiteral{}, inj{SortLiteral{}, SortKItem{}} (Val:SortLiteral{})), \exists{SortKItem{}} (Val:SortMap{}, inj{SortMap{}, SortKItem{}} (Val:SortMap{})), \exists{SortKItem{}} (Val:SortOperation{}, inj{SortOperation{}, SortKItem{}} (Val:SortOperation{})), \exists{SortKItem{}} (Val:SortProgram{}, inj{SortProgram{}, SortKItem{}} (Val:SortProgram{})), \exists{SortKItem{}} (Val:SortSequence{}, inj{SortSequence{}, SortKItem{}} (Val:SortSequence{})), \exists{SortKItem{}} (Val:SortSet{}, inj{SortSet{}, SortKItem{}} (Val:SortSet{})), \exists{SortKItem{}} (Val:SortTCell{}, inj{SortTCell{}, SortKItem{}} (Val:SortTCell{})), \exists{SortKItem{}} (Val:SortTCellFragment{}, inj{SortTCellFragment{}, SortKItem{}} (Val:SortTCellFragment{})), \exists{SortKItem{}} (Val:SortTCellOpt{}, inj{SortTCellOpt{}, SortKItem{}} (Val:SortTCellOpt{})), \exists{SortKItem{}} (Val:SortTransition{}, inj{SortTransition{}, SortKItem{}} (Val:SortTransition{})), \exists{SortKItem{}} (Val:SortVariableDeclaration{}, inj{SortVariableDeclaration{}, SortKItem{}} (Val:SortVariableDeclaration{})), \bottom{SortKItem{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortKItem{}} (\exists{SortKItem{}} (Val:SortAssignment{}, inj{SortAssignment{}, SortKItem{}} (Val:SortAssignment{})), \exists{SortKItem{}} (Val:SortAssumption{}, inj{SortAssumption{}, SortKItem{}} (Val:SortAssumption{})), \exists{SortKItem{}} (Val:SortBool{}, inj{SortBool{}, SortKItem{}} (Val:SortBool{})), \exists{SortKItem{}} (Val:SortChoice{}, inj{SortChoice{}, SortKItem{}} (Val:SortChoice{})), \exists{SortKItem{}} (Val:SortChoiceOrBlock{}, inj{SortChoiceOrBlock{}, SortKItem{}} (Val:SortChoiceOrBlock{})), \exists{SortKItem{}} (Val:SortChoiceOrBlocks{}, inj{SortChoiceOrBlocks{}, SortKItem{}} (Val:SortChoiceOrBlocks{})), \exists{SortKItem{}} (Val:SortGeneratedCounterCell{}, inj{SortGeneratedCounterCell{}, SortKItem{}} (Val:SortGeneratedCounterCell{})), \exists{SortKItem{}} (Val:SortGeneratedCounterCellOpt{}, inj{SortGeneratedCounterCellOpt{}, SortKItem{}} (Val:SortGeneratedCounterCellOpt{})), \exists{SortKItem{}} (Val:SortGeneratedTopCell{}, inj{SortGeneratedTopCell{}, SortKItem{}} (Val:SortGeneratedTopCell{})), \exists{SortKItem{}} (Val:SortGeneratedTopCellFragment{}, inj{SortGeneratedTopCellFragment{}, SortKItem{}} (Val:SortGeneratedTopCellFragment{})), \exists{SortKItem{}} (Val:SortHavoc{}, inj{SortHavoc{}, SortKItem{}} (Val:SortHavoc{})), \exists{SortKItem{}} (Val:SortId{}, inj{SortId{}, SortKItem{}} (Val:SortId{})), \exists{SortKItem{}} (Val:SortInt{}, inj{SortInt{}, SortKItem{}} (Val:SortInt{})), \exists{SortKItem{}} (Val:SortKCell{}, inj{SortKCell{}, SortKItem{}} (Val:SortKCell{})), \exists{SortKItem{}} (Val:SortKCellOpt{}, inj{SortKCellOpt{}, SortKItem{}} (Val:SortKCellOpt{})), \exists{SortKItem{}} (Val:SortKConfigVar{}, inj{SortKConfigVar{}, SortKItem{}} (Val:SortKConfigVar{})), \exists{SortKItem{}} (Val:SortLine{}, inj{SortLine{}, SortKItem{}} (Val:SortLine{})), \exists{SortKItem{}} (Val:SortList{}, inj{SortList{}, SortKItem{}} (Val:SortList{})), \exists{SortKItem{}} (Val:SortLiteral{}, inj{SortLiteral{}, SortKItem{}} (Val:SortLiteral{})), \exists{SortKItem{}} (Val:SortMap{}, inj{SortMap{}, SortKItem{}} (Val:SortMap{})), \exists{SortKItem{}} (Val:SortOperation{}, inj{SortOperation{}, SortKItem{}} (Val:SortOperation{})), \exists{SortKItem{}} (Val:SortProgram{}, inj{SortProgram{}, SortKItem{}} (Val:SortProgram{})), \exists{SortKItem{}} (Val:SortSequence{}, inj{SortSequence{}, SortKItem{}} (Val:SortSequence{})), \exists{SortKItem{}} (Val:SortSet{}, inj{SortSet{}, SortKItem{}} (Val:SortSet{})), \exists{SortKItem{}} (Val:SortStateCell{}, inj{SortStateCell{}, SortKItem{}} (Val:SortStateCell{})), \exists{SortKItem{}} (Val:SortStateCellFragment{}, inj{SortStateCellFragment{}, SortKItem{}} (Val:SortStateCellFragment{})), \exists{SortKItem{}} (Val:SortStateCellOpt{}, inj{SortStateCellOpt{}, SortKItem{}} (Val:SortStateCellOpt{})), \exists{SortKItem{}} (Val:SortTCell{}, inj{SortTCell{}, SortKItem{}} (Val:SortTCell{})), \exists{SortKItem{}} (Val:SortTCellFragment{}, inj{SortTCellFragment{}, SortKItem{}} (Val:SortTCellFragment{})), \exists{SortKItem{}} (Val:SortTCellOpt{}, inj{SortTCellOpt{}, SortKItem{}} (Val:SortTCellOpt{})), \exists{SortKItem{}} (Val:SortTransition{}, inj{SortTransition{}, SortKItem{}} (Val:SortTransition{})), \exists{SortKItem{}} (Val:SortTransitionsCell{}, inj{SortTransitionsCell{}, SortKItem{}} (Val:SortTransitionsCell{})), \exists{SortKItem{}} (Val:SortTransitionsCellOpt{}, inj{SortTransitionsCellOpt{}, SortKItem{}} (Val:SortTransitionsCellOpt{})), \exists{SortKItem{}} (Val:SortVariableDeclaration{}, inj{SortVariableDeclaration{}, SortKItem{}} (Val:SortVariableDeclaration{})), \exists{SortKItem{}} (Val:SortVariablesCell{}, inj{SortVariablesCell{}, SortKItem{}} (Val:SortVariablesCell{})), \exists{SortKItem{}} (Val:SortVariablesCellOpt{}, inj{SortVariablesCellOpt{}, SortKItem{}} (Val:SortVariablesCellOpt{})), \bottom{SortKItem{}}()) [constructor{}()] // no junk
   axiom{} \or{SortLine{}} (\exists{SortLine{}} (Val:SortTransition{}, inj{SortTransition{}, SortLine{}} (Val:SortTransition{})), \exists{SortLine{}} (Val:SortVariableDeclaration{}, inj{SortVariableDeclaration{}, SortLine{}} (Val:SortVariableDeclaration{})), \bottom{SortLine{}}()) [constructor{}()] // no junk
-  axiom{} \or{SortLiteral{}} (\exists{SortLiteral{}} (Val:SortBool{}, inj{SortBool{}, SortLiteral{}} (Val:SortBool{})), \exists{SortLiteral{}} (Val:SortInt{}, inj{SortInt{}, SortLiteral{}} (Val:SortInt{})), \bottom{SortLiteral{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortLiteral{}} (Lblempty'Unds'XSTS-SYNTAX'Unds'Literal{}(), \exists{SortLiteral{}} (Val:SortBool{}, inj{SortBool{}, SortLiteral{}} (Val:SortBool{})), \exists{SortLiteral{}} (Val:SortInt{}, inj{SortInt{}, SortLiteral{}} (Val:SortInt{})), \bottom{SortLiteral{}}()) [constructor{}()] // no junk
   axiom{} \or{SortOperation{}} (\exists{SortOperation{}} (Val:SortAssignment{}, inj{SortAssignment{}, SortOperation{}} (Val:SortAssignment{})), \exists{SortOperation{}} (Val:SortAssumption{}, inj{SortAssumption{}, SortOperation{}} (Val:SortAssumption{})), \exists{SortOperation{}} (Val:SortChoice{}, inj{SortChoice{}, SortOperation{}} (Val:SortChoice{})), \exists{SortOperation{}} (Val:SortHavoc{}, inj{SortHavoc{}, SortOperation{}} (Val:SortHavoc{})), \bottom{SortOperation{}}()) [constructor{}()] // no junk
   axiom{} \or{SortProgram{}} (Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program'QuotRBraUnds'Program{}(), \exists{SortProgram{}} (X0:SortLine{}, \exists{SortProgram{}} (X1:SortProgram{}, Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program{}(X0:SortLine{}, X1:SortProgram{}))), \bottom{SortProgram{}}()) [constructor{}()] // no junk
   axiom{} \or{SortSequence{}} (Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence'QuotRBraUnds'Sequence{}(), \exists{SortSequence{}} (X0:SortOperation{}, \exists{SortSequence{}} (X1:SortSequence{}, Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence{}(X0:SortOperation{}, X1:SortSequence{}))), \bottom{SortSequence{}}()) [constructor{}()] // no junk
-  axiom{} \or{SortTCell{}} (\exists{SortTCell{}} (X0:SortKCell{}, Lbl'-LT-'T'-GT-'{}(X0:SortKCell{})), \bottom{SortTCell{}}()) [constructor{}()] // no junk
-  axiom{} \or{SortTCellFragment{}} (\exists{SortTCellFragment{}} (X0:SortKCellOpt{}, Lbl'-LT-'T'-GT-'-fragment{}(X0:SortKCellOpt{})), \bottom{SortTCellFragment{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortStateCell{}} (\exists{SortStateCell{}} (X0:SortVariablesCell{}, \exists{SortStateCell{}} (X1:SortTransitionsCell{}, Lbl'-LT-'state'-GT-'{}(X0:SortVariablesCell{}, X1:SortTransitionsCell{}))), \bottom{SortStateCell{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortStateCellFragment{}} (\exists{SortStateCellFragment{}} (X0:SortVariablesCellOpt{}, \exists{SortStateCellFragment{}} (X1:SortTransitionsCellOpt{}, Lbl'-LT-'state'-GT-'-fragment{}(X0:SortVariablesCellOpt{}, X1:SortTransitionsCellOpt{}))), \bottom{SortStateCellFragment{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortStateCellOpt{}} (LblnoStateCell{}(), \exists{SortStateCellOpt{}} (Val:SortStateCell{}, inj{SortStateCell{}, SortStateCellOpt{}} (Val:SortStateCell{})), \bottom{SortStateCellOpt{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortTCell{}} (\exists{SortTCell{}} (X0:SortKCell{}, \exists{SortTCell{}} (X1:SortStateCell{}, Lbl'-LT-'T'-GT-'{}(X0:SortKCell{}, X1:SortStateCell{}))), \bottom{SortTCell{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortTCellFragment{}} (\exists{SortTCellFragment{}} (X0:SortKCellOpt{}, \exists{SortTCellFragment{}} (X1:SortStateCellOpt{}, Lbl'-LT-'T'-GT-'-fragment{}(X0:SortKCellOpt{}, X1:SortStateCellOpt{}))), \bottom{SortTCellFragment{}}()) [constructor{}()] // no junk
   axiom{} \or{SortTCellOpt{}} (LblnoTCell{}(), \exists{SortTCellOpt{}} (Val:SortTCell{}, inj{SortTCell{}, SortTCellOpt{}} (Val:SortTCell{})), \bottom{SortTCellOpt{}}()) [constructor{}()] // no junk
   axiom{} \or{SortTransition{}} (\exists{SortTransition{}} (X0:SortSequence{}, Lbltran'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'Transition'Unds'Sequence{}(X0:SortSequence{})), \bottom{SortTransition{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortTransitionsCell{}} (\exists{SortTransitionsCell{}} (X0:SortList{}, Lbl'-LT-'transitions'-GT-'{}(X0:SortList{})), \bottom{SortTransitionsCell{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortTransitionsCellOpt{}} (LblnoTransitionsCell{}(), \exists{SortTransitionsCellOpt{}} (Val:SortTransitionsCell{}, inj{SortTransitionsCell{}, SortTransitionsCellOpt{}} (Val:SortTransitionsCell{})), \bottom{SortTransitionsCellOpt{}}()) [constructor{}()] // no junk
   axiom{} \or{SortVariableDeclaration{}} (\exists{SortVariableDeclaration{}} (X0:SortId{}, Lblvar'UndsColn'boolean'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(X0:SortId{})), \exists{SortVariableDeclaration{}} (X0:SortId{}, Lblvar'UndsColn'integer'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(X0:SortId{})), \bottom{SortVariableDeclaration{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortVariablesCell{}} (\exists{SortVariablesCell{}} (X0:SortMap{}, Lbl'-LT-'variables'-GT-'{}(X0:SortMap{})), \bottom{SortVariablesCell{}}()) [constructor{}()] // no junk
+  axiom{} \or{SortVariablesCellOpt{}} (LblnoVariablesCell{}(), \exists{SortVariablesCellOpt{}} (Val:SortVariablesCell{}, inj{SortVariablesCell{}, SortVariablesCellOpt{}} (Val:SortVariablesCell{})), \bottom{SortVariablesCellOpt{}}()) [constructor{}()] // no junk
 
 // rules
+// rule `<generatedTop>`(`<T>`(`<k>`(``inj{Transition,KItem}(T) #as _Gen3``~>_DotVar2),`<state>`(_DotVar3,`<transitions>`(_DotVar4))),_DotVar0)=>`<generatedTop>`(`<T>`(`<k>`(_DotVar2),`<state>`(_DotVar3,`<transitions>`(`_List_`(`ListItem`(_Gen3),_DotVar4)))),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c68a50bfc3d4cf8cef1f31f365b8b615f4ea0c2770f121afff1b8859dcd70ff6), cool-like, org.kframework.attributes.Location(Location(52,10,53,63)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  axiom{} \rewrites{SortGeneratedTopCell{}} (
+      \and{SortGeneratedTopCell{}} (
+        Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(kseq{}(\and{SortKItem{}}(inj{SortTransition{}, SortKItem{}}(VarT:SortTransition{}),Var'Unds'Gen3:SortKItem{}),Var'Unds'DotVar2:SortK{})),Lbl'-LT-'state'-GT-'{}(Var'Unds'DotVar3:SortVariablesCell{},Lbl'-LT-'transitions'-GT-'{}(Var'Unds'DotVar4:SortList{}))),Var'Unds'DotVar0:SortGeneratedCounterCell{}),
+        \top{SortGeneratedTopCell{}}()),
+      \and{SortGeneratedTopCell{}} (
+      Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(Var'Unds'DotVar2:SortK{}),Lbl'-LT-'state'-GT-'{}(Var'Unds'DotVar3:SortVariablesCell{},Lbl'-LT-'transitions'-GT-'{}(Lbl'Unds'List'Unds'{}(LblListItem{}(Var'Unds'Gen3:SortKItem{}),Var'Unds'DotVar4:SortList{})))),Var'Unds'DotVar0:SortGeneratedCounterCell{}), \top{SortGeneratedTopCell{}}()))
+  [UNIQUE'Unds'ID{}("c68a50bfc3d4cf8cef1f31f365b8b615f4ea0c2770f121afff1b8859dcd70ff6"), cool-like{}(), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(52,10,53,63)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+
+// rule `<generatedTop>`(`<T>`(`<k>`(inj{Program,KItem}(`.List{"___XSTS-SYNTAX_Program_Line_Program"}_Program`(.KList))~>_DotVar2),_DotVar1),_DotVar0)=>`<generatedTop>`(`<T>`(`<k>`(_DotVar2),_DotVar1),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b466926e9a60fc6ab6df3f8a867638f42315face5de469d859d8d193db684b91), org.kframework.attributes.Location(Location(45,10,45,36)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  axiom{} \rewrites{SortGeneratedTopCell{}} (
+      \and{SortGeneratedTopCell{}} (
+        Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(kseq{}(inj{SortProgram{}, SortKItem{}}(Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program'QuotRBraUnds'Program{}()),Var'Unds'DotVar2:SortK{})),Var'Unds'DotVar1:SortStateCell{}),Var'Unds'DotVar0:SortGeneratedCounterCell{}),
+        \top{SortGeneratedTopCell{}}()),
+      \and{SortGeneratedTopCell{}} (
+      Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(Var'Unds'DotVar2:SortK{}),Var'Unds'DotVar1:SortStateCell{}),Var'Unds'DotVar0:SortGeneratedCounterCell{}), \top{SortGeneratedTopCell{}}()))
+  [UNIQUE'Unds'ID{}("b466926e9a60fc6ab6df3f8a867638f42315face5de469d859d8d193db684b91"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(45,10,45,36)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+
+// rule `<generatedTop>`(`<T>`(`<k>`(inj{Program,KItem}(`___XSTS-SYNTAX_Program_Line_Program`(L,P))~>_DotVar2),_DotVar1),_DotVar0)=>`<generatedTop>`(`<T>`(`<k>`(inj{Line,KItem}(L)~>inj{Program,KItem}(P)~>_DotVar2),_DotVar1),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(19c130071776dd554da4215c4fedb395a56c55cb7c2d1afc3560ce9415fce123), org.kframework.attributes.Location(Location(44,10,44,48)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  axiom{} \rewrites{SortGeneratedTopCell{}} (
+      \and{SortGeneratedTopCell{}} (
+        Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(kseq{}(inj{SortProgram{}, SortKItem{}}(Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program{}(VarL:SortLine{},VarP:SortProgram{})),Var'Unds'DotVar2:SortK{})),Var'Unds'DotVar1:SortStateCell{}),Var'Unds'DotVar0:SortGeneratedCounterCell{}),
+        \top{SortGeneratedTopCell{}}()),
+      \and{SortGeneratedTopCell{}} (
+      Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(kseq{}(inj{SortLine{}, SortKItem{}}(VarL:SortLine{}),kseq{}(inj{SortProgram{}, SortKItem{}}(VarP:SortProgram{}),Var'Unds'DotVar2:SortK{}))),Var'Unds'DotVar1:SortStateCell{}),Var'Unds'DotVar0:SortGeneratedCounterCell{}), \top{SortGeneratedTopCell{}}()))
+  [UNIQUE'Unds'ID{}("19c130071776dd554da4215c4fedb395a56c55cb7c2d1afc3560ce9415fce123"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(44,10,44,48)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+
+// rule `<generatedTop>`(`<T>`(`<k>`(inj{VariableDeclaration,KItem}(`var_:boolean_XSTS-SYNTAX_VariableDeclaration_Id`(X))~>_DotVar2),`<state>`(`<variables>`(STATE),_DotVar3)),_DotVar0)=>`<generatedTop>`(`<T>`(`<k>`(_DotVar2),`<state>`(`<variables>`(`Map:update`(STATE,inj{Id,KItem}(X),inj{Literal,KItem}(`empty_XSTS-SYNTAX_Literal`(.KList)))),_DotVar3)),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c8882df555fc8996b3a90547d52122b1ad7bc42c8fc067c7ac42f4255b3aa75f), org.kframework.attributes.Location(Location(50,10,51,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  axiom{} \rewrites{SortGeneratedTopCell{}} (
+      \and{SortGeneratedTopCell{}} (
+        Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(kseq{}(inj{SortVariableDeclaration{}, SortKItem{}}(Lblvar'UndsColn'boolean'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(VarX:SortId{})),Var'Unds'DotVar2:SortK{})),Lbl'-LT-'state'-GT-'{}(Lbl'-LT-'variables'-GT-'{}(VarSTATE:SortMap{}),Var'Unds'DotVar3:SortTransitionsCell{})),Var'Unds'DotVar0:SortGeneratedCounterCell{}),
+        \top{SortGeneratedTopCell{}}()),
+      \and{SortGeneratedTopCell{}} (
+      Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(Var'Unds'DotVar2:SortK{}),Lbl'-LT-'state'-GT-'{}(Lbl'-LT-'variables'-GT-'{}(LblMap'Coln'update{}(VarSTATE:SortMap{},inj{SortId{}, SortKItem{}}(VarX:SortId{}),inj{SortLiteral{}, SortKItem{}}(Lblempty'Unds'XSTS-SYNTAX'Unds'Literal{}()))),Var'Unds'DotVar3:SortTransitionsCell{})),Var'Unds'DotVar0:SortGeneratedCounterCell{}), \top{SortGeneratedTopCell{}}()))
+  [UNIQUE'Unds'ID{}("c8882df555fc8996b3a90547d52122b1ad7bc42c8fc067c7ac42f4255b3aa75f"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(50,10,51,64)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+
+// rule `<generatedTop>`(`<T>`(`<k>`(inj{VariableDeclaration,KItem}(`var_:integer_XSTS-SYNTAX_VariableDeclaration_Id`(X))~>_DotVar2),`<state>`(`<variables>`(STATE),_DotVar3)),_DotVar0)=>`<generatedTop>`(`<T>`(`<k>`(_DotVar2),`<state>`(`<variables>`(`Map:update`(STATE,inj{Id,KItem}(X),inj{Literal,KItem}(`empty_XSTS-SYNTAX_Literal`(.KList)))),_DotVar3)),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(e0b48ad74ff93a84062677c471d9cf452181147125ab17782e0d9ead082722b9), org.kframework.attributes.Location(Location(48,10,49,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  axiom{} \rewrites{SortGeneratedTopCell{}} (
+      \and{SortGeneratedTopCell{}} (
+        Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(kseq{}(inj{SortVariableDeclaration{}, SortKItem{}}(Lblvar'UndsColn'integer'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}(VarX:SortId{})),Var'Unds'DotVar2:SortK{})),Lbl'-LT-'state'-GT-'{}(Lbl'-LT-'variables'-GT-'{}(VarSTATE:SortMap{}),Var'Unds'DotVar3:SortTransitionsCell{})),Var'Unds'DotVar0:SortGeneratedCounterCell{}),
+        \top{SortGeneratedTopCell{}}()),
+      \and{SortGeneratedTopCell{}} (
+      Lbl'-LT-'generatedTop'-GT-'{}(Lbl'-LT-'T'-GT-'{}(Lbl'-LT-'k'-GT-'{}(Var'Unds'DotVar2:SortK{}),Lbl'-LT-'state'-GT-'{}(Lbl'-LT-'variables'-GT-'{}(LblMap'Coln'update{}(VarSTATE:SortMap{},inj{SortId{}, SortKItem{}}(VarX:SortId{}),inj{SortLiteral{}, SortKItem{}}(Lblempty'Unds'XSTS-SYNTAX'Unds'Literal{}()))),Var'Unds'DotVar3:SortTransitionsCell{})),Var'Unds'DotVar0:SortGeneratedCounterCell{}), \top{SortGeneratedTopCell{}}()))
+  [UNIQUE'Unds'ID{}("e0b48ad74ff93a84062677c471d9cf452181147125ab17782e0d9ead082722b9"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(48,10,49,64)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+
 // rule `_|Set__SET_Set_Set_Set`(S1,S2)=>`_Set_`(S1,`Set:difference`(S2,S1)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c384edb8f3875244a593dda6163c3dee1bce5485e4e1848892aebc2bab67d2e9), concrete, org.kframework.attributes.Location(Location(749,8,749,45)), org.kframework.attributes.Source(Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
   axiom{R} \implies{R} (
     \and{R}(
@@ -500,7 +616,21 @@ module XSTS
         \top{SortKCell{}}())))
   [UNIQUE'Unds'ID{}("3f456a60337067013f63e2f590f1c1dcf30800d1fabf722c5d0973f3e7fdfdf1")]
 
-// rule initTCell(Init)=>`<T>`(initKCell(Init)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(0ce14ff250cdd7dfbf04abc6c3536be870ce57257d6b4005ba18f2a6102e3fdb), initializer]
+// rule initStateCell(.KList)=>`<state>`(initVariablesCell(.KList),initTransitionsCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5d6f41bd1e92c0ac18ba037f346a53c753cfc3080c562286c333a766cef90caa), initializer]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      
+          \top{R} ()
+        ),
+    \equals{SortStateCell{},R} (
+      LblinitStateCell{}(),
+     \and{SortStateCell{}} (
+       Lbl'-LT-'state'-GT-'{}(LblinitVariablesCell{}(),LblinitTransitionsCell{}()),
+        \top{SortStateCell{}}())))
+  [UNIQUE'Unds'ID{}("5d6f41bd1e92c0ac18ba037f346a53c753cfc3080c562286c333a766cef90caa")]
+
+// rule initTCell(Init)=>`<T>`(initKCell(Init),initStateCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(082e738743e54caf1b2a3e9be1aa464283ccaca4c3a7d07813904226676400bf), initializer]
   axiom{R} \implies{R} (
     \and{R}(
       \top{R}(),
@@ -514,9 +644,37 @@ module XSTS
     \equals{SortTCell{},R} (
       LblinitTCell{}(X0:SortMap{}),
      \and{SortTCell{}} (
-       Lbl'-LT-'T'-GT-'{}(LblinitKCell{}(VarInit:SortMap{})),
+       Lbl'-LT-'T'-GT-'{}(LblinitKCell{}(VarInit:SortMap{}),LblinitStateCell{}()),
         \top{SortTCell{}}())))
-  [UNIQUE'Unds'ID{}("0ce14ff250cdd7dfbf04abc6c3536be870ce57257d6b4005ba18f2a6102e3fdb")]
+  [UNIQUE'Unds'ID{}("082e738743e54caf1b2a3e9be1aa464283ccaca4c3a7d07813904226676400bf")]
+
+// rule initTransitionsCell(.KList)=>`<transitions>`(`.List`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ae770a8bf017d4e51e07b3f798a061a6aea81e93414660b4860ee90d4f92cf6a), initializer]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      
+          \top{R} ()
+        ),
+    \equals{SortTransitionsCell{},R} (
+      LblinitTransitionsCell{}(),
+     \and{SortTransitionsCell{}} (
+       Lbl'-LT-'transitions'-GT-'{}(Lbl'Stop'List{}()),
+        \top{SortTransitionsCell{}}())))
+  [UNIQUE'Unds'ID{}("ae770a8bf017d4e51e07b3f798a061a6aea81e93414660b4860ee90d4f92cf6a")]
+
+// rule initVariablesCell(.KList)=>`<variables>`(`.Map`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(878bdabc33db6c1f2be2958713135da8882bc92dc231c1de92753af470c9992d), initializer]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      
+          \top{R} ()
+        ),
+    \equals{SortVariablesCell{},R} (
+      LblinitVariablesCell{}(),
+     \and{SortVariablesCell{}} (
+       Lbl'-LT-'variables'-GT-'{}(Lbl'Stop'Map{}()),
+        \top{SortVariablesCell{}}())))
+  [UNIQUE'Unds'ID{}("878bdabc33db6c1f2be2958713135da8882bc92dc231c1de92753af470c9992d")]
 
 // rule isAssignment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(06105d9991520b84d5385cb385f9e21247421d97be82354565d8370b47107bf0), owise]
   axiom{R} \implies{R} (
@@ -1886,6 +2044,168 @@ module XSTS
         \top{SortBool{}}())))
   [UNIQUE'Unds'ID{}("f205bc460bdb728b4c3458643699be30d519db4d8b13e80e2c27082b9e846e80")]
 
+// rule isStateCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5b0e69b47868d7006abcecd9821496d91b1cbed0dc497e01577e9ddadc87c627), owise]
+  axiom{R} \implies{R} (
+    \and{R} (
+      \not{R} (
+        \or{R} (
+          \exists{R} (Var'Unds'Gen0:SortStateCell{},
+            \and{R} (
+              \top{R}(),
+              \and{R} (
+                \in{SortK{}, R} (
+                  X0:SortK{},
+                  kseq{}(inj{SortStateCell{}, SortKItem{}}(Var'Unds'Gen0:SortStateCell{}),dotk{}())
+                ),
+                \top{R} ()
+              )
+          )),
+          \bottom{R}()
+        )
+      ),
+      \and{R}(
+        \top{R}(),
+        \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            VarK:SortK{}
+          ),
+          \top{R} ()
+        )
+    )),
+    \equals{SortBool{},R} (
+      LblisStateCell{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("false"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("5b0e69b47868d7006abcecd9821496d91b1cbed0dc497e01577e9ddadc87c627"), owise{}()]
+
+// rule isStateCell(inj{StateCell,KItem}(StateCell))=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(66256807bfe91d1d029a3ae94eafa088f1c65a7a764ca8875a5427f9532df462)]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortStateCell{}, SortKItem{}}(VarStateCell:SortStateCell{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortBool{},R} (
+      LblisStateCell{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("true"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("66256807bfe91d1d029a3ae94eafa088f1c65a7a764ca8875a5427f9532df462")]
+
+// rule isStateCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f85be83c8ecacc855daf4eb723942681f31cc05a7ecfd01ad85bce8529d0863f), owise]
+  axiom{R} \implies{R} (
+    \and{R} (
+      \not{R} (
+        \or{R} (
+          \exists{R} (Var'Unds'Gen0:SortStateCellFragment{},
+            \and{R} (
+              \top{R}(),
+              \and{R} (
+                \in{SortK{}, R} (
+                  X0:SortK{},
+                  kseq{}(inj{SortStateCellFragment{}, SortKItem{}}(Var'Unds'Gen0:SortStateCellFragment{}),dotk{}())
+                ),
+                \top{R} ()
+              )
+          )),
+          \bottom{R}()
+        )
+      ),
+      \and{R}(
+        \top{R}(),
+        \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            VarK:SortK{}
+          ),
+          \top{R} ()
+        )
+    )),
+    \equals{SortBool{},R} (
+      LblisStateCellFragment{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("false"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("f85be83c8ecacc855daf4eb723942681f31cc05a7ecfd01ad85bce8529d0863f"), owise{}()]
+
+// rule isStateCellFragment(inj{StateCellFragment,KItem}(StateCellFragment))=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(39e0ddbb15d33001ad61e2269400354694aed01454f02b8f161c9916fa811268)]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortStateCellFragment{}, SortKItem{}}(VarStateCellFragment:SortStateCellFragment{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortBool{},R} (
+      LblisStateCellFragment{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("true"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("39e0ddbb15d33001ad61e2269400354694aed01454f02b8f161c9916fa811268")]
+
+// rule isStateCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(02f93e87877a1bfec39c549cdb6aa1dfeb107c88e2ea5ded312498fb690eff61), owise]
+  axiom{R} \implies{R} (
+    \and{R} (
+      \not{R} (
+        \or{R} (
+          \exists{R} (Var'Unds'Gen0:SortStateCellOpt{},
+            \and{R} (
+              \top{R}(),
+              \and{R} (
+                \in{SortK{}, R} (
+                  X0:SortK{},
+                  kseq{}(inj{SortStateCellOpt{}, SortKItem{}}(Var'Unds'Gen0:SortStateCellOpt{}),dotk{}())
+                ),
+                \top{R} ()
+              )
+          )),
+          \bottom{R}()
+        )
+      ),
+      \and{R}(
+        \top{R}(),
+        \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            VarK:SortK{}
+          ),
+          \top{R} ()
+        )
+    )),
+    \equals{SortBool{},R} (
+      LblisStateCellOpt{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("false"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("02f93e87877a1bfec39c549cdb6aa1dfeb107c88e2ea5ded312498fb690eff61"), owise{}()]
+
+// rule isStateCellOpt(inj{StateCellOpt,KItem}(StateCellOpt))=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b5285b2b23133d428fcb21af02d523dec10d3660f0f43d59933927d0ee79471e)]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortStateCellOpt{}, SortKItem{}}(VarStateCellOpt:SortStateCellOpt{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortBool{},R} (
+      LblisStateCellOpt{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("true"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("b5285b2b23133d428fcb21af02d523dec10d3660f0f43d59933927d0ee79471e")]
+
 // rule isTCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(550b3cc25922848b7174df3ee5d34bc31b7772daa1579d20e37b3c0d6c7a961d), owise]
   axiom{R} \implies{R} (
     \and{R} (
@@ -2102,6 +2422,114 @@ module XSTS
         \top{SortBool{}}())))
   [UNIQUE'Unds'ID{}("5fd11a1c2ff000629d43cccbab6110712e09f0b555328d9a9b342229ca447fd1")]
 
+// rule isTransitionsCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(de683589f7ba26e98a9a25823c02edbd423afdaf723d64e74494750fb1b138bd), owise]
+  axiom{R} \implies{R} (
+    \and{R} (
+      \not{R} (
+        \or{R} (
+          \exists{R} (Var'Unds'Gen0:SortTransitionsCell{},
+            \and{R} (
+              \top{R}(),
+              \and{R} (
+                \in{SortK{}, R} (
+                  X0:SortK{},
+                  kseq{}(inj{SortTransitionsCell{}, SortKItem{}}(Var'Unds'Gen0:SortTransitionsCell{}),dotk{}())
+                ),
+                \top{R} ()
+              )
+          )),
+          \bottom{R}()
+        )
+      ),
+      \and{R}(
+        \top{R}(),
+        \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            VarK:SortK{}
+          ),
+          \top{R} ()
+        )
+    )),
+    \equals{SortBool{},R} (
+      LblisTransitionsCell{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("false"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("de683589f7ba26e98a9a25823c02edbd423afdaf723d64e74494750fb1b138bd"), owise{}()]
+
+// rule isTransitionsCell(inj{TransitionsCell,KItem}(TransitionsCell))=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(667b1710518a00e5306a5e47da5e1303197a02e5cbf3e35bc1acd0a935bf5af3)]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortTransitionsCell{}, SortKItem{}}(VarTransitionsCell:SortTransitionsCell{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortBool{},R} (
+      LblisTransitionsCell{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("true"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("667b1710518a00e5306a5e47da5e1303197a02e5cbf3e35bc1acd0a935bf5af3")]
+
+// rule isTransitionsCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1eb305c0aff6a98ef31ac272392a8f5a9c8554379e6fd30e55f27a4340bb2bd1), owise]
+  axiom{R} \implies{R} (
+    \and{R} (
+      \not{R} (
+        \or{R} (
+          \exists{R} (Var'Unds'Gen1:SortTransitionsCellOpt{},
+            \and{R} (
+              \top{R}(),
+              \and{R} (
+                \in{SortK{}, R} (
+                  X0:SortK{},
+                  kseq{}(inj{SortTransitionsCellOpt{}, SortKItem{}}(Var'Unds'Gen1:SortTransitionsCellOpt{}),dotk{}())
+                ),
+                \top{R} ()
+              )
+          )),
+          \bottom{R}()
+        )
+      ),
+      \and{R}(
+        \top{R}(),
+        \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            VarK:SortK{}
+          ),
+          \top{R} ()
+        )
+    )),
+    \equals{SortBool{},R} (
+      LblisTransitionsCellOpt{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("false"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("1eb305c0aff6a98ef31ac272392a8f5a9c8554379e6fd30e55f27a4340bb2bd1"), owise{}()]
+
+// rule isTransitionsCellOpt(inj{TransitionsCellOpt,KItem}(TransitionsCellOpt))=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(294b81c7287faea90bbdaefd88c5e5570313f780253718de765fc57dbef62643)]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortTransitionsCellOpt{}, SortKItem{}}(VarTransitionsCellOpt:SortTransitionsCellOpt{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortBool{},R} (
+      LblisTransitionsCellOpt{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("true"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("294b81c7287faea90bbdaefd88c5e5570313f780253718de765fc57dbef62643")]
+
 // rule isVariableDeclaration(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a9a4923e71843205f1c4698147acff3002174bfedeca6dba26023afd14927570), owise]
   axiom{R} \implies{R} (
     \and{R} (
@@ -2155,6 +2583,114 @@ module XSTS
        \dv{SortBool{}}("true"),
         \top{SortBool{}}())))
   [UNIQUE'Unds'ID{}("000d1814c0748e85090a95a16818ba839bee7a341a8ebeedd03394bd0048cb8f")]
+
+// rule isVariablesCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(21e9959d3217cfcd4aaa34c7f43fc6f5ad462e51e9cef1fcaf6d753a2885eaf1), owise]
+  axiom{R} \implies{R} (
+    \and{R} (
+      \not{R} (
+        \or{R} (
+          \exists{R} (Var'Unds'Gen1:SortVariablesCell{},
+            \and{R} (
+              \top{R}(),
+              \and{R} (
+                \in{SortK{}, R} (
+                  X0:SortK{},
+                  kseq{}(inj{SortVariablesCell{}, SortKItem{}}(Var'Unds'Gen1:SortVariablesCell{}),dotk{}())
+                ),
+                \top{R} ()
+              )
+          )),
+          \bottom{R}()
+        )
+      ),
+      \and{R}(
+        \top{R}(),
+        \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            VarK:SortK{}
+          ),
+          \top{R} ()
+        )
+    )),
+    \equals{SortBool{},R} (
+      LblisVariablesCell{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("false"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("21e9959d3217cfcd4aaa34c7f43fc6f5ad462e51e9cef1fcaf6d753a2885eaf1"), owise{}()]
+
+// rule isVariablesCell(inj{VariablesCell,KItem}(VariablesCell))=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f6e555c61390f43c4b44b4bc140ace66bdde1d724fc02565289fcd60439f5ef7)]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortVariablesCell{}, SortKItem{}}(VarVariablesCell:SortVariablesCell{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortBool{},R} (
+      LblisVariablesCell{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("true"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("f6e555c61390f43c4b44b4bc140ace66bdde1d724fc02565289fcd60439f5ef7")]
+
+// rule isVariablesCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ea909e8f57b24b22f9181aa35eb40e36eee6f15df2df65e32157155e9d0fc768), owise]
+  axiom{R} \implies{R} (
+    \and{R} (
+      \not{R} (
+        \or{R} (
+          \exists{R} (Var'Unds'Gen0:SortVariablesCellOpt{},
+            \and{R} (
+              \top{R}(),
+              \and{R} (
+                \in{SortK{}, R} (
+                  X0:SortK{},
+                  kseq{}(inj{SortVariablesCellOpt{}, SortKItem{}}(Var'Unds'Gen0:SortVariablesCellOpt{}),dotk{}())
+                ),
+                \top{R} ()
+              )
+          )),
+          \bottom{R}()
+        )
+      ),
+      \and{R}(
+        \top{R}(),
+        \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            VarK:SortK{}
+          ),
+          \top{R} ()
+        )
+    )),
+    \equals{SortBool{},R} (
+      LblisVariablesCellOpt{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("false"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("ea909e8f57b24b22f9181aa35eb40e36eee6f15df2df65e32157155e9d0fc768"), owise{}()]
+
+// rule isVariablesCellOpt(inj{VariablesCellOpt,KItem}(VariablesCellOpt))=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(4ec42a2641a8819b41ed6128b667dbf8b5c7d60264530e185af7403edb98994e)]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortVariablesCellOpt{}, SortKItem{}}(VarVariablesCellOpt:SortVariablesCellOpt{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortBool{},R} (
+      LblisVariablesCellOpt{}(X0:SortK{}),
+     \and{SortBool{}} (
+       \dv{SortBool{}}("true"),
+        \top{SortBool{}}())))
+  [UNIQUE'Unds'ID{}("4ec42a2641a8819b41ed6128b667dbf8b5c7d60264530e185af7403edb98994e")]
 
 // rule `project:Assignment`(inj{Assignment,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(afe5633b5e6dd0c2ac21a87ebde0ee6f999a071587e47b524535544e28102bce), projection]
   axiom{R} \implies{R} (
@@ -2606,6 +3142,60 @@ module XSTS
         \top{SortSet{}}())))
   [UNIQUE'Unds'ID{}("0e7f5070c993161786e314f7199d985afebac9e07b5c784f6f623780c60ce9d0")]
 
+// rule `project:StateCell`(inj{StateCell,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(0573483956a8961d6c85cbcde0f7d23fd94a88f5f11c72a54f63e4975f3744aa), projection]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortStateCell{}, SortKItem{}}(VarK:SortStateCell{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortStateCell{},R} (
+      Lblproject'Coln'StateCell{}(X0:SortK{}),
+     \and{SortStateCell{}} (
+       VarK:SortStateCell{},
+        \top{SortStateCell{}}())))
+  [UNIQUE'Unds'ID{}("0573483956a8961d6c85cbcde0f7d23fd94a88f5f11c72a54f63e4975f3744aa")]
+
+// rule `project:StateCellFragment`(inj{StateCellFragment,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(071315163a6673caebca9803acd730c9d5ac2b00ab630c6e3f67f4e949654bc4), projection]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortStateCellFragment{}, SortKItem{}}(VarK:SortStateCellFragment{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortStateCellFragment{},R} (
+      Lblproject'Coln'StateCellFragment{}(X0:SortK{}),
+     \and{SortStateCellFragment{}} (
+       VarK:SortStateCellFragment{},
+        \top{SortStateCellFragment{}}())))
+  [UNIQUE'Unds'ID{}("071315163a6673caebca9803acd730c9d5ac2b00ab630c6e3f67f4e949654bc4")]
+
+// rule `project:StateCellOpt`(inj{StateCellOpt,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(e9c7307bada1aa928bd077216781fb45fe226c28e19ec950318b7cfa9e6ae9be), projection]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortStateCellOpt{}, SortKItem{}}(VarK:SortStateCellOpt{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortStateCellOpt{},R} (
+      Lblproject'Coln'StateCellOpt{}(X0:SortK{}),
+     \and{SortStateCellOpt{}} (
+       VarK:SortStateCellOpt{},
+        \top{SortStateCellOpt{}}())))
+  [UNIQUE'Unds'ID{}("e9c7307bada1aa928bd077216781fb45fe226c28e19ec950318b7cfa9e6ae9be")]
+
 // rule `project:TCell`(inj{TCell,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(8f26b10396db28857112a7db56ab3ef6b64a5c219427baf3f17e0e1fb39ad1ba), projection]
   axiom{R} \implies{R} (
     \and{R}(
@@ -2678,6 +3268,42 @@ module XSTS
         \top{SortTransition{}}())))
   [UNIQUE'Unds'ID{}("afa86774b6cb3955b1b80d12fa6333723df66bfa1d9520ac06dc74cb34b4760d")]
 
+// rule `project:TransitionsCell`(inj{TransitionsCell,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ab5ecb4ffa7b438b35734dc0fbf7bb00fa603e75da29a1aa5a70873bdf5680b1), projection]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortTransitionsCell{}, SortKItem{}}(VarK:SortTransitionsCell{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortTransitionsCell{},R} (
+      Lblproject'Coln'TransitionsCell{}(X0:SortK{}),
+     \and{SortTransitionsCell{}} (
+       VarK:SortTransitionsCell{},
+        \top{SortTransitionsCell{}}())))
+  [UNIQUE'Unds'ID{}("ab5ecb4ffa7b438b35734dc0fbf7bb00fa603e75da29a1aa5a70873bdf5680b1")]
+
+// rule `project:TransitionsCellOpt`(inj{TransitionsCellOpt,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3be2edd1f0f2d9f3028094ba83ea7efacd9b229a1725bb09b064a5f500142cff), projection]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortTransitionsCellOpt{}, SortKItem{}}(VarK:SortTransitionsCellOpt{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortTransitionsCellOpt{},R} (
+      Lblproject'Coln'TransitionsCellOpt{}(X0:SortK{}),
+     \and{SortTransitionsCellOpt{}} (
+       VarK:SortTransitionsCellOpt{},
+        \top{SortTransitionsCellOpt{}}())))
+  [UNIQUE'Unds'ID{}("3be2edd1f0f2d9f3028094ba83ea7efacd9b229a1725bb09b064a5f500142cff")]
+
 // rule `project:VariableDeclaration`(inj{VariableDeclaration,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(0441211cd8dfea0c7df78195fc308e5015e7e7cd95e02a3c42f520cd124a8caa), projection]
   axiom{R} \implies{R} (
     \and{R}(
@@ -2695,6 +3321,42 @@ module XSTS
        VarK:SortVariableDeclaration{},
         \top{SortVariableDeclaration{}}())))
   [UNIQUE'Unds'ID{}("0441211cd8dfea0c7df78195fc308e5015e7e7cd95e02a3c42f520cd124a8caa")]
+
+// rule `project:VariablesCell`(inj{VariablesCell,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c22186b5f09117a298d9df8335b091ddedd878b2ffd4d3c82d24b41a6bd0439a), projection]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortVariablesCell{}, SortKItem{}}(VarK:SortVariablesCell{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortVariablesCell{},R} (
+      Lblproject'Coln'VariablesCell{}(X0:SortK{}),
+     \and{SortVariablesCell{}} (
+       VarK:SortVariablesCell{},
+        \top{SortVariablesCell{}}())))
+  [UNIQUE'Unds'ID{}("c22186b5f09117a298d9df8335b091ddedd878b2ffd4d3c82d24b41a6bd0439a")]
+
+// rule `project:VariablesCellOpt`(inj{VariablesCellOpt,KItem}(K))=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(59f1730576484a273ad3ca171ff51ab446dfa85ae9191102e5e3ecb2b56d2174), projection]
+  axiom{R} \implies{R} (
+    \and{R}(
+      \top{R}(),
+      \and{R} (
+          \in{SortK{}, R} (
+            X0:SortK{},
+            kseq{}(inj{SortVariablesCellOpt{}, SortKItem{}}(VarK:SortVariablesCellOpt{}),dotk{}())
+          ),
+          \top{R} ()
+        )),
+    \equals{SortVariablesCellOpt{},R} (
+      Lblproject'Coln'VariablesCellOpt{}(X0:SortK{}),
+     \and{SortVariablesCellOpt{}} (
+       VarK:SortVariablesCellOpt{},
+        \top{SortVariablesCellOpt{}}())))
+  [UNIQUE'Unds'ID{}("59f1730576484a273ad3ca171ff51ab446dfa85ae9191102e5e3ecb2b56d2174")]
 
 // rule pushList(K,L1)=>`_List_`(`ListItem`(K),L1) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f6967050cc4ec32c2d34d52f5577e09120f730420d2c5dc838cba81d04c57adf), org.kframework.attributes.Location(Location(954,8,954,54)), org.kframework.attributes.Source(Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
   axiom{R} \implies{R} (
@@ -2718,4 +3380,4 @@ module XSTS
         \top{SortList{}}())))
   [UNIQUE'Unds'ID{}("f6967050cc4ec32c2d34d52f5577e09120f730420d2c5dc838cba81d04c57adf"), org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(954,8,954,54)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/nix/store/9bclvn43gf6hrr75hxjw35icz36pcjaa-k-7.1.212-51bd676326a0dbfbce7c64e41247b7126b639177/include/kframework/builtin/domains.md)")]
 
-endmodule [org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(41,1,47,10)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]
+endmodule [org'Stop'kframework'Stop'attributes'Stop'Location{}("Location(31,1,55,10)"), org'Stop'kframework'Stop'attributes'Stop'Source{}("Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)")]

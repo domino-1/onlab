@@ -1,1 +1,132 @@
-fail
+default: null
+specializations:
+- - Lbl'-LT-'generatedTop'-GT-'{}
+  - default: null
+    specializations:
+    - - Lbl'-LT-'T'-GT-'{}
+      - default: null
+        specializations:
+        - - Lbl'-LT-'k'-GT-'{}
+          - default: fail
+            specializations:
+            - - kseq{}
+              - default: fail
+                specializations:
+                - - inj{SortProgram{}, SortKItem{}}
+                  - default: null
+                    specializations:
+                    - - Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program'QuotRBraUnds'Program{}
+                      - action:
+                        - 222
+                        - - - &id001 ['1', '1']
+                            - STRING.String
+                          - - &id002 ['1', '0', '1']
+                            - STRING.String
+                          - - &id003 ['1', '0', '0', '0', '1']
+                            - STRING.String
+                      - []
+                    - - Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program{}
+                      - action:
+                        - 223
+                        - - - *id001
+                            - STRING.String
+                          - - *id002
+                            - STRING.String
+                          - - *id003
+                            - STRING.String
+                          - - ['0', '0', '0', '0', '0', '0', '1']
+                            - STRING.String
+                          - - ['1', '0', '0', '0', '0', '0', '1']
+                            - STRING.String
+                      - [STRING.String, STRING.String]
+                    sort: STRING.String
+                    occurrence: ['0', '0', '0', '0', '0', '1']
+                  - [STRING.String]
+                - - inj{SortVariableDeclaration{}, SortKItem{}}
+                  - default: null
+                    specializations:
+                    - - Lbl'-LT-'state'-GT-'{}
+                      - default: null
+                        specializations:
+                        - - Lbl'-LT-'variables'-GT-'{}
+                          - default: null
+                            specializations:
+                            - - Lblvar'UndsColn'boolean'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}
+                              - action:
+                                - 224
+                                - - - *id001
+                                    - STRING.String
+                                  - - *id003
+                                    - STRING.String
+                                  - - &id004 ['1', '1', '0', '1']
+                                    - STRING.String
+                                  - - &id005 ['0', '0', '1', '0', '1']
+                                    - MAP.Map
+                                  - - ['0', '0', '0', '0', '0', '0', '1']
+                                    - STRING.String
+                              - [STRING.String]
+                            - - Lblvar'UndsColn'integer'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}
+                              - action:
+                                - 225
+                                - - - *id001
+                                    - STRING.String
+                                  - - *id003
+                                    - STRING.String
+                                  - - *id004
+                                    - STRING.String
+                                  - - *id005
+                                    - MAP.Map
+                                  - - ['0', '0', '0', '0', '0', '0', '1']
+                                    - STRING.String
+                              - [STRING.String]
+                            sort: STRING.String
+                            occurrence: ['0', '0', '0', '0', '0', '1']
+                          - [MAP.Map]
+                        sort: STRING.String
+                        occurrence: ['0', '1', '0', '1']
+                      - [STRING.String, STRING.String]
+                    sort: STRING.String
+                    occurrence: *id002
+                  - [STRING.String]
+                - - inj{SortTransition{}, SortKItem{}}
+                  - default: null
+                    specializations:
+                    - - Lbl'-LT-'state'-GT-'{}
+                      - default: null
+                        specializations:
+                        - - Lbl'-LT-'transitions'-GT-'{}
+                          - action:
+                            - 221
+                            - - - *id001
+                                - STRING.String
+                              - - *id003
+                                - STRING.String
+                              - - ['0', '1', '0', '1']
+                                - STRING.String
+                              - - ['0', '1', '1', '0', '1']
+                                - LIST.List
+                              - - &id006 ['0', '0', '0', '0', '1']
+                                - STRING.String
+                              - - ['0', '0', '0', '0', '0', '1']
+                                - STRING.String
+                          - [LIST.List]
+                        sort: STRING.String
+                        occurrence: ['1', '1', '0', '1']
+                      - [STRING.String, STRING.String]
+                    sort: STRING.String
+                    occurrence: *id002
+                  - [STRING.String]
+                sort: STRING.String
+                occurrence: *id006
+              - [STRING.String, STRING.String]
+            sort: STRING.String
+            occurrence: ['0', '0', '0', '1']
+          - [STRING.String]
+        sort: STRING.String
+        occurrence: ['0', '0', '1']
+      - [STRING.String, STRING.String]
+    sort: STRING.String
+    occurrence: ['0', '1']
+  - [STRING.String, STRING.String]
+sort: STRING.String
+occurrence: ['1']

@@ -3,7 +3,7 @@ module XSTS-SYNTAX
     imports BOOL-SYNTAX
     imports ID-SYNTAX
 
-    syntax Literal ::= Int | Bool
+    syntax Literal ::= Int | Bool | "empty"
     syntax VariableDeclaration ::= "var" Id ":" "integer"
                                  | "var" Id ":" "boolean"
 
@@ -30,8 +30,26 @@ endmodule
 
 module XSTS
     imports XSTS-SYNTAX
+    imports LIST
 
     configuration <T>
                     <k> $PGM:Program </k>
+                    <state>
+                      <variables> .Map </variables>
+                      <transitions> .List </transitions>
+                    </state>
                   </T>
+
+    // declaration sequence
+    rule <k> L:Line P:Program => L ~> P ...</k>
+    rule <k> .Program => .K ...</k>
+
+    // declarations
+    rule <k> var X:Id : integer => .K ...</k>
+         <variables> STATE => STATE [ X <- empty ] </variables> //default init of empty is possibly temporary
+    rule <k> var X:Id : boolean => .K ...</k>
+         <variables> STATE => STATE [ X <- empty ] </variables> //default init of empty is possibly temporary
+    rule <k> T:Transition => .K ... </k>
+         <transitions> .List => ListItem(T) ... </transitions>
+
 endmodule

@@ -1,0 +1,44 @@
+default: null
+specializations:
+- - Lbl'-LT-'generatedTop'-GT-'{}
+  - default: null
+    specializations:
+    - - Lbl'-LT-'T'-GT-'{}
+      - default: null
+        specializations:
+        - - Lbl'-LT-'k'-GT-'{}
+          - default: fail
+            specializations:
+            - - kseq{}
+              - default: fail
+                specializations:
+                - - inj{SortProgram{}, SortKItem{}}
+                  - default: fail
+                    specializations:
+                    - - Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program'QuotRBraUnds'Program{}
+                      - action:
+                        - 222
+                        - - - ['1', '1']
+                            - STRING.String
+                          - - ['1', '0', '1']
+                            - STRING.String
+                          - - ['1', '0', '0', '0', '1']
+                            - STRING.String
+                      - []
+                    sort: STRING.String
+                    occurrence: ['0', '0', '0', '0', '0', '1']
+                  - [STRING.String]
+                sort: STRING.String
+                occurrence: ['0', '0', '0', '0', '1']
+              - [STRING.String, STRING.String]
+            sort: STRING.String
+            occurrence: ['0', '0', '0', '1']
+          - [STRING.String]
+        sort: STRING.String
+        occurrence: ['0', '0', '1']
+      - [STRING.String, STRING.String]
+    sort: STRING.String
+    occurrence: ['0', '1']
+  - [STRING.String, STRING.String]
+sort: STRING.String
+occurrence: ['1']

@@ -806,22 +806,44 @@ module UNSIGNED-INT-SYNTAX [digest(Tfp9QYLXybwhv6hzgwVBLRC+1CgNZVPefQ2srkHIizk=)
 endmodule
 
 
-module XSTS [digest(XcpklCTzqNo22jcM0dlUYXVMVHlP7dGfqLQsrpWHWUM=), org.kframework.attributes.Location(Location(41,1,47,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
+module XSTS [digest(fHbkbUUmtZqVEpkdBEuFwQJ0dmWdWiAw5HOhNEdxId0=), org.kframework.attributes.Location(Location(31,1,55,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
   imports XSTS-SYNTAX
   imports MAP
-  syntax TCellFragment ::= "<T>-fragment" KCellOpt "</T>-fragment" [cellFragment(TCell)]
+  imports LIST
+  syntax VariablesCellOpt ::= VariablesCell
+  syntax VariablesCellOpt ::= "noVariablesCell" [cellOptAbsent(VariablesCell)]
+  syntax VariablesCell ::= "initVariablesCell" [function, initializer, total]
+  syntax VariablesCell ::= "<variables>" Map "</variables>" [cell, cellName(variables), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax TransitionsCellOpt ::= TransitionsCell
+  syntax TransitionsCellOpt ::= "noTransitionsCell" [cellOptAbsent(TransitionsCell)]
+  syntax TransitionsCell ::= "initTransitionsCell" [function, initializer, total]
+  syntax TransitionsCell ::= "<transitions>" List "</transitions>" [cell, cellName(transitions), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax TCellFragment ::= "<T>-fragment" KCellOpt StateCellOpt "</T>-fragment" [cellFragment(TCell)]
   syntax TCell ::= "initTCell" "(" Map ")" [function, initializer]
-  syntax TCell ::= "<T>" KCell "</T>" [cell, cellName(T), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax TCell ::= "<T>" KCell StateCell "</T>" [cell, cellName(T), format(%1%i%n%2%n%3%d%n%4), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax StateCellOpt ::= StateCell
+  syntax StateCellOpt ::= "noStateCell" [cellOptAbsent(StateCell)]
+  syntax StateCellFragment ::= "<state>-fragment" VariablesCellOpt TransitionsCellOpt "</state>-fragment" [cellFragment(StateCell)]
+  syntax StateCell ::= "initStateCell" [function, initializer, total]
+  syntax StateCell ::= "<state>" VariablesCell TransitionsCell "</state>" [cell, cellName(state), format(%1%i%n%2%n%3%d%n%4), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
   syntax KCellOpt ::= KCell
   syntax KCellOpt ::= "noKCell" [cellOptAbsent(KCell)]
   syntax KCell ::= "initKCell" "(" Map ")" [function, initializer]
   syntax KCell ::= "<k>" K "</k>" [cell, cellName(k), format(%1%i%n%2%d%n%3), maincell, org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
-  rule initTCell(Init)=>`<T>`(#noDots(.KList),initKCell(Init),#noDots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [initializer]
+  rule initVariablesCell(.KList)=>`<variables>`(#noDots(.KList),`.Map`(.KList),#noDots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [initializer]
+  rule initTransitionsCell(.KList)=>`<transitions>`(#noDots(.KList),`.List`(.KList),#noDots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [initializer]
+  rule initTCell(Init)=>`<T>`(#noDots(.KList),#cells(initKCell(Init),initStateCell(.KList)),#noDots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [initializer]
+  rule initStateCell(.KList)=>`<state>`(#noDots(.KList),#cells(initVariablesCell(.KList),initTransitionsCell(.KList)),#noDots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [initializer]
   rule initKCell(Init)=>`<k>`(#noDots(.KList),#SemanticCastToProgram(`project:Program`(`Map:lookup`(Init,#token("$PGM","KConfigVar")))),#noDots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [initializer]
+  rule `<k>`(#noDots(.KList),`___XSTS-SYNTAX_Program_Line_Program`(#SemanticCastToLine(L),#SemanticCastToProgram(P))=>#SemanticCastToLine(L)~>#SemanticCastToProgram(P),#dots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [org.kframework.attributes.Location(Location(44,10,44,48)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<k>`(#noDots(.KList),`.List{"___XSTS-SYNTAX_Program_Line_Program"}_Program`(.KList)=>.K,#dots(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [org.kframework.attributes.Location(Location(45,10,45,36)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule #cells(`<k>`(#noDots(.KList),`var_:integer_XSTS-SYNTAX_VariableDeclaration_Id`(#SemanticCastToId(X))=>.K,#dots(.KList)),`<variables>`(#noDots(.KList),#SemanticCastToMap(STATE)=>`Map:update`(#SemanticCastToMap(STATE),#SemanticCastToId(X),`empty_XSTS-SYNTAX_Literal`(.KList)),#noDots(.KList))) requires #token("true","Bool") ensures #token("true","Bool") [org.kframework.attributes.Location(Location(48,10,49,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule #cells(`<k>`(#noDots(.KList),`var_:boolean_XSTS-SYNTAX_VariableDeclaration_Id`(#SemanticCastToId(X))=>.K,#dots(.KList)),`<variables>`(#noDots(.KList),#SemanticCastToMap(STATE)=>`Map:update`(#SemanticCastToMap(STATE),#SemanticCastToId(X),`empty_XSTS-SYNTAX_Literal`(.KList)),#noDots(.KList))) requires #token("true","Bool") ensures #token("true","Bool") [org.kframework.attributes.Location(Location(50,10,51,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule #cells(`<k>`(#noDots(.KList),#SemanticCastToTransition(T)=>.K,#dots(.KList)),`<transitions>`(#noDots(.KList),`.List`(.KList)=>`ListItem`(#SemanticCastToTransition(T)),#dots(.KList))) requires #token("true","Bool") ensures #token("true","Bool") [org.kframework.attributes.Location(Location(52,10,53,63)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
 endmodule
 
 
-module XSTS-SYNTAX [digest(Q2mq14oItT9TCc6r/jHUmqAxGRwsUihBxfcGS0Vtri8=), org.kframework.attributes.Location(Location(1,1,39,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
+module XSTS-SYNTAX [digest(9md2NQzTRW+dYmerSBfVViE1Di+H6W2p/gknFq0NNNs=), org.kframework.attributes.Location(Location(1,1,29,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
   imports INT-SYNTAX
   imports ID-SYNTAX
   imports BOOL-SYNTAX
@@ -838,6 +860,7 @@ module XSTS-SYNTAX [digest(Q2mq14oItT9TCc6r/jHUmqAxGRwsUihBxfcGS0Vtri8=), org.kf
   syntax Operation ::= Assignment
   syntax Literal ::= Int
   syntax Literal ::= Bool
+  syntax Literal ::= "empty"
   syntax Line ::= VariableDeclaration
   syntax Line ::= Transition
   syntax Havoc ::= "havoc(" Id ")"

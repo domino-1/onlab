@@ -1,6 +1,6 @@
 default: &id001
   action:
-  - 192
+  - 239
   - - - &id002 ['1']
       - STRING.String
 specializations:
@@ -12,7 +12,7 @@ specializations:
         specializations:
         - - inj{SortBool{}, SortKItem{}}
           - action:
-            - 193
+            - 240
             - - - ['0', '0', '1']
                 - BOOL.Bool
           - [BOOL.Bool]
