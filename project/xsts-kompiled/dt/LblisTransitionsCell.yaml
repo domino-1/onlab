@@ -1,6 +1,6 @@
 default: &id001
   action:
-  - 300
+  - 668
   - - - &id002 ['1']
       - STRING.String
 specializations:
@@ -12,7 +12,7 @@ specializations:
         specializations:
         - - inj{SortTransitionsCell{}, SortKItem{}}
           - action:
-            - 301
+            - 669
             - - - ['0', '0', '1']
                 - STRING.String
           - [STRING.String]

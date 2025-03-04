@@ -1,0 +1,319 @@
+default: null
+specializations:
+- - Lbl'-LT-'generatedTop'-GT-'{}
+  - default: null
+    specializations:
+    - - Lbl'-LT-'T'-GT-'{}
+      - default: null
+        specializations:
+        - - Lbl'-LT-'choice-id'-GT-'{}
+          - default: null
+            specializations:
+            - - Lbl'-LT-'cur-id'-GT-'{}
+              - default: null
+                specializations:
+                - - Lbl'-LT-'k'-GT-'{}
+                  - default: null
+                    specializations:
+                    - - Lbl'-LT-'state'-GT-'{}
+                      - default: null
+                        specializations:
+                        - - Lbl'-LT-'choices'-GT-'{}
+                          - default: null
+                            specializations:
+                            - - Lbl'-LT-'transitions'-GT-'{}
+                              - default: fail
+                                specializations:
+                                - - kseq{}
+                                  - default: fail
+                                    specializations:
+                                    - - inj{SortWork{}, SortKItem{}}
+                                      - default: fail
+                                        specializations:
+                                        - - Lblwork'LParUndsRParUnds'XSTS'Unds'Work'Unds'Transition{}
+                                          - default: null
+                                            specializations:
+                                            - - Lbltran'LBraUndsRBraUnds'XSTS-SYNTAX'Unds'Transition'Unds'Sequence{}
+                                              - default: fail
+                                                specializations:
+                                                - - Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Sequence'Unds'Operation'Unds'Sequence{}
+                                                  - default: fail
+                                                    specializations:
+                                                    - - inj{SortChoice{}, SortOperation{}}
+                                                      - next:
+                                                          args:
+                                                          - - &id001 ['0', '1', '1',
+                                                              '0', '1']
+                                                            - MAP.Map
+                                                          - - &id002 [size, '0', '1',
+                                                              '1', '0', '1']
+                                                            - STRING.String
+                                                          next:
+                                                            args:
+                                                            - - *id001
+                                                              - MAP.Map
+                                                            - - *id002
+                                                              - STRING.String
+                                                            next:
+                                                              default: null
+                                                              specializations:
+                                                              - - '1'
+                                                                - default: null
+                                                                  specializations:
+                                                                  - - Lbl'-LT-'transition'-GT-'{}
+                                                                    - default: null
+                                                                      specializations:
+                                                                      - - Lbl'-LT-'sequence'-GT-'{}
+                                                                        - default: null
+                                                                          specializations:
+                                                                          - - Lbl'-LT-'id'-GT-'{}
+                                                                            - args:
+                                                                              - - &id003 [
+                                                                                  '0',
+                                                                                  '2',
+                                                                                  '0',
+                                                                                  '1']
+                                                                                - INT.Int
+                                                                              - - [
+                                                                                  '0',
+                                                                                  '0',
+                                                                                  'SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                                  '0',
+                                                                                  '1',
+                                                                                  '1',
+                                                                                  '0',
+                                                                                  '1']
+                                                                                - INT.Int
+                                                                              next:
+                                                                                default: null
+                                                                                specializations:
+                                                                                - - '1'
+                                                                                  - action:
+                                                                                    - 477
+                                                                                    - - - [
+                                                                                          '1',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          '4',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          '1',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          'SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_rem',
+                                                                                          '0',
+                                                                                          '1',
+                                                                                          '1',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - MAP.Map
+                                                                                      - - [
+                                                                                          '0',
+                                                                                          '1',
+                                                                                          'SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                                          '0',
+                                                                                          '1',
+                                                                                          '1',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - LIST.List
+                                                                                      - - [
+                                                                                          '0',
+                                                                                          '2',
+                                                                                          '1',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - MAP.Map
+                                                                                      - - [
+                                                                                          '0',
+                                                                                          '1',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          '3',
+                                                                                          '1',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          '2',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          '3',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          '0',
+                                                                                          '3',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - INT.Int
+                                                                                      - - [
+                                                                                          '0',
+                                                                                          '2',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - INT.Int
+                                                                                      - - [
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                      - - [
+                                                                                          '1',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '0',
+                                                                                          '1']
+                                                                                        - STRING.String
+                                                                                  - []
+                                                                                - - '0'
+                                                                                  - fail
+                                                                                  - []
+                                                                                bitwidth: 1
+                                                                                sort: BOOL.Bool
+                                                                                occurrence: [
+                                                                                  eq,
+                                                                                  '0',
+                                                                                  '2',
+                                                                                  '0',
+                                                                                  '1',
+                                                                                  and,
+                                                                                  '0',
+                                                                                  '0',
+                                                                                  'SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                                  '0',
+                                                                                  '1',
+                                                                                  '1',
+                                                                                  '0',
+                                                                                  '1']
+                                                                              function: hook_INT_eq
+                                                                              sort: BOOL.Bool
+                                                                              occurrence: [
+                                                                                eq,
+                                                                                '0',
+                                                                                '2',
+                                                                                '0',
+                                                                                '1',
+                                                                                and,
+                                                                                '0',
+                                                                                '0',
+                                                                                'SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                                '0',
+                                                                                '1',
+                                                                                '1',
+                                                                                '0',
+                                                                                '1']
+                                                                            - [INT.Int]
+                                                                          sort: STRING.String
+                                                                          occurrence: [
+                                                                            '0', 'SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                            '0', '1',
+                                                                            '1', '0',
+                                                                            '1']
+                                                                        - [LIST.List]
+                                                                      sort: STRING.String
+                                                                      occurrence: [
+                                                                        '1', 'SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                        '0', '1',
+                                                                        '1', '0',
+                                                                        '1']
+                                                                    - [STRING.String,
+                                                                      STRING.String]
+                                                                  sort: STRING.String
+                                                                  occurrence: ['SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                    '0', '1', '1',
+                                                                    '0', '1']
+                                                                - [STRING.String,
+                                                                  MAP.Map, MAP.Map]
+                                                              - - '0'
+                                                                - fail
+                                                                - [MAP.Map]
+                                                              isnull: true
+                                                              sort: STRING.String
+                                                              occurrence: ['SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                                '0', '1', '1', '0',
+                                                                '1']
+                                                            function: hook_MAP_remove
+                                                            sort: MAP.Map
+                                                            occurrence: ['SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_rem',
+                                                              '0', '1', '1', '0',
+                                                              '1']
+                                                          function: hook_MAP_lookup_null
+                                                          sort: STRING.String
+                                                          occurrence: ['SymbolP(Lbl''-LT-''id''-GT-''{},List(VariableP(Some(Num(0,Num(2,Num(0,Num(1,Base()))))),IntS())))_val',
+                                                            '0', '1', '1', '0', '1']
+                                                        pattern:
+                                                          args:
+                                                          - hook: INT.Int
+                                                            occurrence: *id003
+                                                          constructor: Lbl'-LT-'id'-GT-'{}
+                                                        occurrence: *id002
+                                                        sort: STRING.String
+                                                      - [STRING.String]
+                                                    sort: STRING.String
+                                                    occurrence: ['0', '0', '0', '0',
+                                                      '0', '0', '0', '0', '1']
+                                                  - [STRING.String, STRING.String]
+                                                sort: STRING.String
+                                                occurrence: ['0', '0', '0', '0', '0',
+                                                  '0', '0', '1']
+                                              - [STRING.String]
+                                            sort: STRING.String
+                                            occurrence: ['0', '0', '0', '0', '0',
+                                              '0', '1']
+                                          - [STRING.String]
+                                        sort: STRING.String
+                                        occurrence: ['0', '0', '0', '0', '0', '1']
+                                      - [STRING.String]
+                                    sort: STRING.String
+                                    occurrence: ['0', '0', '0', '0', '1']
+                                  - [STRING.String, STRING.String]
+                                sort: STRING.String
+                                occurrence: ['0', '0', '0', '1']
+                              - [MAP.Map]
+                            sort: STRING.String
+                            occurrence: ['1', '1', '0', '1']
+                          - [MAP.Map]
+                        sort: STRING.String
+                        occurrence: ['2', '1', '0', '1']
+                      - [STRING.String, STRING.String, STRING.String, STRING.String]
+                    sort: STRING.String
+                    occurrence: ['1', '0', '1']
+                  - [STRING.String]
+                sort: STRING.String
+                occurrence: ['0', '0', '1']
+              - [INT.Int]
+            sort: STRING.String
+            occurrence: ['2', '0', '1']
+          - [INT.Int]
+        sort: STRING.String
+        occurrence: ['3', '0', '1']
+      - [STRING.String, STRING.String, STRING.String, STRING.String, STRING.String]
+    sort: STRING.String
+    occurrence: ['0', '1']
+  - [STRING.String, STRING.String]
+sort: STRING.String
+occurrence: ['1']

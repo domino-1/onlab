@@ -8,7 +8,7 @@ specializations:
         specializations:
         - - inj{SortStateCellFragment{}, SortKItem{}}
           - action:
-            - 336
+            - 744
             - - - ['0', '0', '1']
                 - STRING.String
           - [STRING.String]

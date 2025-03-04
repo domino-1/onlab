@@ -6,17 +6,17 @@ specializations:
     - - dotk{}
       - default: fail
         specializations:
-        - - inj{SortAssumption{}, SortKItem{}}
+        - - inj{SortAssignment{}, SortKItem{}}
           - &id001
             action:
-            - 331
+            - 727
             - - - &id002 ['0', '1']
                 - STRING.String
           - [STRING.String]
-        - - inj{SortAssignment{}, SortKItem{}}
+        - - inj{SortChoice{}, SortKItem{}}
           - *id001
           - [STRING.String]
-        - - inj{SortChoice{}, SortKItem{}}
+        - - inj{SortAssumption{}, SortKItem{}}
           - *id001
           - [STRING.String]
         - - inj{SortHavoc{}, SortKItem{}}

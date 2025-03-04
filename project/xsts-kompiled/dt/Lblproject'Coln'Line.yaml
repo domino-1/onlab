@@ -6,14 +6,14 @@ specializations:
     - - dotk{}
       - default: fail
         specializations:
-        - - inj{SortTransition{}, SortKItem{}}
+        - - inj{SortVariableDeclaration{}, SortKItem{}}
           - &id001
             action:
-            - 327
+            - 721
             - - - &id002 ['0', '1']
                 - STRING.String
           - [STRING.String]
-        - - inj{SortVariableDeclaration{}, SortKItem{}}
+        - - inj{SortTransition{}, SortKItem{}}
           - *id001
           - [STRING.String]
         sort: STRING.String

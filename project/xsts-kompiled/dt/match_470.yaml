@@ -15,20 +15,22 @@ specializations:
                 - - inj{SortProgram{}, SortKItem{}}
                   - default: fail
                     specializations:
-                    - - Lbl'UndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program{}
+                    - - Lbl'Stop'List'LBraQuotUndsUndsUnds'XSTS-SYNTAX'Unds'Program'Unds'Line'Unds'Program'QuotRBraUnds'Program{}
                       - action:
-                        - 223
+                        - 470
                         - - - ['1', '1']
-                            - STRING.String
-                          - - ['1', '0', '1']
                             - STRING.String
                           - - ['1', '0', '0', '0', '1']
                             - STRING.String
-                          - - ['0', '0', '0', '0', '0', '0', '1']
+                          - - ['1', '0', '1']
                             - STRING.String
-                          - - ['1', '0', '0', '0', '0', '0', '1']
+                          - - ['2', '0', '1']
                             - STRING.String
-                      - [STRING.String, STRING.String]
+                          - - ['3', '0', '1']
+                            - STRING.String
+                          - - ['4', '0', '1']
+                            - STRING.String
+                      - []
                     sort: STRING.String
                     occurrence: ['0', '0', '0', '0', '0', '1']
                   - [STRING.String]
@@ -40,7 +42,7 @@ specializations:
           - [STRING.String]
         sort: STRING.String
         occurrence: ['0', '0', '1']
-      - [STRING.String, STRING.String]
+      - [STRING.String, STRING.String, STRING.String, STRING.String, STRING.String]
     sort: STRING.String
     occurrence: ['0', '1']
   - [STRING.String, STRING.String]

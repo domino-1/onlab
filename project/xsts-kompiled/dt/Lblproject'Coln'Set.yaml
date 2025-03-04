@@ -8,7 +8,7 @@ specializations:
         specializations:
         - - inj{SortSet{}, SortKItem{}}
           - action:
-            - 334
+            - 742
             - - - ['0', '0', '1']
                 - SET.Set
           - [SET.Set]

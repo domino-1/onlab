@@ -997,10 +997,14 @@ module UNSIGNED-INT-SYNTAX [digest(Tfp9QYLXybwhv6hzgwVBLRC+1CgNZVPefQ2srkHIizk=)
 endmodule
 
 
-module XSTS [digest(fHbkbUUmtZqVEpkdBEuFwQJ0dmWdWiAw5HOhNEdxId0=), org.kframework.attributes.Location(Location(31,1,55,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
+module XSTS [digest(77N9eunrJhKM9P0ktxy15rwLYdZLSHvxwwBTi90gtnI=), org.kframework.attributes.Location(Location(37,1,138,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
   imports XSTS-SYNTAX
   imports MAP
   imports LIST
+  imports INT
+  syntax Work ::= "work(" Transition ")"
+  syntax Work ::= "work(" Operation ")"
+  syntax Work ::= "project:Work" "(" K ")" [function, projection]
   syntax VariablesCellOpt ::= VariablesCell
   syntax VariablesCellOpt ::= "project:VariablesCellOpt" "(" K ")" [function, projection]
   syntax VariablesCellOpt ::= "noVariablesCell" [cellOptAbsent(VariablesCell)]
@@ -1010,41 +1014,133 @@ module XSTS [digest(fHbkbUUmtZqVEpkdBEuFwQJ0dmWdWiAw5HOhNEdxId0=), org.kframewor
   syntax TransitionsCellOpt ::= TransitionsCell
   syntax TransitionsCellOpt ::= "project:TransitionsCellOpt" "(" K ")" [function, projection]
   syntax TransitionsCellOpt ::= "noTransitionsCell" [cellOptAbsent(TransitionsCell)]
+  syntax TransitionsCellFragment ::= "project:TransitionsCellFragment" "(" K ")" [function, projection]
+  syntax TransitionsCellFragment ::= "<transitions>-fragment" TransitionCellMap "</transitions>-fragment" [cellFragment(TransitionsCell)]
   syntax TransitionsCell ::= "project:TransitionsCell" "(" K ")" [function, projection]
   syntax TransitionsCell ::= "initTransitionsCell" [function, initializer, total]
-  syntax TransitionsCell ::= "<transitions>" List "</transitions>" [cell, cellName(transitions), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax TransitionsCell ::= "<transitions>" TransitionCellMap "</transitions>" [cell, cellName(transitions), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax TransitionCellMap [cellCollection, hook(MAP.Map)]
+  syntax TransitionCellMap ::= TransitionCellMap TransitionCellMap [assoc, avoid, cellCollection, comm, element(TransitionCellMapItem), function, hook(MAP.concat), unit(.TransitionCellMap), wrapElement(<transition>)]
+  syntax TransitionCellMap ::= TransitionCell
+  syntax TransitionCellMap ::= "project:TransitionCellMap" "(" K ")" [function, projection]
+  syntax TransitionCellMap ::= "initTransitionCell" [function, initializer, total]
+  syntax TransitionCellMap ::= "TransitionCellMapItem" "(" IdCell "," TransitionCell ")" [format(%5), function, hook(MAP.element)]
+  syntax TransitionCellMap ::= ".TransitionCellMap" [function, hook(MAP.unit)]
+  syntax TransitionCellFragment ::= "project:TransitionCellFragment" "(" K ")" [function, projection]
+  syntax TransitionCellFragment ::= "<transition>-fragment" IdCellOpt SequenceCellOpt "</transition>-fragment" [cellFragment(TransitionCell)]
+  syntax TransitionCell ::= "project:TransitionCell" "(" K ")" [function, projection]
+  syntax TransitionCell ::= "<transition>" IdCell SequenceCell "</transition>" [cell, cellName(transition), format(%1%i%n%2%n%3%d%n%4), multiplicity(*), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)]), type(Map)]
   syntax TCellOpt ::= TCell
   syntax TCellOpt ::= "project:TCellOpt" "(" K ")" [function, projection]
   syntax TCellOpt ::= "noTCell" [cellOptAbsent(TCell)]
   syntax TCellFragment ::= "project:TCellFragment" "(" K ")" [function, projection]
-  syntax TCellFragment ::= "<T>-fragment" KCellOpt StateCellOpt "</T>-fragment" [cellFragment(TCell)]
+  syntax TCellFragment ::= "<T>-fragment" KCellOpt StateCellOpt CurIdCellOpt ChoiceIdCellOpt OrIdCellOpt "</T>-fragment" [cellFragment(TCell)]
   syntax TCell ::= "project:TCell" "(" K ")" [function, projection]
   syntax TCell ::= "initTCell" "(" Map ")" [function, initializer]
-  syntax TCell ::= "<T>" KCell StateCell "</T>" [cell, cellName(T), format(%1%i%n%2%n%3%d%n%4), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax TCell ::= "<T>" KCell StateCell CurIdCell ChoiceIdCell OrIdCell "</T>" [cell, cellName(T), format(%1%i%n%2%n%3%n%4%n%5%n%6%d%n%7), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
   syntax StateCellOpt ::= StateCell
   syntax StateCellOpt ::= "project:StateCellOpt" "(" K ")" [function, projection]
   syntax StateCellOpt ::= "noStateCell" [cellOptAbsent(StateCell)]
   syntax StateCellFragment ::= "project:StateCellFragment" "(" K ")" [function, projection]
-  syntax StateCellFragment ::= "<state>-fragment" VariablesCellOpt TransitionsCellOpt "</state>-fragment" [cellFragment(StateCell)]
+  syntax StateCellFragment ::= "<state>-fragment" VariablesCellOpt TransitionsCellOpt ChoicesCellOpt OrsCellOpt "</state>-fragment" [cellFragment(StateCell)]
   syntax StateCell ::= "project:StateCell" "(" K ")" [function, projection]
   syntax StateCell ::= "initStateCell" [function, initializer, total]
-  syntax StateCell ::= "<state>" VariablesCell TransitionsCell "</state>" [cell, cellName(state), format(%1%i%n%2%n%3%d%n%4), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax StateCell ::= "<state>" VariablesCell TransitionsCell ChoicesCell OrsCell "</state>" [cell, cellName(state), format(%1%i%n%2%n%3%n%4%n%5%d%n%6), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax SequenceCellOpt ::= SequenceCell
+  syntax SequenceCellOpt ::= "project:SequenceCellOpt" "(" K ")" [function, projection]
+  syntax SequenceCellOpt ::= "noSequenceCell" [cellOptAbsent(SequenceCell)]
+  syntax SequenceCell ::= "project:SequenceCell" "(" K ")" [function, projection]
+  syntax SequenceCell ::= "initSequenceCell" [function, initializer, total]
+  syntax SequenceCell ::= "<sequence>" List "</sequence>" [cell, cellName(sequence), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax OsequenceCellOpt ::= OsequenceCell
+  syntax OsequenceCellOpt ::= "project:OsequenceCellOpt" "(" K ")" [function, projection]
+  syntax OsequenceCellOpt ::= "noOsequenceCell" [cellOptAbsent(OsequenceCell)]
+  syntax OsequenceCell ::= "project:OsequenceCell" "(" K ")" [function, projection]
+  syntax OsequenceCell ::= "initOsequenceCell" [function, initializer, total]
+  syntax OsequenceCell ::= "<osequence>" List "</osequence>" [cell, cellName(osequence), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax OrsCellOpt ::= OrsCell
+  syntax OrsCellOpt ::= "project:OrsCellOpt" "(" K ")" [function, projection]
+  syntax OrsCellOpt ::= "noOrsCell" [cellOptAbsent(OrsCell)]
+  syntax OrsCellFragment ::= "project:OrsCellFragment" "(" K ")" [function, projection]
+  syntax OrsCellFragment ::= "<ors>-fragment" OrCellMap "</ors>-fragment" [cellFragment(OrsCell)]
+  syntax OrsCell ::= "project:OrsCell" "(" K ")" [function, projection]
+  syntax OrsCell ::= "initOrsCell" [function, initializer, total]
+  syntax OrsCell ::= "<ors>" OrCellMap "</ors>" [cell, cellName(ors), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax OrIdCellOpt ::= OrIdCell
+  syntax OrIdCellOpt ::= "project:OrIdCellOpt" "(" K ")" [function, projection]
+  syntax OrIdCellOpt ::= "noOrIdCell" [cellOptAbsent(OrIdCell)]
+  syntax OrIdCell ::= "project:OrIdCell" "(" K ")" [function, projection]
+  syntax OrIdCell ::= "initOrIdCell" [function, initializer, total]
+  syntax OrIdCell ::= "<or-id>" Int "</or-id>" [cell, cellName(or-id), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax OrCellMap [cellCollection, hook(MAP.Map)]
+  syntax OrCellMap ::= OrCellMap OrCellMap [assoc, avoid, cellCollection, comm, element(OrCellMapItem), function, hook(MAP.concat), unit(.OrCellMap), wrapElement(<or>)]
+  syntax OrCellMap ::= OrCell
+  syntax OrCellMap ::= "project:OrCellMap" "(" K ")" [function, projection]
+  syntax OrCellMap ::= "initOrCell" [function, initializer, total]
+  syntax OrCellMap ::= "OrCellMapItem" "(" OidCell "," OrCell ")" [format(%5), function, hook(MAP.element)]
+  syntax OrCellMap ::= ".OrCellMap" [function, hook(MAP.unit)]
+  syntax OrCellFragment ::= "project:OrCellFragment" "(" K ")" [function, projection]
+  syntax OrCellFragment ::= "<or>-fragment" OidCellOpt OsequenceCellOpt "</or>-fragment" [cellFragment(OrCell)]
+  syntax OrCell ::= "project:OrCell" "(" K ")" [function, projection]
+  syntax OrCell ::= "<or>" OidCell OsequenceCell "</or>" [cell, cellName(or), format(%1%i%n%2%n%3%d%n%4), multiplicity(*), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)]), type(Map)]
+  syntax OidCellOpt ::= OidCell
+  syntax OidCellOpt ::= "project:OidCellOpt" "(" K ")" [function, projection]
+  syntax OidCellOpt ::= "noOidCell" [cellOptAbsent(OidCell)]
+  syntax OidCell ::= "project:OidCell" "(" K ")" [function, projection]
+  syntax OidCell ::= "initOidCell" [function, initializer, total]
+  syntax OidCell ::= "OrCellMapKey" "(" OrCell ")" [function, total]
+  syntax OidCell ::= "<oid>" Int "</oid>" [cell, cellName(oid), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax KItem ::= Work
   syntax KItem ::= VariablesCellOpt
   syntax KItem ::= VariablesCell
   syntax KItem ::= TransitionsCellOpt
+  syntax KItem ::= TransitionsCellFragment
   syntax KItem ::= TransitionsCell
+  syntax KItem ::= TransitionCellMap
+  syntax KItem ::= TransitionCellFragment
+  syntax KItem ::= TransitionCell
   syntax KItem ::= TCellOpt
   syntax KItem ::= TCellFragment
   syntax KItem ::= TCell
   syntax KItem ::= StateCellOpt
   syntax KItem ::= StateCellFragment
   syntax KItem ::= StateCell
+  syntax KItem ::= SequenceCellOpt
+  syntax KItem ::= SequenceCell
+  syntax KItem ::= OsequenceCellOpt
+  syntax KItem ::= OsequenceCell
+  syntax KItem ::= OrsCellOpt
+  syntax KItem ::= OrsCellFragment
+  syntax KItem ::= OrsCell
+  syntax KItem ::= OrIdCellOpt
+  syntax KItem ::= OrIdCell
+  syntax KItem ::= OrCellMap
+  syntax KItem ::= OrCellFragment
+  syntax KItem ::= OrCell
+  syntax KItem ::= OidCellOpt
+  syntax KItem ::= OidCell
   syntax KItem ::= KCellOpt
   syntax KItem ::= KCell
+  syntax KItem ::= IdCellOpt
+  syntax KItem ::= IdCell
   syntax KItem ::= GeneratedTopCellFragment
   syntax KItem ::= GeneratedTopCell
   syntax KItem ::= GeneratedCounterCellOpt
   syntax KItem ::= GeneratedCounterCell
+  syntax KItem ::= CurIdCellOpt
+  syntax KItem ::= CurIdCell
+  syntax KItem ::= CsequenceCellOpt
+  syntax KItem ::= CsequenceCell
+  syntax KItem ::= CidCellOpt
+  syntax KItem ::= CidCell
+  syntax KItem ::= ChoicesCellOpt
+  syntax KItem ::= ChoicesCellFragment
+  syntax KItem ::= ChoicesCell
+  syntax KItem ::= ChoiceIdCellOpt
+  syntax KItem ::= ChoiceIdCell
+  syntax KItem ::= ChoiceCellMap
+  syntax KItem ::= ChoiceCellFragment
+  syntax KItem ::= ChoiceCell
   syntax KCellOpt ::= KCell
   syntax KCellOpt ::= "project:KCellOpt" "(" K ")" [function, projection]
   syntax KCellOpt ::= "noKCell" [cellOptAbsent(KCell)]
@@ -1052,6 +1148,13 @@ module XSTS [digest(fHbkbUUmtZqVEpkdBEuFwQJ0dmWdWiAw5HOhNEdxId0=), org.kframewor
   syntax KCell ::= "initKCell" "(" Map ")" [function, initializer]
   syntax KCell ::= "<k>" K "</k>" [cell, cellName(k), format(%1%i%n%2%d%n%3), maincell, org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
   syntax K
+  syntax IdCellOpt ::= IdCell
+  syntax IdCellOpt ::= "project:IdCellOpt" "(" K ")" [function, projection]
+  syntax IdCellOpt ::= "noIdCell" [cellOptAbsent(IdCell)]
+  syntax IdCell ::= "project:IdCell" "(" K ")" [function, projection]
+  syntax IdCell ::= "initIdCell" [function, initializer, total]
+  syntax IdCell ::= "TransitionCellMapKey" "(" TransitionCell ")" [function, total]
+  syntax IdCell ::= "<id>" Int "</id>" [cell, cellName(id), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
   syntax GeneratedTopCellFragment ::= "project:GeneratedTopCellFragment" "(" K ")" [function, projection]
   syntax GeneratedTopCellFragment ::= "<generatedTop>-fragment" TCellOpt GeneratedCounterCellOpt "</generatedTop>-fragment" [cellFragment(GeneratedTopCell)]
   syntax GeneratedTopCell ::= "project:GeneratedTopCell" "(" K ")" [function, projection]
@@ -1064,30 +1167,122 @@ module XSTS [digest(fHbkbUUmtZqVEpkdBEuFwQJ0dmWdWiAw5HOhNEdxId0=), org.kframewor
   syntax GeneratedCounterCell ::= "initGeneratedCounterCell" [function, initializer, total]
   syntax GeneratedCounterCell ::= "getGeneratedCounterCell" "(" GeneratedTopCell ")" [function]
   syntax GeneratedCounterCell ::= "<generatedCounter>" Int "</generatedCounter>" [cell, cellName(generatedCounter), format(%1%i%n%2%d%n%3)]
+  syntax CurIdCellOpt ::= CurIdCell
+  syntax CurIdCellOpt ::= "project:CurIdCellOpt" "(" K ")" [function, projection]
+  syntax CurIdCellOpt ::= "noCurIdCell" [cellOptAbsent(CurIdCell)]
+  syntax CurIdCell ::= "project:CurIdCell" "(" K ")" [function, projection]
+  syntax CurIdCell ::= "initCurIdCell" [function, initializer, total]
+  syntax CurIdCell ::= "<cur-id>" Int "</cur-id>" [cell, cellName(cur-id), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax CsequenceCellOpt ::= CsequenceCell
+  syntax CsequenceCellOpt ::= "project:CsequenceCellOpt" "(" K ")" [function, projection]
+  syntax CsequenceCellOpt ::= "noCsequenceCell" [cellOptAbsent(CsequenceCell)]
+  syntax CsequenceCell ::= "project:CsequenceCell" "(" K ")" [function, projection]
+  syntax CsequenceCell ::= "initCsequenceCell" [function, initializer, total]
+  syntax CsequenceCell ::= "<csequence>" List "</csequence>" [cell, cellName(csequence), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax CidCellOpt ::= CidCell
+  syntax CidCellOpt ::= "project:CidCellOpt" "(" K ")" [function, projection]
+  syntax CidCellOpt ::= "noCidCell" [cellOptAbsent(CidCell)]
+  syntax CidCell ::= "project:CidCell" "(" K ")" [function, projection]
+  syntax CidCell ::= "initCidCell" [function, initializer, total]
+  syntax CidCell ::= "ChoiceCellMapKey" "(" ChoiceCell ")" [function, total]
+  syntax CidCell ::= "<cid>" Int "</cid>" [cell, cellName(cid), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax ChoicesCellOpt ::= ChoicesCell
+  syntax ChoicesCellOpt ::= "project:ChoicesCellOpt" "(" K ")" [function, projection]
+  syntax ChoicesCellOpt ::= "noChoicesCell" [cellOptAbsent(ChoicesCell)]
+  syntax ChoicesCellFragment ::= "project:ChoicesCellFragment" "(" K ")" [function, projection]
+  syntax ChoicesCellFragment ::= "<choices>-fragment" ChoiceCellMap "</choices>-fragment" [cellFragment(ChoicesCell)]
+  syntax ChoicesCell ::= "project:ChoicesCell" "(" K ")" [function, projection]
+  syntax ChoicesCell ::= "initChoicesCell" [function, initializer, total]
+  syntax ChoicesCell ::= "<choices>" ChoiceCellMap "</choices>" [cell, cellName(choices), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax ChoiceIdCellOpt ::= ChoiceIdCell
+  syntax ChoiceIdCellOpt ::= "project:ChoiceIdCellOpt" "(" K ")" [function, projection]
+  syntax ChoiceIdCellOpt ::= "noChoiceIdCell" [cellOptAbsent(ChoiceIdCell)]
+  syntax ChoiceIdCell ::= "project:ChoiceIdCell" "(" K ")" [function, projection]
+  syntax ChoiceIdCell ::= "initChoiceIdCell" [function, initializer, total]
+  syntax ChoiceIdCell ::= "<choice-id>" Int "</choice-id>" [cell, cellName(choice-id), format(%1%i%n%2%d%n%3), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  syntax ChoiceCellMap [cellCollection, hook(MAP.Map)]
+  syntax ChoiceCellMap ::= ChoiceCellMap ChoiceCellMap [assoc, avoid, cellCollection, comm, element(ChoiceCellMapItem), function, hook(MAP.concat), unit(.ChoiceCellMap), wrapElement(<choice>)]
+  syntax ChoiceCellMap ::= ChoiceCell
+  syntax ChoiceCellMap ::= "project:ChoiceCellMap" "(" K ")" [function, projection]
+  syntax ChoiceCellMap ::= "initChoiceCell" [function, initializer, total]
+  syntax ChoiceCellMap ::= "ChoiceCellMapItem" "(" CidCell "," ChoiceCell ")" [format(%5), function, hook(MAP.element)]
+  syntax ChoiceCellMap ::= ".ChoiceCellMap" [function, hook(MAP.unit)]
+  syntax ChoiceCellFragment ::= "project:ChoiceCellFragment" "(" K ")" [function, projection]
+  syntax ChoiceCellFragment ::= "<choice>-fragment" CidCellOpt CsequenceCellOpt "</choice>-fragment" [cellFragment(ChoiceCell)]
+  syntax ChoiceCell ::= "project:ChoiceCell" "(" K ")" [function, projection]
+  syntax ChoiceCell ::= "<choice>" CidCell CsequenceCell "</choice>" [cell, cellName(choice), format(%1%i%n%2%n%3%d%n%4), multiplicity(*), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)]), type(Map)]
+  syntax Bool ::= OidCell "in_keys" "(" OrCellMap ")" [function, hook(MAP.in_keys), total]
+  syntax Bool ::= IdCell "in_keys" "(" TransitionCellMap ")" [function, hook(MAP.in_keys), total]
+  syntax Bool ::= CidCell "in_keys" "(" ChoiceCellMap ")" [function, hook(MAP.in_keys), total]
+  syntax Bool ::= "isWork" "(" K ")" [function, predicate(Work), total]
   syntax Bool ::= "isVariablesCellOpt" "(" K ")" [function, predicate(VariablesCellOpt), total]
   syntax Bool ::= "isVariablesCell" "(" K ")" [function, predicate(VariablesCell), total]
   syntax Bool ::= "isTransitionsCellOpt" "(" K ")" [function, predicate(TransitionsCellOpt), total]
+  syntax Bool ::= "isTransitionsCellFragment" "(" K ")" [function, predicate(TransitionsCellFragment), total]
   syntax Bool ::= "isTransitionsCell" "(" K ")" [function, predicate(TransitionsCell), total]
+  syntax Bool ::= "isTransitionCellMap" "(" K ")" [function, predicate(TransitionCellMap), total]
+  syntax Bool ::= "isTransitionCellFragment" "(" K ")" [function, predicate(TransitionCellFragment), total]
+  syntax Bool ::= "isTransitionCell" "(" K ")" [function, predicate(TransitionCell), total]
   syntax Bool ::= "isTCellOpt" "(" K ")" [function, predicate(TCellOpt), total]
   syntax Bool ::= "isTCellFragment" "(" K ")" [function, predicate(TCellFragment), total]
   syntax Bool ::= "isTCell" "(" K ")" [function, predicate(TCell), total]
   syntax Bool ::= "isStateCellOpt" "(" K ")" [function, predicate(StateCellOpt), total]
   syntax Bool ::= "isStateCellFragment" "(" K ")" [function, predicate(StateCellFragment), total]
   syntax Bool ::= "isStateCell" "(" K ")" [function, predicate(StateCell), total]
+  syntax Bool ::= "isSequenceCellOpt" "(" K ")" [function, predicate(SequenceCellOpt), total]
+  syntax Bool ::= "isSequenceCell" "(" K ")" [function, predicate(SequenceCell), total]
+  syntax Bool ::= "isOsequenceCellOpt" "(" K ")" [function, predicate(OsequenceCellOpt), total]
+  syntax Bool ::= "isOsequenceCell" "(" K ")" [function, predicate(OsequenceCell), total]
+  syntax Bool ::= "isOrsCellOpt" "(" K ")" [function, predicate(OrsCellOpt), total]
+  syntax Bool ::= "isOrsCellFragment" "(" K ")" [function, predicate(OrsCellFragment), total]
+  syntax Bool ::= "isOrsCell" "(" K ")" [function, predicate(OrsCell), total]
+  syntax Bool ::= "isOrIdCellOpt" "(" K ")" [function, predicate(OrIdCellOpt), total]
+  syntax Bool ::= "isOrIdCell" "(" K ")" [function, predicate(OrIdCell), total]
+  syntax Bool ::= "isOrCellMap" "(" K ")" [function, predicate(OrCellMap), total]
+  syntax Bool ::= "isOrCellFragment" "(" K ")" [function, predicate(OrCellFragment), total]
+  syntax Bool ::= "isOrCell" "(" K ")" [function, predicate(OrCell), total]
+  syntax Bool ::= "isOidCellOpt" "(" K ")" [function, predicate(OidCellOpt), total]
+  syntax Bool ::= "isOidCell" "(" K ")" [function, predicate(OidCell), total]
   syntax Bool ::= "isKCellOpt" "(" K ")" [function, predicate(KCellOpt), total]
   syntax Bool ::= "isKCell" "(" K ")" [function, predicate(KCell), total]
+  syntax Bool ::= "isIdCellOpt" "(" K ")" [function, predicate(IdCellOpt), total]
+  syntax Bool ::= "isIdCell" "(" K ")" [function, predicate(IdCell), total]
   syntax Bool ::= "isGeneratedTopCellFragment" "(" K ")" [function, predicate(GeneratedTopCellFragment), total]
   syntax Bool ::= "isGeneratedTopCell" "(" K ")" [function, predicate(GeneratedTopCell), total]
   syntax Bool ::= "isGeneratedCounterCellOpt" "(" K ")" [function, predicate(GeneratedCounterCellOpt), total]
   syntax Bool ::= "isGeneratedCounterCell" "(" K ")" [function, predicate(GeneratedCounterCell), total]
+  syntax Bool ::= "isCurIdCellOpt" "(" K ")" [function, predicate(CurIdCellOpt), total]
+  syntax Bool ::= "isCurIdCell" "(" K ")" [function, predicate(CurIdCell), total]
+  syntax Bool ::= "isCsequenceCellOpt" "(" K ")" [function, predicate(CsequenceCellOpt), total]
+  syntax Bool ::= "isCsequenceCell" "(" K ")" [function, predicate(CsequenceCell), total]
+  syntax Bool ::= "isCidCellOpt" "(" K ")" [function, predicate(CidCellOpt), total]
+  syntax Bool ::= "isCidCell" "(" K ")" [function, predicate(CidCell), total]
+  syntax Bool ::= "isChoicesCellOpt" "(" K ")" [function, predicate(ChoicesCellOpt), total]
+  syntax Bool ::= "isChoicesCellFragment" "(" K ")" [function, predicate(ChoicesCellFragment), total]
+  syntax Bool ::= "isChoicesCell" "(" K ")" [function, predicate(ChoicesCell), total]
+  syntax Bool ::= "isChoiceIdCellOpt" "(" K ")" [function, predicate(ChoiceIdCellOpt), total]
+  syntax Bool ::= "isChoiceIdCell" "(" K ")" [function, predicate(ChoiceIdCell), total]
+  syntax Bool ::= "isChoiceCellMap" "(" K ")" [function, predicate(ChoiceCellMap), total]
+  syntax Bool ::= "isChoiceCellFragment" "(" K ")" [function, predicate(ChoiceCellFragment), total]
+  syntax Bool ::= "isChoiceCell" "(" K ")" [function, predicate(ChoiceCell), total]
+  rule isWork(Work)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(8cd900efd418a51e32e2bb8c9096900a195528de43641a27c112e5868f2f0f3b)]
+  rule isWork(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(86c4e79b77b52026dbdf029dfda5cac6286858704685b14f59807b1ed2d06ab5), owise]
   rule isVariablesCellOpt(VariablesCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(4ec42a2641a8819b41ed6128b667dbf8b5c7d60264530e185af7403edb98994e)]
   rule isVariablesCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ea909e8f57b24b22f9181aa35eb40e36eee6f15df2df65e32157155e9d0fc768), owise]
   rule isVariablesCell(VariablesCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f6e555c61390f43c4b44b4bc140ace66bdde1d724fc02565289fcd60439f5ef7)]
   rule isVariablesCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(21e9959d3217cfcd4aaa34c7f43fc6f5ad462e51e9cef1fcaf6d753a2885eaf1), owise]
   rule isTransitionsCellOpt(TransitionsCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(294b81c7287faea90bbdaefd88c5e5570313f780253718de765fc57dbef62643)]
   rule isTransitionsCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1eb305c0aff6a98ef31ac272392a8f5a9c8554379e6fd30e55f27a4340bb2bd1), owise]
+  rule isTransitionsCellFragment(TransitionsCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(e04761a45a0df12901281b84d959642fe39152bacb1bba5cf3070c9fabf09296)]
+  rule isTransitionsCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(190953d7b3d99ee1576a3ca6bfd1b3ca2e1a58b24f587c333fc1a032144c1ee8), owise]
   rule isTransitionsCell(TransitionsCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(667b1710518a00e5306a5e47da5e1303197a02e5cbf3e35bc1acd0a935bf5af3)]
   rule isTransitionsCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(de683589f7ba26e98a9a25823c02edbd423afdaf723d64e74494750fb1b138bd), owise]
+  rule isTransitionCellMap(TransitionCellMap)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(846bc8ade68a70bc146498e9fc5c74efc2629fab690e9a1d537a74ead04bc283)]
+  rule isTransitionCellMap(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5305b0f05550c5dfb4c778938977d4b8c386fff704549712e360d4d750d92dfc), owise]
+  rule isTransitionCellFragment(TransitionCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(fe07163c24039142b07858d51593f2035295cf7fef622c227bc43f8b1d0f316c)]
+  rule isTransitionCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1cc76b4a5a8055e7285631329b0c06a9527e38a2fb77b32d36d39e1ef57b389a), owise]
+  rule isTransitionCell(TransitionCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(04723320729c5e3fe6f834eb14ad06dcb7468295530d58eb69462114c5e45c16)]
+  rule isTransitionCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c4164c90657b2ce210ed512d4ee381aaa0c3e98bda88151d747bd863282dad94), owise]
   rule isTCellOpt(TCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(2d9e2efc934a1108a68dec355c0ce9420ec8c2292a856744f5d9014a10f5888c)]
   rule isTCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3a11be25d71bcfe67274e7f5c5091d99dc524b8bc5a8ac8fe6c101e58c1895ca), owise]
   rule isTCellFragment(TCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f1c94b538b3ecdc44697da9f227c0650540c8f233c5dba13f94071522c756c76)]
@@ -1100,10 +1295,42 @@ module XSTS [digest(fHbkbUUmtZqVEpkdBEuFwQJ0dmWdWiAw5HOhNEdxId0=), org.kframewor
   rule isStateCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f85be83c8ecacc855daf4eb723942681f31cc05a7ecfd01ad85bce8529d0863f), owise]
   rule isStateCell(StateCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(66256807bfe91d1d029a3ae94eafa088f1c65a7a764ca8875a5427f9532df462)]
   rule isStateCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5b0e69b47868d7006abcecd9821496d91b1cbed0dc497e01577e9ddadc87c627), owise]
+  rule isSequenceCellOpt(SequenceCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(df9d810bfb58970b2018c7d7f9b6131454fee3f64d71a08a34e5168515aeba96)]
+  rule isSequenceCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f726a40b80fedf31d8d6665a12004888ddf5ef6ada776f921be97a33c956bb98), owise]
+  rule isSequenceCell(SequenceCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(30da389ea8b7a8a80d7cd8809d8a38ce9cfe2d966edb84cb6ae60f8a595d82f7)]
+  rule isSequenceCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a9282603dfe2cf9056d13dcb7ce73fa8d7a805c3c4f961f82ddd6285ff696540), owise]
+  rule isOsequenceCellOpt(OsequenceCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(60d6f0c5f3819d88a9f2558f66c9dd4266a7af2855d5667c4ef4bad86b3e7f4a)]
+  rule isOsequenceCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5fafc80c8aee497600c5d87cfa3000b5fd362dea917ef094690be2d731356a14), owise]
+  rule isOsequenceCell(OsequenceCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(87f60778a05b8429dabf2cb37eb1ed09e0fe69bccaace4847c844025a3d3a70e)]
+  rule isOsequenceCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(75728cc970020efe8c965306976d9b0323c7cdbf2ac3ab4d0b023882c1f1002a), owise]
+  rule isOrsCellOpt(OrsCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(295bf27b94c572af4d4f2af0f8ccfa3c7eb35e37ff5368239b588e3d332fa945)]
+  rule isOrsCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(339c8a5ea929e3ca762fb7bc96a9f6d3165c525dcbade3198fdf980aa2cfac5a), owise]
+  rule isOrsCellFragment(OrsCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(390b8f12abcbb12f4948501ad8e365838e0dadd9657a68f11f519683b7c9ed7c)]
+  rule isOrsCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ad2a679823e370d5bd0745e70cad90d19711b70c5e957e476d67977e7a257f5e), owise]
+  rule isOrsCell(OrsCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f5972d81f619015c56c5613e286e78f25eeede1f81aef45816d5b2ef42a7c158)]
+  rule isOrsCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(083d7c99019954c917daa7ce08f66af0f6f4f17922fdf493b1cef36ab3f5c7ef), owise]
+  rule isOrIdCellOpt(OrIdCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(76c1f0f92b4f34a6094cae322ee3e3c5d3c5930ed97252290bb642c338d8f934)]
+  rule isOrIdCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(449a3df140a5d7d1399cdb377adf5d9c585ae2dd862a347f045af63f0cc19688), owise]
+  rule isOrIdCell(OrIdCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1783c486b725e82fae29058a024ff9bb6cecdd27aa87f2a665d4b9f0767955a4)]
+  rule isOrIdCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a3c7743b95cece6ec744464a6d66f468d19e43d1585b771ccc9267c2f312040f), owise]
+  rule isOrCellMap(OrCellMap)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f799803ab7f1615eec53a6e9232259dab0baf01bcceb3dfd8ddcaa05b4f7b254)]
+  rule isOrCellMap(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(500eccc6864fe68d393512a1e985135cb52a08846c14771b4f32c615bbb8846d), owise]
+  rule isOrCellFragment(OrCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1b17c628d74d85aa2c3f2d826a546bf3dfb1c1eb2fd94952868ca9ca92886661)]
+  rule isOrCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a2323f48724b03822b269e751502ac517c00ad2e05ffbe1d638fcad62d664f54), owise]
+  rule isOrCell(OrCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(82eda4ab468911d8e7e819db52c485287a526230d74ea29d870485e5eca09786)]
+  rule isOrCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a96406763cd02fcc471951a82416ae901548ceb2decd0ff0f189ca8208ce775a), owise]
+  rule isOidCellOpt(OidCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(cbb71462b2fcbcf583b04a65607b60ff266e18d552a13470e3131199aa2ac3ab)]
+  rule isOidCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3791314523961494eefb88dc7ed0f9ec19b6fb541a8c549805554cfd94537268), owise]
+  rule isOidCell(OidCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(343a454872c396b2ff64e437852d27a47a774d7e09dd779fc06c677361b922f5)]
+  rule isOidCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(596697da7988751c1af64b88d43bfd192003bc13d58b9974426d1e97980246ea), owise]
   rule isKCellOpt(KCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1516473b1e153a368c273997543a4378ad451e5e828db8e289f4447f7e5228a5)]
   rule isKCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(9a3f84195242c98b432c7c63a4189f4276cc3189445c5cf37ce08d9a6547b1f7), owise]
   rule isKCell(KCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(2695222b1238f711f8a356c0a1bc0ac418d7bd78fd3282e7c60882e2631a46df)]
   rule isKCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(d30be57718b4b3745eaf2e99f875cfec7d5be2ff76bacde8a89bd4ab659d857f), owise]
+  rule isIdCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(97b460458510ac90d567ead6ecab7304b27095a3f1375f34a8dbf3bca5b34861), owise]
+  rule isIdCellOpt(IdCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3363447a9686305d5f5c655945cc9274e56380a3bc43a5a3e605ebd4160fddf9)]
+  rule isIdCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(55570a5dd6c8347da6876db9087330db94d4ea6328e1363d79c9896c35bfb14e), owise]
+  rule isIdCell(IdCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(73020a53592acbac1d04790c4774758426d83d6fe2e29744e101c40df700c7d6)]
   rule isGeneratedTopCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(98049f5819962c7ee2b01436957b6cf8460b106979fa2c24f4c606bbf6cb1592), owise]
   rule isGeneratedTopCellFragment(GeneratedTopCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(559f2cdc0ab425bb065cc3174f4a1af4d9ca834f762a814cf3dfbf9a9d7f8271)]
   rule isGeneratedTopCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ccb9226d9e6c0e476485f098ef162c6c2206ed3af1d8336ea3ae859b86bc4a8b), owise]
@@ -1112,45 +1339,134 @@ module XSTS [digest(fHbkbUUmtZqVEpkdBEuFwQJ0dmWdWiAw5HOhNEdxId0=), org.kframewor
   rule isGeneratedCounterCellOpt(GeneratedCounterCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a4ff3e170677e099d4b28085658942cb10fcf871aa99abcdf73927596c180f12)]
   rule isGeneratedCounterCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b0c8eb86594a387398bf96f2dbf773cff29d14b8a45c5f6701f205bf3d2f33ba), owise]
   rule isGeneratedCounterCell(GeneratedCounterCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f7b6a3dbee5a80d5eeba727f40009876995660d4052a45fc50c55f88c5fc1a7c)]
+  rule isCurIdCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(63d06197c7223eb0350098131ac880f530b47828ee7d396a7f0d28183a7c547c), owise]
+  rule isCurIdCellOpt(CurIdCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(34e9243971982d4fa96046c8480ea23d4e5ecfa73cac48bed2d319ad7ea3b319)]
+  rule isCurIdCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f6408e9a7ffe3a5836a1755d4d3dfbc2f15905f90cf2fb29ff4a252e178f299c), owise]
+  rule isCurIdCell(CurIdCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c85be1be612cca2c29794b4e9fd43fa1ad9292238106fea83e1bf9069c2ed0e0)]
+  rule isCsequenceCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(37798732c9e103d36ad2253c065e0f9e89806a1e57a6cf32d372ff4edcb780f9), owise]
+  rule isCsequenceCellOpt(CsequenceCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(db7aa171b811e9a7883c67901e8d1f8175effa5daa2303ab564a3c9e244ee3a9)]
+  rule isCsequenceCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(eacb27ad317c6bcec68e043413cfc337c9561ccc2b9b6b86994984c8f5ab352e), owise]
+  rule isCsequenceCell(CsequenceCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(7ee3b9ce7aa28f7196895cce379050bd5e2fb11a182b86427cce443dce6b4bcc)]
+  rule isCidCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c1f237975ece0b7561278eb96cc6c7c1e738d613090b77939cd5b7bfa6c6daf2), owise]
+  rule isCidCellOpt(CidCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(72c4a5b14a141dbf8e7fe0e0e66ea1dea5afe530db8ab8651da4f070de8ab3a7)]
+  rule isCidCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(4bc3604e3c49ed79e923466ebb278b1033ebffb66b1bc221637e68abc1b34b9b), owise]
+  rule isCidCell(CidCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f0b8d5dcb55b3e9d2441753270252d1592fecc614a1bb685c46a84303cab68dc)]
+  rule isChoicesCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f508dee8e5f490bf8fc5afd735065b2aba232575afe1c34d111edfd58caa6f93), owise]
+  rule isChoicesCellOpt(ChoicesCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(10b8e835d0b4db4f468d66f98549f594d2cad5fb0fe3bc7f1a14638248c36ef3)]
+  rule isChoicesCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(0e7776e0b5fbd8a93eb692f3e2a61e6170caafcf1a45a176315c869d20d554ff), owise]
+  rule isChoicesCellFragment(ChoicesCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(249cb263d757d9c5d6fa216e274f5a9921d2396e7d509b00570d09c5ff0be6be)]
+  rule isChoicesCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(e5fc57f537be3db86700d976fcffa849a370d4b7616dcb21aa6a1001163faa8d), owise]
+  rule isChoicesCell(ChoicesCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a9f0e84650df33f631f84225aef3fa894421256e6e0c46f38dcc56c5b74f8b53)]
+  rule isChoiceIdCellOpt(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(2f801baaaba07e0412d9aaf16b4697ff55e3600e0552cfb8d07e48efc86532d9), owise]
+  rule isChoiceIdCellOpt(ChoiceIdCellOpt)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(7b7faf87243c4e9f4f312cdd581adc1960687262259ab54979b4caaa0ea752dc)]
+  rule isChoiceIdCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(2b69aa8f828e690ae2819fcaec8d8ed282f8c488d79a071edf261557620196c1), owise]
+  rule isChoiceIdCell(ChoiceIdCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(677bd032d708bd6b5cbc5220258144e5042e3b7c1ad88fbbe49a12a9089de42f)]
+  rule isChoiceCellMap(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(7c505d6d9dcec85b867f71eb6d62155e43ae1972a8130c5e1cd95a8e922d5916), owise]
+  rule isChoiceCellMap(ChoiceCellMap)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(557e531550589b39221f46c2739d27b11623c7e6e32b3dab8511417e8dce95b4)]
+  rule isChoiceCellFragment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ebb09c7bef6755290719db15d9feb9c7dc1f26da53f1621dc14a2f44b1a07a12), owise]
+  rule isChoiceCellFragment(ChoiceCellFragment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1874c7a4ac7ebdf2bb9f8a0d0a9b1c64afd0482071492bf5767686084c30a521)]
+  rule isChoiceCell(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(d488ae8d4da37a81a82bfe781c5ce11d3fba341ddfd8603020c3715a8afa9ec3), owise]
+  rule isChoiceCell(ChoiceCell)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ef7c0eb823ab683a2f87ca873d5603a61e591c596509dba1b7529488026c399a)]
   rule initVariablesCell(.KList)=>`<variables>`(`.Map`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(878bdabc33db6c1f2be2958713135da8882bc92dc231c1de92753af470c9992d), initializer]
-  rule initTransitionsCell(.KList)=>`<transitions>`(`.List`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ae770a8bf017d4e51e07b3f798a061a6aea81e93414660b4860ee90d4f92cf6a), initializer]
-  rule initTCell(Init)=>`<T>`(initKCell(Init),initStateCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(082e738743e54caf1b2a3e9be1aa464283ccaca4c3a7d07813904226676400bf), initializer]
-  rule initStateCell(.KList)=>`<state>`(initVariablesCell(.KList),initTransitionsCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5d6f41bd1e92c0ac18ba037f346a53c753cfc3080c562286c333a766cef90caa), initializer]
+  rule initTransitionsCell(.KList)=>`<transitions>`(`.TransitionCellMap`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(8746f3f5933a85cef3def80b2b6ccd2702c2a81705e22caa3d8976cae4f8587d), initializer]
+  rule initTransitionCell(.KList)=>`<transition>`(initIdCell(.KList),initSequenceCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(77e3c199994eac69c0f3afa6c90471315c1717dbf680602c36d140bc895a3344), initializer]
+  rule initTCell(Init)=>`<T>`(initKCell(Init),initStateCell(.KList),initCurIdCell(.KList),initChoiceIdCell(.KList),initOrIdCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(18757561712fe455deebebf92bf96fe73c020d541c8194bd6012a4ffd169e9bc), initializer]
+  rule initStateCell(.KList)=>`<state>`(initVariablesCell(.KList),initTransitionsCell(.KList),initChoicesCell(.KList),initOrsCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(fc28838ab7c88bf4e16594a0d58ad38278f85c38b7d54166d5b2a91d69a7b5bd), initializer]
+  rule initSequenceCell(.KList)=>`<sequence>`(`.List`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c09ef25061e5117b77c4b711a4debe13ba05ed5bd1e86ebbb89aa00be1240f48), initializer]
+  rule initOsequenceCell(.KList)=>`<osequence>`(`.List`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3d182601d73a9f29a1d9fd426a53bbf9f8666e8b83e76caf2fc4f017c84fc039), initializer]
+  rule initOrsCell(.KList)=>`<ors>`(`.OrCellMap`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(555aee88438950badff7a517db3b9bdf14c01bc937f14dd2b59040d2383b2d7f), initializer]
+  rule initOrIdCell(.KList)=>`<or-id>`(#token("0","Int")) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(23f062586134590c746b0696f9676dea31d4df84c89408ead8b36d7f00265eac), initializer]
+  rule initOrCell(.KList)=>`<or>`(initOidCell(.KList),initOsequenceCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(21f59fa208bab83b8a15dcd2ac5666f637d9bda4da27a985baac6ff26e5d8a1b), initializer]
+  rule initOidCell(.KList)=>`<oid>`(#token("0","Int")) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(84c1f155cb9018b3d70cd6313a6768073c964df7e9ca0cdfa1dddb03bb30dfd1), initializer]
   rule initKCell(Init)=>`<k>`(`project:Program`(`Map:lookup`(Init,#token("$PGM","KConfigVar")))) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3f456a60337067013f63e2f590f1c1dcf30800d1fabf722c5d0973f3e7fdfdf1), initializer]
+  rule initIdCell(.KList)=>`<id>`(#token("0","Int")) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(2a06b6a27a201eff054d451215437e05883ac11cae719271694b12cb59b7c6df), initializer]
   rule initGeneratedTopCell(Init)=>`<generatedTop>`(initTCell(Init),initGeneratedCounterCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(6bc7582a7d8c6574a248b085ad3bdecafbf86539963d4e752be82fb1c857fb28), initializer]
   rule initGeneratedCounterCell(.KList)=>`<generatedCounter>`(#token("0","Int")) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5de11f6b50c4684c0e05b773f809d756f4ce9c03a4f24e23a9cddaf3fa31f553), initializer]
+  rule initCurIdCell(.KList)=>`<cur-id>`(#token("0","Int")) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(7a90fa52945a80885e8022f45bb36d3f161fda2b295dd449f05406c461260034), initializer]
+  rule initCsequenceCell(.KList)=>`<csequence>`(`.List`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(d159d397c6fb54d77f3b4d0fecb539603a31214a01fe186a8935104aa420302a), initializer]
+  rule initCidCell(.KList)=>`<cid>`(#token("0","Int")) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(60efe62641baf160467aeef3df23458cc57ca9dd7e34431538a9d2b0fa244782), initializer]
+  rule initChoicesCell(.KList)=>`<choices>`(`.ChoiceCellMap`(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a9a1e1cdd54b5f074883eef332a382b62c272aab5a3227320e6bbbb99b21fc21), initializer]
+  rule initChoiceIdCell(.KList)=>`<choice-id>`(#token("0","Int")) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(9cacc59502d943d68a61d8667ec1ff9b9b2ce4b1ce9ef9ab76fe7df1baef0110), initializer]
+  rule initChoiceCell(.KList)=>`<choice>`(initCidCell(.KList),initCsequenceCell(.KList)) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(afd3e3d18d81e3180625900f1892931d86f6c15abddf53cc371455ed6b3d363f), initializer]
   rule getGeneratedCounterCell(`<generatedTop>`(_DotVar0,Cell))=>Cell requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(9ef5eb9b9e6bbd7436911fad20615821f61e06e742dd27773001ab0664bd1de3)]
+  rule `project:Work`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(bf9b7135e312e2e8472020a7b93e471dee891507c17f09015ba360f2c3897188), projection]
   rule `project:VariablesCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c22186b5f09117a298d9df8335b091ddedd878b2ffd4d3c82d24b41a6bd0439a), projection]
   rule `project:VariablesCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(59f1730576484a273ad3ca171ff51ab446dfa85ae9191102e5e3ecb2b56d2174), projection]
   rule `project:TransitionsCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ab5ecb4ffa7b438b35734dc0fbf7bb00fa603e75da29a1aa5a70873bdf5680b1), projection]
   rule `project:TransitionsCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3be2edd1f0f2d9f3028094ba83ea7efacd9b229a1725bb09b064a5f500142cff), projection]
+  rule `project:TransitionsCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(495e2f6f99a0f46bebda6575c52b81ff885a9af84043ead76e9acad36b7fdfe9), projection]
+  rule `project:TransitionCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ae77f2f2d708db75ad65938a8a24a3590bd194b92b4d8d51ace8acaa1d6c9156), projection]
+  rule `project:TransitionCellMap`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ad0c1bcfd57d528cd0b232384da31664a6946e725535a9e9ecb9f2ab4e29fa8b), projection]
+  rule `project:TransitionCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(15923df1d74332313ac04bee962debde9cd57feca1c202135fc04ec7c73d1a5c), projection]
   rule `project:TCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(8f26b10396db28857112a7db56ab3ef6b64a5c219427baf3f17e0e1fb39ad1ba), projection]
   rule `project:TCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(d3df5db294a6f5330dba88e63f8fdddee2bee164f110ca7e39e65afc4cfbb85a), projection]
   rule `project:TCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(fcf28c9054cbb906b0631404e7190aa02f1fa3a4a09ec0d3024688ee1222c76c), projection]
   rule `project:StateCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(0573483956a8961d6c85cbcde0f7d23fd94a88f5f11c72a54f63e4975f3744aa), projection]
   rule `project:StateCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(e9c7307bada1aa928bd077216781fb45fe226c28e19ec950318b7cfa9e6ae9be), projection]
   rule `project:StateCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(071315163a6673caebca9803acd730c9d5ac2b00ab630c6e3f67f4e949654bc4), projection]
+  rule `project:SequenceCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(fd47d118a40cf15fe26e4f5032d3b50a22ab7caba9c52b1503841a37dec2df39), projection]
+  rule `project:SequenceCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(37b23d090308e460753ef317fc81f6e403441ee171ac6eff1beadf8ea73040b3), projection]
+  rule `project:OsequenceCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1ac48b2c219bfb45c188255f04b073be4a49ad22a43584e7ebc2280379217896), projection]
+  rule `project:OsequenceCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b86ca68eb0a3add412b33d42ca629ab360051ba04159a416ee0886ad55c9394b), projection]
+  rule `project:OrsCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(32d367c0b7f1b0f25e366be56dc7e798a12d7fa713b0025a9e9a181bfea1c5f2), projection]
+  rule `project:OrsCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(d7de81f7192e69130c7b7842aea6c501569fed6d245b9b07badb5dde2597c02b), projection]
+  rule `project:OrsCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(26e8a85efa34d3da99e6eb53f3b6af6fbbd713294b6cfed379c080ad00fd68ce), projection]
+  rule `project:OrIdCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(01a327af653f7f3c279195b406fc84d3dcaf6bc7641bdd38ed5bd770abc981bf), projection]
+  rule `project:OrIdCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(6b6940528b09daf3f74eeac13c5f4000274b777978e9d930118ac51bc146e683), projection]
+  rule `project:OrCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(77c71f116c321d753a5bd0340f43ef350dee320ae6c09b5832123ec2cc73255d), projection]
+  rule `project:OrCellMap`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5966c97412412c7782b9f5341a5eb007c323ee6cc6a791cc3872cb6e15cf97af), projection]
+  rule `project:OrCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(65f558d13501513ec252980519da7b352854bc48efbdc8eea435a6fff9a4e13e), projection]
+  rule `project:OidCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(23b5b66213d4c721a0217f10fd98a0105fba5fa5e6ab26fe53987bf9e53182b6), projection]
+  rule `project:OidCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(4b9db7f3fd0472419dee78e4c863bc2e6714b153fe6e8de806a68530a706db10), projection]
   rule `project:KCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(894c13c4c410f11e35bc3781505aeddde4ff400ddda1daf8b35259dbf0de9a24), projection]
   rule `project:KCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(f684dd78d97feadf0cbcb3cbb8892e0842f137c7b29a904cb2f3fc9755b29b30), projection]
+  rule `project:IdCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ddf90ca52ddd3ec6cc10d2169e2f964bd73e115fa3c39eda960a768a5646e37a), projection]
+  rule `project:IdCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(cdb7ab08d99b95d0885970106325700f24bcab2fe03178655bc1877c3b00fa45), projection]
   rule `project:GeneratedTopCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b0fabd8c7c81fe08ebd569aff59747d357e441ae1fcd05d9d594d57e38e3d55e), projection]
   rule `project:GeneratedTopCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(2084fac322aa142a07f881814b8a286bf62d5c6d05777b7aa715ccc534cf9a42), projection]
   rule `project:GeneratedCounterCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(63453db9d9aa121b63bb877e2fa4998d399ef82d2a1e4b90f87a32ba55401217), projection]
   rule `project:GeneratedCounterCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(9325a900267ae528f7cd09f3b44b825dd9ff344c38d38383c08fa697cc67efca), projection]
-  rule `<generatedTop>`(`<T>`(`<k>`(``T=>.K``~>_DotVar2),`<state>`(_DotVar3,`<transitions>`(`_List_`(`.List`(.KList)=>`ListItem`(T),_DotVar4)))),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c68a50bfc3d4cf8cef1f31f365b8b615f4ea0c2770f121afff1b8859dcd70ff6), cool-like, org.kframework.attributes.Location(Location(52,10,53,63)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
-  rule `<generatedTop>`(`<T>`(`<k>`(`` `var_:integer_XSTS-SYNTAX_VariableDeclaration_Id`(X)=>.K``~>_DotVar2),`<state>`(`<variables>`(STATE=>`Map:update`(STATE,X,`empty_XSTS-SYNTAX_Literal`(.KList))),_DotVar3)),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(e0b48ad74ff93a84062677c471d9cf452181147125ab17782e0d9ead082722b9), org.kframework.attributes.Location(Location(48,10,49,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
-  rule `<generatedTop>`(`<T>`(`<k>`(`` `var_:boolean_XSTS-SYNTAX_VariableDeclaration_Id`(X)=>.K``~>_DotVar2),`<state>`(`<variables>`(STATE=>`Map:update`(STATE,X,`empty_XSTS-SYNTAX_Literal`(.KList))),_DotVar3)),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c8882df555fc8996b3a90547d52122b1ad7bc42c8fc067c7ac42f4255b3aa75f), org.kframework.attributes.Location(Location(50,10,51,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
-  rule `<generatedTop>`(`<T>`(`<k>`(`` `___XSTS-SYNTAX_Program_Line_Program`(L,P)=>L~>P``~>_DotVar2),_DotVar1),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(19c130071776dd554da4215c4fedb395a56c55cb7c2d1afc3560ce9415fce123), org.kframework.attributes.Location(Location(44,10,44,48)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
-  rule `<generatedTop>`(`<T>`(`<k>`(`` `.List{"___XSTS-SYNTAX_Program_Line_Program"}_Program`(.KList)=>.K``~>_DotVar2),_DotVar1),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b466926e9a60fc6ab6df3f8a867638f42315face5de469d859d8d193db684b91), org.kframework.attributes.Location(Location(45,10,45,36)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `project:CurIdCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(97b7d45da7459fa839ae6a8d89cde6cb29bf180e22471a5faec8de0761c02e8a), projection]
+  rule `project:CurIdCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3e4f696b871c508df31cd7bec1bfe4bf67f0c7a6fd71a4a54380bb881d76e12f), projection]
+  rule `project:CsequenceCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5e5a67531a6e319d4d1c6c183c6f12075ae4177c9ded90153ecd8a679df508fa), projection]
+  rule `project:CsequenceCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(cb00563240dabdc76a01b3b9d73d5657a7bf62ad8136ccd14ee1ca1556342bdf), projection]
+  rule `project:CidCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(39f000ef5b682b7bbd907563b07f5a8049a92dab65264d06c4716acdcae00e34), projection]
+  rule `project:CidCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ece5cd54d8bbbfcd31fac7a438f13fc41fd506d84d974936495d3f49ee0aeccc), projection]
+  rule `project:ChoicesCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(39e1dd2295e64e562ff29febe4ecd07360bb7a195dd476edcfb65574778136c4), projection]
+  rule `project:ChoicesCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(02093dfbe94adad76499b4f36b7102e99aefa998ae7cd0bb968d3e0584db7d52), projection]
+  rule `project:ChoicesCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(61f9c80b572639ecceeb6e1288895e530ccc2074d94064f94abe9c1536dcb643), projection]
+  rule `project:ChoiceIdCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(16aee376ac8c844f93bbfd9ce1f38329e20acbac4215295db73d8bb9812ebff7), projection]
+  rule `project:ChoiceIdCellOpt`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(aa3bc2bdd90dd8719807275a856185cc93f597394c3ad020fddbe6d83398e35e), projection]
+  rule `project:ChoiceCell`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(783a649ba399db40206ac29b263c5e04486f7fdf11df074c9240787a23d0da5b), projection]
+  rule `project:ChoiceCellMap`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(2ec31df64edc68dc4d24f7389f8ee088f613e0e1404935dd4776a56f5c59ba00), projection]
+  rule `project:ChoiceCellFragment`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(d8c2c3b64a293cf91e3687b19247b58587fdd292254e6733a4462262b8f697dd), projection]
+  rule `TransitionCellMapKey`(`<transition>`(Key,_DotVar0))=>Key requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(0b4c966fb45157642f2168a52f0a265c3923e95884b5e10838bf4b21019e711a)]
+  rule `OrCellMapKey`(`<or>`(Key,_DotVar0))=>Key requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(ed4ac2f10c2181498ee8d713fe078f0f1a46a2686d681d588ae1be28f29ec176)]
+  rule `ChoiceCellMapKey`(`<choice>`(Key,_DotVar0))=>Key requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(3c89977d9476b0fc89e20c19b7f65825648199d43156725fdc1793d0974482b0)]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `work(_)_XSTS_Work_Transition`(`tran{_}_XSTS-SYNTAX_Transition_Sequence`(`___XSTS-SYNTAX_Sequence_Operation_Sequence`(O,S)))=>`work(_)_XSTS_Work_Transition`(`tran{_}_XSTS-SYNTAX_Transition_Sequence`(S))``~>_DotVar2),`<state>`(_Gen0,`<transitions>`(`_TransitionCellMap_`(`<transition>`(`<id>`(CURID),`<sequence>`(`_List_`(`.List`(.KList)=>`ListItem`(O),_DotVar5))),_DotVar4)),_Gen1,_Gen2),`<cur-id>`(CURID),_Gen3,_Gen4),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(52b3e906aa681fc9004fa17716a771fdca4c42cc97484bd49d386ebc513c4bc6), org.kframework.attributes.Location(Location(103,10,105,96)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)]), priority(51)]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `work(_)_XSTS_Work_Transition`(`tran{_}_XSTS-SYNTAX_Transition_Sequence`(`___XSTS-SYNTAX_Sequence_Operation_Sequence`(O,S)))=>O~>`work(_)_XSTS_Work_Transition`(`tran{_}_XSTS-SYNTAX_Transition_Sequence`(S))``~>_DotVar2),`<state>`(_Gen0,`<transitions>`(`_TransitionCellMap_`(`<transition>`(`<id>`(CURID),`<sequence>`(`_List_`(`.List`(.KList)=>`ListItem`(`choice__XSTS-SYNTAX_Choice_Int`(CHOICEID)),_DotVar5))),_DotVar4)),`<choices>`(`_ChoiceCellMap_`(`.ChoiceCellMap`(.KList)=>`<choice>`(`<cid>`(CHOICEID),`<csequence>`(`.List`(.KList))),_DotVar6)),_Gen1),`<cur-id>`(CURID),`<choice-id>`(CHOICEID),_DotVar1),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(1eddd4f75d889e5e489457e13242158701a699b919eb6d6175cb7399f5a2af29), org.kframework.attributes.Location(Location(108,10,112,88)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `work(_)_XSTS_Work_Transition`(`tran{_}_XSTS-SYNTAX_Transition_Sequence`(`.List{"___XSTS-SYNTAX_Sequence_Operation_Sequence"}_Sequence`(.KList)))=>.K``~>_DotVar2),_Gen0,_Gen1,_Gen2,_Gen3),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(25d4ec2b62468e077646cca4a4e32d22a0599f16baff9f97d6c108bde64c672e), org.kframework.attributes.Location(Location(114,10,114,55)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `var_:integer_XSTS-SYNTAX_VariableDeclaration_Id`(X)=>.K``~>_DotVar2),`<state>`(`<variables>`(STATE=>`Map:update`(STATE,X,`empty_XSTS-SYNTAX_Literal`(.KList))),_Gen0,_Gen1,_Gen2),_Gen3,_Gen4,_Gen5),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b64d63af0f3b76e9777b70bd538daec39f295a56272c823a9ddbefb599b2741e), org.kframework.attributes.Location(Location(91,10,92,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)]), priority(48)]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `var_:boolean_XSTS-SYNTAX_VariableDeclaration_Id`(X)=>.K``~>_DotVar2),`<state>`(`<variables>`(STATE=>`Map:update`(STATE,X,`empty_XSTS-SYNTAX_Literal`(.KList))),_Gen0,_Gen1,_Gen2),_Gen3,_Gen4,_Gen5),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(6b164a180dec971edf5c0471ae518d8e30f4925e76d3db55b9e658b4b14d7e25), org.kframework.attributes.Location(Location(93,10,94,64)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)]), priority(48)]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `tran{_}_XSTS-SYNTAX_Transition_Sequence`(S)=>`work(_)_XSTS_Work_Transition`(`tran{_}_XSTS-SYNTAX_Transition_Sequence`(S))``~>_DotVar2),`<state>`(_Gen0,`<transitions>`(`_TransitionCellMap_`(`.TransitionCellMap`(.KList)=>`<transition>`(`<id>`(`_+Int_`(CURID,#token("1","Int"))),`<sequence>`(`.List`(.KList))),_DotVar4)),_Gen1,_Gen2),`<cur-id>`(CURID=>`_+Int_`(CURID,#token("1","Int"))),_Gen3,_Gen4),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c2444b5271d757e63ffb7b083d1047caf3a3273d52ad0e0d21be11ecd45b72f4), org.kframework.attributes.Location(Location(97,10,99,92)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `choice{_}__XSTS-SYNTAX_Choice_Sequence_ChoiceOrBlocks`(S,B)=>B``~>_DotVar2),`<state>`(_Gen0,_Gen1,`<choices>`(`_ChoiceCellMap_`(`<choice>`(`<cid>`(CHOICEID),`<csequence>`(`_List_`(`.List`(.KList)=>`ListItem`(S),_DotVar5))),_DotVar4)),_Gen2),_Gen3,`<choice-id>`(CHOICEID),_Gen4),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b0e0f682dfd4728c46d43708b89b55c0b11c26ee5827649230cfbe4d171f94a4), org.kframework.attributes.Location(Location(119,10,121,97)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `___XSTS-SYNTAX_Program_Line_Program`(L,P)=>L~>P``~>_DotVar2),_Gen0,_Gen1,_Gen2,_Gen3),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(19c130071776dd554da4215c4fedb395a56c55cb7c2d1afc3560ce9415fce123), org.kframework.attributes.Location(Location(84,10,84,48)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `___XSTS-SYNTAX_ChoiceOrBlocks_ChoiceOrBlock_ChoiceOrBlocks`(`or{_}_XSTS-SYNTAX_ChoiceOrBlock_Sequence`(B),S)=>S``~>_DotVar2),`<state>`(_Gen0,_Gen1,`<choices>`(`_ChoiceCellMap_`(`<choice>`(`<cid>`(CHOICEID),`<csequence>`(`_List_`(`.List`(.KList)=>`ListItem`(B),_DotVar5))),_DotVar4)),_Gen2),_Gen3,`<choice-id>`(CHOICEID),_Gen4),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(27feb81521f3e9ee62ed54c594369475411e50aab0cd7fc177d03c779504d0ca), org.kframework.attributes.Location(Location(125,10,127,97)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `.List{"___XSTS-SYNTAX_Program_Line_Program"}_Program`(.KList)=>.K``~>_DotVar2),_Gen0,_Gen1,_Gen2,_Gen3),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b466926e9a60fc6ab6df3f8a867638f42315face5de469d859d8d193db684b91), org.kframework.attributes.Location(Location(85,10,85,36)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
+  rule `<generatedTop>`(`<T>`(`<k>`(`` `.List{"___XSTS-SYNTAX_ChoiceOrBlocks_ChoiceOrBlock_ChoiceOrBlocks"}_ChoiceOrBlocks`(.KList)=>.K``~>_DotVar2),_Gen0,_Gen1,`<choice-id>`(CHOICEID=>`_+Int_`(CHOICEID,#token("1","Int"))),_Gen2),_DotVar0) requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5060906b3b04c5830d000d72ed2efd32ddb12951c21555ecd17af474f509a5e6), org.kframework.attributes.Location(Location(131,10,132,62)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k)), org.kframework.definition.Production(syntax #RuleContent ::= #RuleBody [symbol(#ruleNoConditions)])]
 endmodule
 
 
-module XSTS-SYNTAX [digest(9md2NQzTRW+dYmerSBfVViE1Di+H6W2p/gknFq0NNNs=), org.kframework.attributes.Location(Location(1,1,29,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
+module XSTS-SYNTAX [digest(uYvgKO4FwAhYKsJUt46ZUsA7lpmsJNKal9L6uT3EymE=), org.kframework.attributes.Location(Location(1,1,35,10)), org.kframework.attributes.Source(Source(/mnt/e/bme/dev/onlab/k/project/xsts.k))]
   imports INT-SYNTAX
   imports ID-SYNTAX
   imports BOOL-SYNTAX
   syntax VariableDeclaration ::= "var" Id ":" "integer"
   syntax VariableDeclaration ::= "var" Id ":" "boolean"
   syntax VariableDeclaration ::= "project:VariableDeclaration" "(" K ")" [function, projection]
+  syntax Transitions ::= Transition "" Transitions [userList(*)]
+  syntax Transitions ::= "project:Transitions" "(" K ")" [function, projection]
+  syntax Transitions ::= ".Transitions" [symbol(.List{"___XSTS-SYNTAX"}), userList(*)]
   syntax Transition ::= "tran {" Sequence "}"
   syntax Transition ::= "project:Transition" "(" K ")" [function, projection]
   syntax Sequence ::= Operation "" Sequence [userList(*)]
@@ -1172,6 +1488,7 @@ module XSTS-SYNTAX [digest(9md2NQzTRW+dYmerSBfVViE1Di+H6W2p/gknFq0NNNs=), org.kf
   syntax Line ::= Transition
   syntax Line ::= "project:Line" "(" K ")" [function, projection]
   syntax KItem ::= VariableDeclaration
+  syntax KItem ::= Transitions
   syntax KItem ::= Transition
   syntax KItem ::= Sequence
   syntax KItem ::= Program
@@ -1191,10 +1508,13 @@ module XSTS-SYNTAX [digest(9md2NQzTRW+dYmerSBfVViE1Di+H6W2p/gknFq0NNNs=), org.kf
   syntax ChoiceOrBlocks ::= "project:ChoiceOrBlocks" "(" K ")" [function, projection]
   syntax ChoiceOrBlocks ::= ".ChoiceOrBlocks" [symbol(.List{"___XSTS-SYNTAX"}), userList(*)]
   syntax ChoiceOrBlock ::= "project:ChoiceOrBlock" "(" K ")" [function, projection]
+  syntax ChoiceOrBlock ::= "or" Int
   syntax ChoiceOrBlock ::= "or {" Sequence "}"
   syntax Choice ::= "project:Choice" "(" K ")" [function, projection]
+  syntax Choice ::= "choice" Int
   syntax Choice ::= "choice {" Sequence "}" ChoiceOrBlocks
   syntax Bool ::= "isVariableDeclaration" "(" K ")" [function, predicate(VariableDeclaration), total]
+  syntax Bool ::= "isTransitions" "(" K ")" [function, predicate(Transitions), total]
   syntax Bool ::= "isTransition" "(" K ")" [function, predicate(Transition), total]
   syntax Bool ::= "isSequence" "(" K ")" [function, predicate(Sequence), total]
   syntax Bool ::= "isProgram" "(" K ")" [function, predicate(Program), total]
@@ -1213,6 +1533,8 @@ module XSTS-SYNTAX [digest(9md2NQzTRW+dYmerSBfVViE1Di+H6W2p/gknFq0NNNs=), org.kf
   syntax Assignment ::= "project:Assignment" "(" K ")" [function, projection]
   rule isVariableDeclaration(VariableDeclaration)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(000d1814c0748e85090a95a16818ba839bee7a341a8ebeedd03394bd0048cb8f)]
   rule isVariableDeclaration(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(a9a4923e71843205f1c4698147acff3002174bfedeca6dba26023afd14927570), owise]
+  rule isTransitions(Transitions)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b9a38ce60df6f20c24dd4776a3af8705ee02400cdcb6013c2ab15e113a2ac9a3)]
+  rule isTransitions(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(acc6a4c423e6a04c89dcc4091f7c5b679344bc8a58f07dfdf2766e6f7dbfcdf3), owise]
   rule isTransition(Transition)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(5fd11a1c2ff000629d43cccbab6110712e09f0b555328d9a9b342229ca447fd1)]
   rule isTransition(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(da519c21c94bc2ef1dbe429a40d7b5b75d1d4bb422c477006a2e15f7355816d1), owise]
   rule isSequence(Sequence)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(aab5b96c84673871f157a2ee08b2cd9ed220ef26639f1b0664d2b8b47c382e9f)]
@@ -1238,6 +1560,7 @@ module XSTS-SYNTAX [digest(9md2NQzTRW+dYmerSBfVViE1Di+H6W2p/gknFq0NNNs=), org.kf
   rule isAssignment(K)=>#token("false","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(06105d9991520b84d5385cb385f9e21247421d97be82354565d8370b47107bf0), owise]
   rule isAssignment(Assignment)=>#token("true","Bool") requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(50bbc188c15c716b059e6a0829a3fd71572e7c723affcd577385f15974ad4d27)]
   rule `project:VariableDeclaration`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(0441211cd8dfea0c7df78195fc308e5015e7e7cd95e02a3c42f520cd124a8caa), projection]
+  rule `project:Transitions`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(c4f25c7f98ef578196e78db56596e5b08ab6f84329dc47431b67e4d1aa65aade), projection]
   rule `project:Transition`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(afa86774b6cb3955b1b80d12fa6333723df66bfa1d9520ac06dc74cb34b4760d), projection]
   rule `project:Sequence`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(267c4b9f1a6b29d79fd1ad7726a131d8c8a9e9197f67c7f2dd5aa4e0c6d45871), projection]
   rule `project:Program`(K)=>K requires #token("true","Bool") ensures #token("true","Bool") [UNIQUE_ID(b21c80dd6e55cb4114a8287cdf76440e97a1136d9dedfe7a6f8aa0af36c194aa), projection]

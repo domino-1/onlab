@@ -1,6 +1,6 @@
 default: &id001
   action:
-  - 235
+  - 535
   - - - &id002 ['1']
       - STRING.String
 specializations:
@@ -12,7 +12,7 @@ specializations:
         specializations:
         - - inj{SortAssignment{}, SortKItem{}}
           - action:
-            - 236
+            - 536
             - - - ['0', '0', '1']
                 - STRING.String
           - [STRING.String]

@@ -21,14 +21,24 @@ specializations:
                         - - inj{SortVariableDeclaration{}, SortKItem{}}
                           - default: fail
                             specializations:
-                            - - Lblvar'UndsColn'boolean'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}
+                            - - Lblvar'UndsColn'integer'Unds'XSTS-SYNTAX'Unds'VariableDeclaration'Unds'Id{}
                               - action:
-                                - 224
+                                - 474
                                 - - - ['1', '1']
                                     - STRING.String
                                   - - ['1', '0', '0', '0', '1']
                                     - STRING.String
                                   - - ['1', '1', '0', '1']
+                                    - STRING.String
+                                  - - ['2', '1', '0', '1']
+                                    - STRING.String
+                                  - - ['3', '1', '0', '1']
+                                    - STRING.String
+                                  - - ['2', '0', '1']
+                                    - STRING.String
+                                  - - ['3', '0', '1']
+                                    - STRING.String
+                                  - - ['4', '0', '1']
                                     - STRING.String
                                   - - ['0', '0', '1', '0', '1']
                                     - MAP.Map
@@ -46,13 +56,13 @@ specializations:
                   - [MAP.Map]
                 sort: STRING.String
                 occurrence: ['0', '1', '0', '1']
-              - [STRING.String, STRING.String]
+              - [STRING.String, STRING.String, STRING.String, STRING.String]
             sort: STRING.String
             occurrence: ['1', '0', '1']
           - [STRING.String]
         sort: STRING.String
         occurrence: ['0', '0', '1']
-      - [STRING.String, STRING.String]
+      - [STRING.String, STRING.String, STRING.String, STRING.String, STRING.String]
     sort: STRING.String
     occurrence: ['0', '1']
   - [STRING.String, STRING.String]

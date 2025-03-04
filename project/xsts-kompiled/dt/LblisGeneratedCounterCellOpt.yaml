@@ -1,6 +1,6 @@
 default: &id001
   action:
-  - 249
+  - 577
   - - - &id003 ['1']
       - STRING.String
 specializations:
@@ -12,13 +12,13 @@ specializations:
         specializations:
         - - inj{SortGeneratedCounterCellOpt{}, SortKItem{}}
           - action:
-            - 250
+            - 578
             - - - ['0', '0', '1']
                 - STRING.String
           - [STRING.String]
         - - inj{SortGeneratedCounterCell{}, SortKItem{}}
           - action:
-            - 250
+            - 578
             - - - &id002 ['0', '1']
                 - STRING.String
           - [STRING.String]

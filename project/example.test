@@ -8,6 +8,9 @@ tran {
     x := 2
     choice {
         assume(true)
+        choice {
+            havoc(y)
+        }
     }
     or {
         assume(false)
@@ -26,3 +29,14 @@ tran {
 }
 
 var a : boolean
+
+tran {
+    assume(1)
+    assume(2)
+    havoc(x)
+    x := 2
+    choice {
+        assume(true)
+        x := 2
+    }
+}
