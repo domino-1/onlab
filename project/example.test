@@ -10,6 +10,12 @@ tran {
         assume(true)
         choice {
             havoc(y)
+            choice {
+                x := 1
+            }
+            or {
+                x := 0
+            }
         }
     }
     or {
@@ -39,4 +45,6 @@ tran {
         assume(true)
         x := 2
     }
+
+    choice {}
 }

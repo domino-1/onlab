@@ -16,7 +16,6 @@ module XSTS-SYNTAX
                        | Havoc
                        | Assumption
     
-    // syntax ChoiceToken ::= "choice" [token]
     syntax Choice ::= "choice {" Sequence "}" ChoiceOrBlocks | "choice" Int
     syntax ChoiceOrBlock ::= "or {" Sequence "}" | "or" Int
     syntax ChoiceOrBlocks ::= List{ChoiceOrBlock, ""}
@@ -25,9 +24,6 @@ module XSTS-SYNTAX
     syntax Transitions ::= List{Transition, ""}
 
     syntax Sequence ::= List{Operation, ""}
-    
-    // syntax Bool ::= hasChoice(Sequence) [function]
-    //               | hasOrBlock(Choice) [function]
 
     syntax Line ::= Transition | VariableDeclaration
     syntax Program ::= List{Line, ""}
@@ -40,7 +36,7 @@ module XSTS
     imports INT
     imports MAP
 
-    syntax Work ::= "work(" Transition ")" | "work(" Operation ")"
+    syntax Work ::= "work(" Transition ")" | "work(" Operation ")" | "work(" ChoiceOrBlock ")"
 
     configuration <T>
                     <k> $PGM:Program </k>
@@ -50,16 +46,6 @@ module XSTS
                             <transition multiplicity="*" type="Map">
                                 <id> 0 </id>
                                 <sequence> .List </sequence>
-                                // <choiceblock>
-                                // // <choices multiplicity="*" type="Map">
-                                // //     <cid> 0 </cid>
-                                // //     <choice> .List </choice>
-                                // //     // <csequence multiplicity="*" type="Map">
-                                // //     //     <oid> 0 </oid>
-                                // //     //     <or> .List </or>
-                                // //     // </csequence>
-                                // // </choices>
-                                // </choiceblock>
                             </transition>
                         </transitions>
                         <choices>
@@ -78,6 +64,7 @@ module XSTS
                     <cur-id> 0 </cur-id>
                     <choice-id> 0 </choice-id>
                     <or-id> 0 </or-id>
+                    <temp> .List </temp>
                   </T>
 
     // declaration sequence
@@ -86,8 +73,9 @@ module XSTS
 
     // declarations
 
-    //Handle variable declarations, add them into the <variables> Map as empty. 
-    // This can get expanded with default values relatively easily
+    /* Handle variable declarations, add them into the <variables> Map as empty. 
+    *  This can get expanded with default values relatively easily
+    */
     rule <k> var X:Id : integer => .K ...</k>
          <variables> STATE => STATE [ X <- empty ] </variables> [priority(48)] //default init of empty is possibly temporary
     rule <k> var X:Id : boolean => .K ...</k>
@@ -98,13 +86,15 @@ module XSTS
          <cur-id> CURID => CURID +Int 1 </cur-id>
          (.Bag => <transition><id>CURID +Int 1</id><sequence>.List</sequence></transition>)
 
-    //Rule A: Remove the first operation from the transition, put it into the current <sequence> list
-    // Unless that operation is a choice!
+    /* Rule A: Remove the first operation from the transition, put it into the current <sequence> list
+    *  Unless that operation is a choice!
+    */
     rule <k> work( tran { O:Operation S:Sequence } ) => work( tran { S:Sequence } ) ~> .K ...</k>
          <cur-id> CURID </cur-id>
          <transition><id>CURID</id><sequence> .List => ListItem(O) ... </sequence></transition> [priority(51)]
-    //Rule B: If that operation is a choice, pull it out into the first spot in the <k> sequence
-    //Create a choice block for that choice and put the choice id into the <sequence> list
+    /* Rule B: If that operation is a choice, pull it out into the first spot in the <k> sequence
+    * Create a choice block for that choice and put the choice id into the <sequence> list
+    */
     rule <k> work( tran { O:Choice S:Sequence } ) => O ~> work( tran { S:Sequence } ) ~> .K ...</k>
          <cur-id> CURID </cur-id>
          <choice-id> CHOICEID </choice-id>
@@ -113,28 +103,78 @@ module XSTS
     //If the transition is processed, remove its husk from k
     rule <k> work( tran { .Sequence } ) => .K ... </k>
 
-    //Rule C: If you see a choice at the start of the k sequence (as the result of Rule B), put 
-    //it's first sequence into the current choice block, and leave the or blocks on k
-    //This rule only makes sense if it comes after Rule B
+    /* Rule C: If you see a choice at the start of the k sequence (as the result of Rule B), put 
+    * it's first sequence into the current choice block, and leave the or blocks on k
+    * This rule only makes sense if it comes after Rule B
+    */
     rule <k> choice { S:Sequence } B => B ~> .K ...</k>
          <choice-id> CHOICEID </choice-id>
          <choice><cid>CHOICEID</cid><csequence> .List => ListItem( S ) ... </csequence></choice>
-    //Rule D: If you see an or block at the start of the k sequence (as the result of Rule C), put
-    //it's sequence into the current choice block, and leave the rest of the or blocks
-    //This rule only makes sense coming after Rule C
+    /* Rule D: If you see an or block at the start of the k sequence (as the result of Rule C), put
+    * it's sequence into the current choice block, and leave the rest of the or blocks
+    * This rule only makes sense coming after Rule C
+    */
     rule <k> or { B:Sequence } S:ChoiceOrBlocks => S:ChoiceOrBlocks ...</k>
          <choice-id> CHOICEID </choice-id>
          <choice><cid>CHOICEID</cid><csequence> .List => ListItem( B ) ... </csequence></choice>
-    //Rule E: If no more or blocks are left, increase the choice counter by 1 and remove the empty orList from k
-    //At this point, if Rule C or D run without Rule B having first run, we will encounter a bad error, because
-    // those rules will try to go into a non existent choice block
+    /* Rule E: If no more or blocks are left, increase the choice counter by 1 and remove the empty orList from k
+    * At this point, if Rule C or D run without Rule B having first run, we will encounter a bad error, because
+    *  those rules will try to go into a non existent choice block
+    */
     rule <k> .ChoiceOrBlocks => .K ...</k>
          <choice-id> CHOICEID => CHOICEID +Int 1 </choice-id>
 
 
     //Handle choice blocks -> or blocks
-    rule <k> .K </k>
-         <choice><csequence> LIST </cseqence></choice>
+    /* If K is empty (meaning we are done with all previous operations)
+    * Take the first sequence insite <csequence> and create an or block and osequence for it
+    * Pull up the sequence into k
+    * Add an or identifier refering to the newly created or block to <temp>
+    *  This is important because if we add it straight into csequence it will block further steps
+    *   (since at that point csequence will no longer begin with a ListItem(S:Sequence) but a ListItem(S:ChoiceOrBlock) at some point)
+    *   Theres probably a better way to do this? TODO: Look a bit better at semantic list pattern matching
+    */
+    rule <k> .K => S ~> .K </k>
+         <or-id> ORID </or-id>
+         <choice>...<csequence> ListItem(S:Sequence) => .List ...</csequence></choice>
+         <temp> .List => ListItem( or ORID ) ...</temp>
+         (.Bag => <or><oid> ORID </oid><osequence> .List </osequence></or>)
     
+    /* In <k>, split off the first operation from the sequence (unless it is is a choice, in that case see the next rule)
+    * Put the operation into the osequence list
+    */
+    rule <k> O:Operation S:Sequence => S ...</k>
+         <or-id> ORID </or-id>
+         <or><oid> ORID </oid><osequence> .List => ListItem(O) ...</osequence></or> [priority(51)]
+    
+    /* If in the previous rule we had a choice instead of just an operation:
+    * Create a new choice block for it (equivalent to previous rules)
+    * Put a choice identifier to that choice into the osequence
+    * Pull out the choice into its own unit in k
+    *  This is imporant! At this point a previous rule (Rule C) will recoginse this and handle the rest of the choice!
+    *  Eg it will put its initial sequence into the list, hand off to furhter rules to handle the other or sequences, etc...
+    */
+    rule <k> C:Choice S:Sequence => C ~> S ...</k>
+         <or-id> ORID </or-id>
+         <or><oid> ORID </oid><osequence> .List => ListItem(choice CHOICEID) ...</osequence></or>
+         <choice-id> CHOICEID </choice-id>
+         (.Bag => <choice><cid> CHOICEID </cid><csequence> .List </csequence></choice>)
+    
+    //Cleanup when: If we have finished handling a or sequence, but not yet the whole choice
+    rule <k> .Sequence => .K ...</k>
+         <or-id> ORID => ORID +Int 1 </or-id> [priority(51)]
+
+    /* Cleanup when: If we have finished both an or sequence and an enitre choice
+    * Indicated by the empty csequence list (csequence lists should only be empty here, nowhere else, othervise we might get into a loop)
+    *   (osequences can currently be empty, maybe that should change for consistency's sake)
+    *     ((An empty osequence means that the whole block was empty, eg choice {}, or {}
+    *       It happens by: choice {} becomes <csequence>ListItem(.Sequence)</csequence> which
+    *       becomes <osequence>.List</osequence>))
+    * Move the or identifiers stored in <temp> back into csequence
+    */
+    rule <k> .Sequence => .K ...</k>
+         <or-id> ORID => ORID +Int 1 </or-id>
+         <temp> L:List => .List </temp>
+         <csequence> .List => L </csequence>    
 
 endmodule
