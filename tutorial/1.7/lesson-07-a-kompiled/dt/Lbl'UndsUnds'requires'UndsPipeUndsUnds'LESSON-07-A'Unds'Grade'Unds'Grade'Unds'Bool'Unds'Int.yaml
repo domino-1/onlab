@@ -1,8 +1,0 @@
-action:
-- 138
-- - - ['2']
-    - BOOL.Bool
-  - - ['1']
-    - STRING.String
-  - - ['3']
-    - INT.Int
