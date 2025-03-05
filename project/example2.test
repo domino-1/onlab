@@ -1,0 +1,6 @@
+var x: integer = 0
+var y: boolean = false
+
+tran {
+    x:=true
+}

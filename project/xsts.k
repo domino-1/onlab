@@ -4,8 +4,11 @@ module XSTS-SYNTAX
     imports ID-SYNTAX
 
     syntax Literal ::= Int | Bool | "empty"
-    syntax VariableDeclaration ::= "var" Id ":" "integer"
-                                 | "var" Id ":" "boolean"
+    syntax Type ::= "integer" | "boolean"
+    syntax VariableDeclaration ::= "var" Id ":" Type
+                                 | "var" Id ":" Type "=" Int 
+                                 | "var" Id ":" Type
+                                 | "var" Id ":" Type "=" Bool
 
     syntax Assignment ::= Id ":=" Literal
     syntax Havoc ::= "havoc(" Id ")"
@@ -73,14 +76,25 @@ module XSTS
 
     // declarations
 
-    /* Handle variable declarations, add them into the <variables> Map as empty. 
-    *  This can get expanded with default values relatively easily
+    /* Handle variable declarations, add them into the <variables> Map
     */
     rule <k> var X:Id : integer => .K ...</k>
          <variables> STATE => STATE [ X <- empty ] </variables> [priority(48)] //default init of empty is possibly temporary
+    rule <k> var X:Id : integer = I:Int => .K ...</k>
+         <variables> STATE => STATE [ X <- I ] </variables> [priority(48)]
+    
     rule <k> var X:Id : boolean => .K ...</k>
          <variables> STATE => STATE [ X <- empty ] </variables> [priority(48)] //default init of empty is possibly temporary
+    rule <k> var X:Id : boolean = B:Bool => .K ...</k>
+         <variables> STATE => STATE [ X <- B ] </variables> [priority(48)]
     
+    /*
+    * 1. Should typechecking be done for operations? 
+    * 2. Currently declarations with default values of the wrong type are not recognized by any rule (which is the expected behaviour)
+    * causing everything to simply stop. Maybe 'exceptions' like that should be hadled a bit more gracefully
+    * 2.1. Possible solution is making them also unrecognized as syntax, which will cause an error and stop execution
+    */
+
     //Select a transition, create a transition block for it
     rule <k> tran { S:Sequence } => work( tran { S:Sequence } ) ... </k>
          <cur-id> CURID => CURID +Int 1 </cur-id>
