@@ -1,10 +1,15 @@
-module XSTS-SYNTAX
+module OXSTS-SYNTAX
     imports INT-SYNTAX
     imports BOOL-SYNTAX
     imports ID-SYNTAX
+    imports STRING-SYNTAX
 
-    //ne legyen empty
+    syntax Valami ::= "TODO"
+
     syntax Literal ::= Int | Bool | "empty"
+    syntax Expression ::= "if" "(" Bool ")" "{" Valami "}"
+                        | "if" "(" Bool ")" "{" Valami "}" "else" "{" Valami "}"
+
     syntax Type ::= "integer" | "boolean"
     syntax VariableDeclaration ::= "var" Id ":" Type
                                  | "var" Id ":" Type "=" Int 
@@ -12,40 +17,50 @@ module XSTS-SYNTAX
                                  | "var" Id ":" Type "=" Bool
 
     syntax Assignment ::= Id ":=" Literal
-    syntax Havoc ::= "havoc(" Id ")"
-    syntax Assumption ::= "assume(" Literal ")"
+    syntax Havoc ::= "havoc" "(" Id ")"
+    syntax Assumption ::= "assume" "(" Literal ")"
+    syntax Inline ::= "inline" OTransitionName "()" ";"
+                    | "inline" Expression
 
     syntax Operation ::= Choice
                        | Assignment
                        | Havoc
                        | Assumption
+                       | Inline
     
-    syntax Choice ::= "choice {" Sequence "}" ChoiceOrBlocks | "choice" Int
-    syntax ChoiceOrBlock ::= "or {" Sequence "}" | "or" Int
+    syntax Choice ::= "choice" "{" Sequence "}" ChoiceOrBlocks | "choice" Int
+    syntax ChoiceOrBlock ::= "or" "{" Sequence "}" | "or" Int
     syntax ChoiceOrBlocks ::= List{ChoiceOrBlock, ""}
+
+    syntax OTransitionName ::= Id | "main"
+    syntax OTransition ::= "tran" OTransitionName "{" Sequence "}"
+
+    syntax OTransitions ::= List{OTransition, ""}
 
     syntax Transition ::= "tran {" Sequence "}"
     syntax Transitions ::= List{Transition, ""}
 
     syntax Sequence ::= List{Operation, ""}
 
-    syntax Line ::= Transition | VariableDeclaration
+    syntax Line ::= OTransition | VariableDeclaration
     syntax Program ::= List{Line, ""}
-
 endmodule
 
-module XSTS
-    imports XSTS-SYNTAX
+module OXSTS
+    imports OXSTS-SYNTAX
     imports LIST
     imports INT
     imports MAP
+    imports STRING
 
     syntax Work ::= "work(" Transition ")" | "work(" Operation ")" | "work(" ChoiceOrBlock ")"
+    syntax Placeholder ::= "PLACEHOLDER"
 
     configuration <T>
                     <k> $PGM:Program </k>
                     <state>
                         <variables> .Map </variables>
+                        <transitions-key> .Map </transitions-key>
                         <transitions>
                             <transition multiplicity="*" type="Map">
                                 <id> 0 </id>
@@ -83,6 +98,7 @@ module XSTS
          <variables> STATE => STATE [ X <- empty ] </variables> [priority(48)] //default init of empty is possibly temporary
     rule <k> var X:Id : integer = I:Int => .K ...</k>
          <variables> STATE => STATE [ X <- I ] </variables> [priority(48)]
+
     
     rule <k> var X:Id : boolean => .K ...</k>
          <variables> STATE => STATE [ X <- empty ] </variables> [priority(48)] //default init of empty is possibly temporary
@@ -95,6 +111,11 @@ module XSTS
     * causing everything to simply stop. Maybe 'exceptions' like that should be hadled a bit more gracefully
     * 2.1. Possible solution is making them also unrecognized as syntax, which will cause an error and stop execution
     */
+
+    //named tran to tran
+    rule <k> tran NAME:OTransitionName { S:Sequence } => tran { S:Sequence } ... </k>
+         <cur-id> CURID </cur-id>
+         <transitions-key> KEYS => KEYS [ NAME <- CURID +Int 1 ] </transitions-key>
 
     //Select a transition, create a transition block for it
     rule <k> tran { S:Sequence } => work( tran { S:Sequence } ) ... </k>
@@ -190,6 +211,18 @@ module XSTS
     rule <k> .Sequence => .K ...</k>
          <or-id> ORID => ORID +Int 1 </or-id>
          <temp> L:List => .List </temp>
-         <csequence> .List => L </csequence>    
+         <csequence> .List => L </csequence>
+
+
+    //
+    rule <sequence> ListItem( inline NAME:OTransitionName () ; ) LIST:List => LIST ... </sequence>
+         <transitions-key> KEYS:Map </transitions-key>
+         <transition><id> CURID:Int </id><sequence> L:List </sequence></transition>
+         <temp> .List => L </temp> requires CURID ==Int KEYS [ NAME ] [priority(52)]
+         //KEYS[alma] -> 1
+         //transitions>id=1 -> 
+
+    rule <sequence> LIST:List => L LIST </sequence>
+         <temp> L:List => .List </temp> [priority(52)]
 
 endmodule
