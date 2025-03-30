@@ -215,14 +215,14 @@ module OXSTS
 
 
     //
-    rule <sequence> ListItem( inline NAME:OTransitionName () ; ) LIST:List => LIST ... </sequence>
-         <transitions-key> KEYS:Map </transitions-key>
-         <transition><id> CURID:Int </id><sequence> L:List </sequence></transition>
-         <temp> .List => L </temp> requires CURID ==Int KEYS [ NAME ] [priority(52)]
-         //KEYS[alma] -> 1
-         //transitions>id=1 -> 
+    // rule <sequence> ListItem( inline NAME:OTransitionName () ; ) LIST:List => LIST ... </sequence>
+    //      <transitions-key> KEYS:Map </transitions-key>
+    //      <transition><id> CURID:Int </id><sequence> L:List </sequence></transition>
+    //      <temp> .List => L </temp> requires CURID ==Int KEYS [ NAME ] [priority(52)]
+    //      //KEYS[alma] -> 1
+    //      //transitions>id=1 -> 
 
-    rule <sequence> LIST:List => L LIST </sequence>
-         <temp> L:List => .List </temp> [priority(52)]
+    // rule <sequence> LIST:List => L LIST </sequence>
+    //      <temp> L:List => .List </temp> [priority(52)]
 
 endmodule

@@ -3,7 +3,6 @@ module XSTS-SYNTAX
     imports BOOL-SYNTAX
     imports ID-SYNTAX
 
-    //ne legyen empty
     syntax Literal ::= Int | Bool | "empty"
     syntax Type ::= "integer" | "boolean"
     syntax VariableDeclaration ::= "var" Id ":" Type
@@ -13,19 +12,19 @@ module XSTS-SYNTAX
 
     syntax Assignment ::= Id ":=" Literal
     syntax Havoc ::= "havoc(" Id ")"
-    syntax Assumption ::= "assume(" Literal ")"
+    syntax Assumption ::= "assume(" Literal ")" //lehet Expr, literalExpression vagy ReferenceExpression
 
     syntax Operation ::= Choice
                        | Assignment
                        | Havoc
                        | Assumption
     
-    syntax Choice ::= "choice {" Sequence "}" ChoiceOrBlocks | "choice" Int
-    syntax ChoiceOrBlock ::= "or {" Sequence "}" | "or" Int
+    syntax Choice ::= "choice" "{" Sequence "}" ChoiceOrBlocks | "choice" Int
+    syntax ChoiceOrBlock ::= "or" "{" Sequence "}" | "or" Int
     syntax ChoiceOrBlocks ::= List{ChoiceOrBlock, ""}
 
-    syntax Transition ::= "tran {" Sequence "}"
-    syntax Transitions ::= List{Transition, ""}
+    syntax Transition ::= "tran" "{" Sequence "}"
+    syntax Transitions ::= List{Transition, ""} //nincs hasznalva
 
     syntax Sequence ::= List{Operation, ""}
 

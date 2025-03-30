@@ -1,8 +1,8 @@
-var x : integer
+var x : integer = 1
 var y : boolean
 
 tran {
-    assume(1)
+    assume(true)
     assume(2)
     havoc(x)
     x := 2
