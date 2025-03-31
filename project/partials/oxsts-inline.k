@@ -80,7 +80,7 @@ module OXSTS-INLINE
 
     //the previous inline rules take it from here in case it is an inline
 
-    //cleanup
+    //! priority 100+: cleanup
     rule <k2> O:Opr => .K ...</k2> 
          <tmp2> LIST => LIST ListItem(O) </tmp2> [priority(100)]
 
