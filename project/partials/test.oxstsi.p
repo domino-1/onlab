@@ -13,5 +13,10 @@ tran NAME2 {
 	REST 
 }
 tran NAME3 { 
-	REST 
+	inline NAME4 
+	REST
+}
+tran NAME4 {
+	REST
+	REST
 }
