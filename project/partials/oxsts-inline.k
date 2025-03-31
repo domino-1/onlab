@@ -30,22 +30,9 @@ module OXSTS-INLINE
                         <tmp3> .List </tmp3>
                         <tmp4> .K </tmp4>
                     </store>
-                    // <transitions>
-                    //     <transition multiplicity="*" type="Map">
-                    //         <name> .K </name>
-                    //         <content> .List </content>
-                    //         // <list> .List </list>
-                    //     </transition>
-                    // </transitions>
                     <map>
                         .Map
                     </map>
-                    // <map2>
-                    //     .Map
-                    // </map2>
-                    // <lst>
-                    //     .List
-                    // </lst>
                   </T>
 
 
@@ -56,10 +43,7 @@ module OXSTS-INLINE
 
     //Fill up <transitions>, empty out <k>
     rule <k> tran I:Id { S:Seq } Ts => Ts ...</k>
-         //<map> MAP => MAP [ I <- EMPTY ] </map> 
          <tmp> .K => S ~> I </tmp> [priority(60)]
-         //<map2> MAP2 => MAP2 [ I <- .List ] </map2> 
-         //(.Bag => <transition><name> I </name><content> .List </content></transition>)
     
     rule <tmp> O:Opr Os:Seq ~> I ~> .K => Os ~> I ~> .K </tmp>
          <tmp2> LIST => LIST ListItem(O) </tmp2>
@@ -111,54 +95,4 @@ module OXSTS-INLINE
     rule <tmp4> active(Os:Seq) ~> .K => .K </tmp4>
          <k> .K => tran main { Os } .Pgm </k> [priority(105)]
 
-
-    // rule <k> inline _:Id => .K ...</k>
-    //      <tmp3> .List </tmp3> [priority(60)]
-
-    // //perform inline
-    // rule <k> inline I:Id => V ...</k>
-    //      <map>... I |-> V ...</map>
-
-    // //move back to main -> nem kell
-    // rule <k> M => .K </k>
-    //      <main> .Seq => M ...</main> [priority(80)]
-
-    /* ---- */
-
-    // rule <map>... I |-> (O:Opr S => O ~> S ~> .K) ...</map> //wont compile
-    
-    // rule <map>... I |-> (O:Opr S => S) ...</map> 
-    //      <map2>... I |-> ( LIST => LIST ListItem(O) ) ...</map2>
-
-    // rule <map2>... I |-> (L => .List) ...</map2>
-    //      <transition><name> I </name><content> .List => L </content></transition>
-
-
-    // rule <transition><name> I </name><content> C:List => .List </content></transition> 
-    //      <transition><name> _ </name><content> ListItem(inline I:Id) L:List => C L </content></transition> [priority(60)]
-
-    // rule <transition><name> I </name><content> C:List => .List </content></transition> 
-    //      <transition><name> _ </name><content> L:List ListItem(inline I:Id) => L C </content></transition> [priority(60)]
-
-    // rule <transition><name> I </name><content> C:List => .List </content></transition> 
-    //      <transition><name> _ </name><content> (L1:List ListItem(inline I:Id) => L1 C) ...</content></transition> [priority(60)] //wont bind
-
-
-    // Perform inlines
-    // rule <transition>... 
-	// 	    <content>... ListItem(inline I:Id) => C ...</content> 
-	//      </transition>
-    //      <transition>
-	// 	    <name> I:Id </name>
-	// 	    <content> C => .List </content>
-	//      </transition>
-
-    //Cleanup <map> -> does not work yet
-    // rule mIsEmpty( .Seq ) => true
-    // rule mIsEmpty( _ ) => false [owise]
-
-    // rule <map> MAP => MAP[I <- undef] </map>
-    //      <name> I </name> requires mIsEmpty( MAP[I] ) [priority(100)]
-
-    // rule (<transition>... <content> .List </content></transition> => .Bag)
 endmodule
