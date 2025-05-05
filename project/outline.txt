@@ -1,0 +1,131 @@
+Inlines I:
+- assume all TRANs are named, and none contain conditional blocks
+- 
+
+Questions:
+- can a transition be inlined by multiple other transitions?
+	-> assume no
+	-> yes
+- is there always a designated "main" transition as a starting point? 
+	-> its possible to do it without this being answered I think
+	-> assume no
+	-> yes
+- can named and nameless transitions coexist?
+	-> assume no
+	
+	
+- does anything other then declarations or transitions exist at the top level?
+	-> assume no for now
+- can declarations appear anywhere but the start of the file?
+	-> assume no for now
+		-> in fact, assume there are none at all for now
+
+
+tran NAME1 { 
+	inline NAME2
+	inline NAME3
+	REST
+}
+tran NAME2 { 
+	REST
+	inline NAME4
+	REST
+}
+tran NAME3 { 
+	REST 
+}
+tran NAME4 { 
+	REST 
+}
+
+
+block = declarations | transition
+
+example list of blocks:
+ - declarations
+ - transition
+ - transition
+ - transition
+ - transition
+ 
+D ~> T1 ~> T2 ~> T3 ~> T4 ~> .K
+
+<k> .K </k>
+<parts>
+	<assignments> D </assignments>
+	<transitions MAP>
+		<transition>
+			<name> NAME1 </name>
+			<content>
+					inline NAME2
+					inline NAME3
+					...
+			</content>
+		</transition>
+		<transition>
+			<name> NAME2 </name>
+			<content> 
+				...
+				inline NAME4 
+				...
+			</content>
+		</transition>
+		<transition>
+			<name> NAME3 </name>
+			<content> ... </content>
+		</transition>
+		<transition>
+			<name> NAME4 </name>
+			<content> ... </content>
+		</transition>
+	</transitions>
+</parts>
+
+
+rule <transition>... 
+		<content>... (inline I:Id => C) ...</content> 
+	 </transition>
+	 <transition>
+		<name> I:Id </name>
+		<content> C => EMPTY </content>
+	</transition>
+	
+//Cleanup
+rule <transition>... <content> EMPTY </content></transition> => .Bag
+
+- If it needs numeric ids for the map cells, a map of name |-> id shouldnt be too difficult
+
+
+Steps:
+1. Move transitions into their own cells
+2. Perform all inlines
+3. Move transitions back into <k> without their names
+=> this should be a valid XSTS file
+
+
+
+tran MAIN { 
+	inline NAME1(10, false)
+	inline NAME1()
+	inline if (Expr) NAME2() /? else NAME3() ?/
+	REST
+}
+tran NAME1(x: integer, y: boolean) { 
+	REST
+	inline NAME3()
+	REST
+}
+tran NAME2 { 
+	REST 
+}
+tran NAME3 { 
+	REST 
+}
+
+
+Optimalizáció példák:
+-  assume (true) törlése
+
+rule if (true) A else _ => A
+	 <map> ... </map>
+rule if (false) _ else B => B

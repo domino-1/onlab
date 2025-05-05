@@ -1,0 +1,50 @@
+var x : integer = 1
+var y : boolean
+
+tran {
+    assume(true)
+    assume(2)
+    havoc(x)
+    x := 2
+    choice {
+        assume(true)
+        choice {
+            havoc(y)
+            choice {
+                x := 1
+            }
+            or {
+                x := 0
+            }
+        }
+    }
+    or {
+        assume(false)
+        havoc(y)
+    }
+    or {}
+}
+
+var z : integer
+
+tran {
+    assume(1)
+    assume(2)
+    havoc(x)
+    x := 2
+}
+
+var a : boolean
+
+tran {
+    assume(1)
+    assume(2)
+    havoc(x)
+    x := 2
+    choice {
+        assume(true)
+        x := 2
+    }
+
+    choice {}
+}

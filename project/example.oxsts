@@ -1,0 +1,17 @@
+var x : integer
+var y : boolean
+
+
+tran alma {
+    assume(true)
+}
+
+tran main {
+    inline alam();
+    
+
+    assume(1)
+    assume(2)
+    havoc(x)
+    x := 2
+}
