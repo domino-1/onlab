@@ -121,3 +121,11 @@ tran NAME2 {
 tran NAME3 { 
 	REST 
 }
+
+
+Optimalizáció példák:
+-  assume (true) törlése
+
+rule if (true) A else _ => A
+	 <map> ... </map>
+rule if (false) _ else B => B

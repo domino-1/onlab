@@ -1,10 +1,24 @@
 module OXSTS-CONDITIONAL-INLINE-SYNTAX
     imports ID
+    imports INT
+    imports BOOL
+
+    /* temp */
+    syntax Literal ::= Int | Bool | "empty"
+    syntax Assignment ::= Id ":=" Literal
+    syntax Havoc ::= "havoc" "(" Id ")"
+    syntax Assumption ::= "assume" "(" Literal ")"
+
+    syntax Choice ::= "choice" "{" Seq "}" ChoiceOrBlocks | "choice" Int
+    syntax ChoiceOrBlock ::= "or" "{" Seq "}" | "or" Int
+    syntax ChoiceOrBlocks ::= List{ChoiceOrBlock, ""}
+    /* temp */
 
     syntax Block ::= "{" Seq "}" | "{""}"
 
     syntax Tran ::= "tran" Id "("")" Block | "tran" "main" Block
     syntax Opr  ::= "inline" Id "("")" | "REST"
+                  | Assignment | Havoc | Assumption | Choice
     syntax Seq ::= List{Opr, ""}
 
     syntax Pgm ::= List{Tran,""}

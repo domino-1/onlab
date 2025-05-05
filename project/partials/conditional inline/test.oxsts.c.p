@@ -2,21 +2,21 @@ tran main {
 	inline NAME1()
 	inline NAME1()
 	inline NAME2()
-	REST
+	a := 1 
 }
 tran NAME1() { 
-	REST
+	b := 2
 	inline NAME3()
-	REST
+	c := 3
 }
 tran NAME2() { 
-	REST 
+	havoc(c)
 }
 tran NAME3() { 
 	inline NAME4()
-	REST
+	assume(true)
 }
 tran NAME4() {
-	REST
-	REST
+	d := true
+	e := false
 }
